@@ -2,7 +2,8 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import 'styles/index.css'
 
 import { AppProps } from 'next/app'
-import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
+import { Albert_Sans } from 'next/font/google'
+import localFont from 'next/font/local'
 import { lazy } from 'react'
 
 export interface SharedPageProps {
@@ -15,23 +16,10 @@ const SanityVisualEditing = lazy(
   () => import('components/preview/SanityVisualEditing'),
 )
 
-const mono = IBM_Plex_Mono({
-  variable: '--font-mono',
-  subsets: ['latin'],
-  weight: ['500', '700'],
-})
-
-const sans = Inter({
-  variable: '--font-sans',
-  subsets: ['latin'],
-  weight: ['500', '700', '800'],
-})
-
-const serif = PT_Serif({
+const headingFont = Albert_Sans({ subsets: ['latin'], variable: '--font-sans' })
+const contentFont = localFont({
+  src: '../public/fonts/InterVariable.woff2',
   variable: '--font-serif',
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  weight: ['400', '700'],
 })
 
 export default function App({
@@ -44,9 +32,8 @@ export default function App({
       <style jsx global>
         {`
           :root {
-            --font-mono: ${mono.style.fontFamily};
-            --font-sans: ${sans.style.fontFamily};
-            --font-serif: ${serif.style.fontFamily};
+            --font-sans: ${headingFont.style.fontFamily};
+            --font-serif: ${contentFont.style.fontFamily};
           }
         `}
       </style>

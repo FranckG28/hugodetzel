@@ -46,7 +46,7 @@ function TextBox({ project }: { project: ShowcaseProject }) {
           )}
         </div>
         {/* Overview  */}
-        <div className="font-serif text-gray-500">
+        <div className="font-serif text-slate-500">
           <CustomPortableText value={project.overview} />
         </div>
       </div>

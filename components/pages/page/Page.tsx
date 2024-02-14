@@ -30,7 +30,7 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             {/* Body */}
             {body && (
               <CustomPortableText
-                paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
+                paragraphClasses="font-serif max-w-3xl text-slate-200 text-xl"
                 value={body}
               />
             )}
@@ -38,7 +38,7 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             {/* Workaround: scroll to top on route change */}
             <ScrollUp />
           </div>
-          <div className="absolute left-0 w-screen border-t" />
+          <div className="absolute left-0 w-screen border-t border-slate-500" />
         </div>
       </Layout>
     </>
