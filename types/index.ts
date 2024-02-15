@@ -13,6 +13,11 @@ export interface MilestoneItem {
   title?: string
 }
 
+export interface Link {
+  href?: string
+  title?: string
+}
+
 export interface ShowcaseProject {
   _type: string
   coverImage?: Image
@@ -29,6 +34,7 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[]
   showcaseProjects?: ShowcaseProject[]
   heading?: string
+  links?: Link[]
 }
 
 export interface PagePayload {

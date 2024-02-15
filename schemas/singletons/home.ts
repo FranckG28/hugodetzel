@@ -59,6 +59,16 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'links',
+      title: 'Buttons',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'link',
+        }),
+      ],
+    }),
+    defineField({
       name: 'showcaseProjects',
       title: 'Showcase projects',
       description:

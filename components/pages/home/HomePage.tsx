@@ -20,6 +20,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
     overview,
     showcaseProjects,
     heading = 'Personal website',
+    links,
   } = page ?? {}
 
   return (
@@ -30,7 +31,12 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         <div className="space-y-20">
           {/* Header */}
           {heading && (
-            <Header centered title={heading} description={overview} />
+            <Header
+              centered
+              title={heading}
+              description={overview}
+              links={links}
+            />
           )}
           {/* Showcase projects */}
           {showcaseProjects && showcaseProjects.length > 0 && (
