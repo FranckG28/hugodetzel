@@ -1,20 +1,22 @@
+import { title } from 'lib/demo.data'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import { MenuItem } from 'types'
 
 interface NavbarProps {
+  siteTitle?: string
   menuItems?: MenuItem[]
 }
 
-export function Navbar({ menuItems }: NavbarProps) {
+export function Navbar({ menuItems, siteTitle }: NavbarProps) {
   return (
     <div className="sticky top-0 z-10 flex flex-wrap items-center gap-x-5 bg-slate-950/80 px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
       <Link
         key="home"
-        className={`text-lg font-extrabold text-slate-200 hover:text-white md:text-xl`}
+        className={`text-lg font-bold text-slate-200 hover:text-white md:text-xl mr-auto`}
         href={'/'}
       >
-        {'Accueil'}
+        {siteTitle ?? title}
       </Link>
       {menuItems &&
         menuItems.map((menuItem) => {
