@@ -28,7 +28,7 @@ export default function IndexPage(props: PageProps) {
 }
 
 const fallbackPage: HomePagePayload = {
-  title: '',
+  heading: '',
   overview: [],
   showcaseProjects: [],
 }

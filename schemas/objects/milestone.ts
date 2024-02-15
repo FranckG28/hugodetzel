@@ -36,28 +36,15 @@ export default defineType({
         layout: 'tags',
       },
     }),
-    defineField({
-      type: 'duration',
-      name: 'duration',
-      title: 'Duration',
-      validation: (rule) => rule.required(),
-    }),
   ],
   preview: {
     select: {
-      duration: 'duration',
       image: 'image',
       title: 'title',
     },
-    prepare({ duration, image, title }) {
+    prepare({ image, title }) {
       return {
         media: image,
-        subtitle: [
-          duration?.start && new Date(duration.start).getFullYear(),
-          duration?.end && new Date(duration.end).getFullYear(),
-        ]
-          .filter(Boolean)
-          .join(' - '),
         title,
       }
     },

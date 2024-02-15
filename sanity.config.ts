@@ -17,7 +17,6 @@ import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
-import duration from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
 import timeline from 'schemas/objects/timeline'
 import youtube from 'schemas/objects/youtube'
@@ -44,7 +43,6 @@ export default defineConfig({
       home,
       settings,
       // Documents
-      duration,
       page,
       project,
       // Objects

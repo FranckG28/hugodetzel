@@ -9,13 +9,13 @@ export function TimelineItem({
   isLast: boolean
   milestone: MilestoneItem
 }) {
-  const { description, duration, image, tags, title } = milestone
-  const startYear = duration?.start
-    ? new Date(vercelStegaSplit(duration.start).cleaned).getFullYear()
-    : undefined
-  const endYear = duration?.end
-    ? new Date(vercelStegaSplit(duration.end).cleaned).getFullYear()
-    : 'Now'
+  const { description, image, tags, title } = milestone
+  // const startYear = duration?.start
+  //   ? new Date(vercelStegaSplit(duration.start).cleaned).getFullYear()
+  //   : undefined
+  // const endYear = duration?.end
+  //   ? new Date(vercelStegaSplit(duration.end).cleaned).getFullYear()
+  //   : 'Now'
 
   return (
     <div className={`flex min-h-[200px] font-sans ${!isLast && 'pb-2'}`}>
@@ -47,7 +47,7 @@ export function TimelineItem({
               <span className="mx-1">●</span>
             </span>
           ))}
-          {startYear} - {endYear}
+          {/* {startYear} - {endYear} */}
         </div>
         {/* Description */}
         <div className="pb-5 pt-3 font-serif text-slate-200">{description}</div>

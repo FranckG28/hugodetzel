@@ -13,13 +13,12 @@ export const homePageQuery = groq`
       tags,
       title,
     },
-    title,
+    heading,
   }
 `
 
-export const homePageTitleQuery = groq`
-  *[_type == "home"][0].title
-`
+export const siteTitleQuery = groq`
+  *[_type == "settings"][0].title`
 
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
@@ -56,6 +55,7 @@ export const pagePaths = groq`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
+    title,
     footer,
     menuItems[]->{
       _type,

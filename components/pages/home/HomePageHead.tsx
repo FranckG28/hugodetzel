@@ -12,7 +12,7 @@ export default function HomePageHead({ settings, page }: HomePageHeadProps) {
     <SiteMeta
       description={page?.overview ? toPlainText(page.overview) : ''}
       image={settings?.ogImage}
-      title={page?.title}
+      title={settings?.title}
     />
   )
 }

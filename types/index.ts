@@ -1,5 +1,4 @@
-import type { PortableTextBlock } from '@portabletext/types'
-import type { Image } from 'sanity'
+import type { Image, PortableTextBlock } from 'sanity'
 
 export interface MenuItem {
   _type: string
@@ -9,10 +8,6 @@ export interface MenuItem {
 
 export interface MilestoneItem {
   description?: string
-  duration?: {
-    start?: string
-    end?: string
-  }
   image?: Image
   tags?: string[]
   title?: string
@@ -33,7 +28,7 @@ export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
   showcaseProjects?: ShowcaseProject[]
-  title?: string
+  heading?: string
 }
 
 export interface PagePayload {
@@ -63,4 +58,5 @@ export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
   ogImage?: Image
+  title?: string
 }

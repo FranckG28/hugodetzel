@@ -10,8 +10,8 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
-      name: 'title',
-      description: 'This field is the title of your personal website.',
+      name: 'heading',
+      description: 'This is the big title.',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
