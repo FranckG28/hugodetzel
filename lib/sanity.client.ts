@@ -28,9 +28,6 @@ export function getClient(preview?: { token: string }) {
         ) {
           return false
         }
-        if (props.sourcePath.at(0) === 'duration') {
-          return false
-        }
         switch (props.sourcePath.at(-1)) {
           case 'href':
           case 'listItem':

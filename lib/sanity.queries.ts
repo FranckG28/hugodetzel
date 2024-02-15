@@ -36,7 +36,7 @@ export const projectBySlugQuery = groq`
     client,
     coverImage,
     description,
-    duration,
+    // duration,
     overview,
     site,
     "slug": slug.current,

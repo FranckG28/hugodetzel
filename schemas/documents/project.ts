@@ -67,11 +67,11 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'duration',
-      title: 'Duration',
-      type: 'duration',
-    }),
+    // defineField({
+    //   name: 'duration',
+    //   title: 'Duration',
+    //   type: 'duration',
+    // }),
     defineField({
       name: 'client',
       title: 'Client',

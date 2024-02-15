@@ -22,19 +22,11 @@ export function ProjectPage({
   preview,
 }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const {
-    client,
-    coverImage,
-    description,
-    duration,
-    overview,
-    site,
-    tags,
-    title,
-  } = project || {}
+  const { client, coverImage, description, overview, site, tags, title } =
+    project || {}
 
-  const startYear = new Date(duration?.start).getFullYear()
-  const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'
+  // const startYear = new Date(duration?.start).getFullYear()
+  // const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'
 
   return (
     <>
@@ -56,12 +48,12 @@ export function ProjectPage({
 
               <div className="divide-inherit grid grid-cols-1 divide-y lg:grid-cols-4 lg:divide-x lg:divide-y-0">
                 {/* Duration */}
-                {!!(startYear && endYear) && (
+                {/* {!!(startYear && endYear) && (
                   <div className="p-3 lg:p-4">
                     <div className="text-xs md:text-sm">Duration</div>
                     <div className="text-md md:text-lg">{`${startYear} -  ${endYear}`}</div>
                   </div>
-                )}
+                )} */}
 
                 {/* Client */}
                 {client && (
