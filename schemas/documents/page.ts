@@ -14,6 +14,11 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      type: 'iconPicker',
+      name: 'icon',
+      title: 'Icon',
+    }),
+    defineField({
       type: 'slug',
       name: 'slug',
       title: 'Slug',

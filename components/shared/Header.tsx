@@ -6,7 +6,7 @@ interface HeaderProps {
   centered?: boolean
   description?: any[]
   title?: string
-  links: Link[]
+  links?: Link[]
 }
 export function Header(props: HeaderProps) {
   const { title, description, centered = false, links } = props

@@ -18,13 +18,14 @@ export interface Link {
   title?: string
 }
 
-export interface ShowcaseProject {
+export interface ShowcasePage {
   _type: string
-  coverImage?: Image
+  // coverImage?: Image
   overview?: PortableTextBlock[]
   slug?: string
-  tags?: string[]
+  // tags?: string[]
   title?: string
+  icon?: string
 }
 
 // Page payloads
@@ -32,7 +33,7 @@ export interface ShowcaseProject {
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
-  showcaseProjects?: ShowcaseProject[]
+  showcasePages?: ShowcasePage[]
   heading?: string
   links?: Link[]
 }

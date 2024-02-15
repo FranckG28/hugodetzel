@@ -15,6 +15,7 @@ import { pageStructure, singletonPlugin } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
+import { iconPicker } from 'sanity-plugin-icon-picker';
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
 import link from 'schemas/objects/link'
@@ -70,5 +71,6 @@ export default defineConfig({
       previewSecretId,
       types: PREVIEWABLE_DOCUMENT_TYPES,
     }),
+    iconPicker(),
   ],
 })

@@ -1,4 +1,4 @@
-import { ProjectListItem } from 'components/pages/home/ProjectListItem'
+import { PageListItem } from 'components/pages/home/PageListItem'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
@@ -18,7 +18,7 @@ export interface HomePageProps {
 export function HomePage({ page, settings, preview }: HomePageProps) {
   const {
     overview,
-    showcaseProjects,
+    showcasePages,
     heading = 'Personal website',
     links,
   } = page ?? {}
@@ -38,17 +38,17 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
               links={links}
             />
           )}
-          {/* Showcase projects */}
-          {showcaseProjects && showcaseProjects.length > 0 && (
-            <div className="mx-auto max-w-[100rem] rounded-md border">
-              {showcaseProjects.map((project, key) => {
+          {/* Showcase pages */}
+          {showcasePages && showcasePages.length > 0 && (
+            <div className="gap-2 grid md:grid-cols-2 lg:grid-cols-4">
+              {showcasePages.map((project, key) => {
                 const href = resolveHref(project._type, project.slug)
                 if (!href) {
                   return null
                 }
                 return (
                   <Link key={key} href={href}>
-                    <ProjectListItem project={project} odd={key % 2} />
+                    <PageListItem page={project} />
                   </Link>
                 )
               })}
