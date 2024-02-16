@@ -2,15 +2,17 @@ import { vercelStegaSplit } from '@vercel/stega'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
-import { Link } from 'types'
+import Link from 'next/link'
+import { Link as SanityLink } from 'types'
 
+import { Button } from './Button'
 import { Container } from './Container'
 
 interface HeaderProps {
   centered?: boolean
   description?: any[]
   title?: string
-  links?: Link[]
+  links?: SanityLink[]
   image?: { asset?: any }
 }
 export function Header(props: HeaderProps) {
@@ -36,7 +38,7 @@ export function Header(props: HeaderProps) {
 
       <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-slate-950 z-0" />
 
-      <Container className="z-10 relative py-24">
+      <Container className="z-10 relative py-24 flex flex-col gap-6">
         {/* Title */}
         {cleanedTitle && (
           <h1
@@ -51,21 +53,19 @@ export function Header(props: HeaderProps) {
         )}
         {/* Description */}
         {description && (
-          <div className="mt-4 font-serif text-xl text-slate-200 md:text-2xl max-w-prose text-balance">
+          <div className="font-serif text-xl text-slate-200 md:text-2xl max-w-prose text-balance">
             <CustomPortableText value={description} />
           </div>
         )}
         {links?.length > 0 && (
-          <div className="mt-4 space-x-4">
+          <div className="space-x-4">
             {links.map((link, key) => {
               return (
-                <a
-                  key={key}
-                  href={link.href}
-                  className="text-blue-500 underline"
-                >
-                  {link.title}
-                </a>
+                <Link key={key} href={link.href}>
+                  <Button variant={key === 0 ? 'primary' : 'default'}>
+                    {link.title}
+                  </Button>
+                </Link>
               )
             })}
           </div>
