@@ -38,7 +38,7 @@ export function Header(props: HeaderProps) {
 
       <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-slate-950 z-0" />
 
-      <Container className="z-10 relative py-24 flex flex-col gap-6">
+      <Container className="z-10 relative pt-48 pb-24 flex flex-col gap-6">
         {/* Title */}
         {cleanedTitle && (
           <h1

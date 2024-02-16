@@ -10,10 +10,10 @@ interface NavbarProps {
 
 export function Navbar({ menuItems, siteTitle }: NavbarProps) {
   return (
-    <div className="sticky top-0 z-10 flex flex-wrap items-center gap-x-5 bg-slate-950/80 px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
+    <div className="fixed top-0 left-0 right-0 z-10 flex flex-wrap items-center gap-x-5 bg-slate-950/80 px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32 border-b border-slate-200/20 z-20">
       <Link
         key="home"
-        className={`text-lg font-bold text-slate-200 hover:text-white md:text-xl mr-auto`}
+        className={`text-lg font-bold text-slate-200 hover:text-white md:text-xl mr-auto tracking-tight`}
         href={'/'}
       >
         {siteTitle ?? title}
