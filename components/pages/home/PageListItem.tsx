@@ -21,7 +21,7 @@ export function PageListItem(props: ProjectProps) {
 
   return (
     <div
-      className={`bg-slate-800 rounded-2xl shadow-2xl shadow-slate-400/20 h-full group relative overflow-hidden xl:aspect-[3/4] cursor-pointer hover:shadow-slate-400/40 focus:shadow-slate-400/40 hover:ring-2 hover:ring-white focus:ring-white transition-all min-h-80`}
+      className={`bg-slate-800 rounded-2xl shadow-2xl shadow-slate-400/10 h-full group relative overflow-hidden xl:aspect-[3/4] cursor-pointer hover:shadow-slate-400/40 focus:shadow-slate-400/40 ring-1 ring-white/10 hover:ring-2 hover:ring-white focus:ring-white transition-all min-h-80`}
     >
       <Image
         src={imageUrl}

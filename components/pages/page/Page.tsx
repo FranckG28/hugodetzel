@@ -1,3 +1,4 @@
+import { Container } from 'components/shared/Container'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
@@ -28,12 +29,14 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             <Header title={title} description={overview} image={coverImage} />
 
             {/* Body */}
-            {body && (
-              <CustomPortableText
-                paragraphClasses="font-serif max-w-3xl text-slate-200 text-xl"
-                value={body}
-              />
-            )}
+            <Container>
+              {body && (
+                <CustomPortableText
+                  paragraphClasses="font-serif max-w-3xl text-slate-200 text-xl"
+                  value={body}
+                />
+              )}
+            </Container>
 
             {/* Workaround: scroll to top on route change */}
             <ScrollUp />
