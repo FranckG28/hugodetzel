@@ -27,12 +27,12 @@ export function PageListItem(props: ProjectProps) {
         src={imageUrl}
         alt={`Cover image from ${page.title}`}
         fill
-        className="absolute object-cover h-full w-full z-0 brightness-75 transition group-hover:brightness-100"
+        className="absolute object-cover h-full w-full z-0 brightness-50 transition group-hover:brightness-90"
       />
 
       <div className="absolute h-full w-full bg-gradient-to-b from-transparent group to-slate-950/90 z-0"></div>
 
-      <div className="relative z-10 flex flex-col gap-2 p-6 h-full group-hover:pb-14 transition-all">
+      <div className="relative z-10 flex flex-col gap-2 p-6 h-full group-hover:pb-12 transition-all">
         <DynamicIcon icon={page.icon} className="w-6 h-6 mb-auto" />
 
         {/* Title */}
@@ -48,7 +48,7 @@ export function PageListItem(props: ProjectProps) {
           value={page.overview}
         />
 
-        <div className="font-medium font-sans text-xl text-white flex flex-row items-center gap-2 justify-between absolute bottom-4 opacity-0 group-hover:opacity-100 group-hover:bottom-6 transition-all">
+        <div className="font-medium font-sans text-xl text-white flex flex-row items-center gap-2 justify-between absolute bottom-0 opacity-0 group-hover:opacity-100 group-hover:bottom-6 transition-all">
           En savoir plus <FiArrowRight />
         </div>
       </div>
