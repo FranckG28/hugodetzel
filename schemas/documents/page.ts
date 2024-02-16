@@ -8,6 +8,17 @@ export default defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
+      name: 'coverImage',
+      title: 'Cover Image',
+      description:
+        'This image will be used as the cover image for the page. If you choose to add it to the show case pages, this is the image displayed in the list within the homepage.',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       type: 'string',
       name: 'title',
       title: 'Title',

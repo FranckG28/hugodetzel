@@ -10,6 +10,17 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
+      name: 'coverImage',
+      title: 'Cover Image',
+      description:
+        'This image will be used as the cover image for the homepage.',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'heading',
       description: 'This is the big title.',
       title: 'Title',

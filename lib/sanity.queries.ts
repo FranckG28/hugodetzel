@@ -16,6 +16,7 @@ export const homePageQuery = groq`
     },
     heading,
     links,
+    coverImage,
   }
 `
 
@@ -28,6 +29,7 @@ export const pagesBySlugQuery = groq`
     body,
     overview,
     title,
+    coverImage,
     "slug": slug.current,
   }
 `
