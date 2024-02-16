@@ -15,7 +15,7 @@ export interface PageProps {
 
 export function Page({ page, settings, homePageTitle, preview }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title } = page || {}
+  const { body, overview, title, coverImage } = page || {}
 
   return (
     <>
@@ -25,7 +25,7 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
         <div>
           <div className="mb-14">
             {/* Header */}
-            <Header title={title} description={overview} />
+            <Header title={title} description={overview} image={coverImage} />
 
             {/* Body */}
             {body && (

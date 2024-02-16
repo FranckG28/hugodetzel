@@ -26,6 +26,7 @@ export interface ShowcasePage {
   // tags?: string[]
   title?: string
   icon?: string
+  coverImage?: Image
 }
 
 // Page payloads
@@ -36,6 +37,7 @@ export interface HomePagePayload {
   showcasePages?: ShowcasePage[]
   heading?: string
   links?: Link[]
+  coverImage?: Image
 }
 
 export interface PagePayload {
@@ -44,6 +46,7 @@ export interface PagePayload {
   overview?: PortableTextBlock[]
   title?: string
   slug?: string
+  coverImage?: Image
 }
 
 export interface ProjectPayload {
