@@ -36,7 +36,7 @@ export function PageListItem(props: ProjectProps) {
         <DynamicIcon icon={page.icon} className="w-6 h-6 mb-auto" />
 
         {/* Title */}
-        <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+        <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
           {cleanedTitle}
           {encodedTitle && (
             <span style={{ display: 'none' }}>{encodedTitle}</span>
@@ -44,7 +44,7 @@ export function PageListItem(props: ProjectProps) {
         </h3>
         {/* Overview  */}
         <CustomPortableText
-          paragraphClasses="font-serif text-slate-200 line-clamp-4 text-base leading-tight transition-all max-w-prose"
+          paragraphClasses="font-serif text-slate-200 line-clamp-4 text-base md:text-lg !leading-6 transition-all max-w-prose"
           value={page.overview}
         />
 
