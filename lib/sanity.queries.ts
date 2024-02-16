@@ -7,7 +7,6 @@ export const homePageQuery = groq`
     overview,
     showcasePages[]->{
       _type,
-      // coverImage,
       icon,
       overview,
       "slug": slug.current,
@@ -31,6 +30,7 @@ export const pagesBySlugQuery = groq`
     overview,
     title,
     coverImage,
+    icon,
     "slug": slug.current,
   }
 `

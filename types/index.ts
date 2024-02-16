@@ -25,7 +25,7 @@ export interface ShowcasePage {
   slug?: string
   // tags?: string[]
   title?: string
-  icon?: string
+  icon?: any
   coverImage?: Image
 }
 

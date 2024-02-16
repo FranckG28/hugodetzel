@@ -1,4 +1,5 @@
 import { DocumentIcon, ImageIcon } from '@sanity/icons'
+import { iconPickerOptions } from 'lib/iconPicker'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
@@ -28,6 +29,7 @@ export default defineType({
       type: 'iconPicker',
       name: 'icon',
       title: 'Icon',
+      options: iconPickerOptions
     }),
     defineField({
       type: 'slug',
