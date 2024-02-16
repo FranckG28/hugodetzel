@@ -58,7 +58,7 @@ export function Header(props: HeaderProps) {
           </div>
         )}
         {links?.length > 0 && (
-          <div className="space-x-4">
+          <div className="flex gap-4 flex-wrap">
             {links.map((link, key) => {
               return (
                 <Link key={key} href={link.href}>
