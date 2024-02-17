@@ -1,5 +1,10 @@
 import type { Image, PortableTextBlock } from 'sanity'
 
+interface Color {
+  label: string
+  value: string
+}
+
 export interface MenuItem {
   _type: string
   slug?: string
@@ -22,6 +27,7 @@ export interface Section {
   subtitle?: string
   title?: string
   cta?: Link
+  color?: Color
 }
 
 export interface Link {

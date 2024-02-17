@@ -15,6 +15,11 @@ export default defineType({
             validation: (rule) => rule.min(1).max(3),
         }),
         defineField({
+            name: 'color',
+            title: 'Accent color',
+            type: 'simplerColor',
+        }),
+        defineField({
             name: 'icon',
             title: 'Icon',
             type: 'iconPicker',

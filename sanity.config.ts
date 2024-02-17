@@ -16,6 +16,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { iconPicker } from 'sanity-plugin-icon-picker';
+import { simplerColorInput } from 'sanity-plugin-simpler-color-input'
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
 import link from 'schemas/objects/link'
@@ -74,5 +75,31 @@ export default defineConfig({
       types: PREVIEWABLE_DOCUMENT_TYPES,
     }),
     iconPicker(),
+    simplerColorInput({
+      defaultColorList: [
+        { "label": "Slate", "value": "#94a3b8" },
+        { "label": "Gray", "value": "#9ca3af" },
+        { "label": "Zinc", "value": "#a1a1aa" },
+        { "label": "Neutral", "value": "#a3a3a3" },
+        { "label": "Stone", "value": "#a8a29e" },
+        { "label": "Red", "value": "#f87171" },
+        { "label": "Orange", "value": "#fb923c" },
+        { "label": "Amber", "value": "#fbbf24" },
+        { "label": "Yellow", "value": "#facc15" },
+        { "label": "Lime", "value": "#a3e635" },
+        { "label": "Green", "value": "#4ade80" },
+        { "label": "Emerald", "value": "#34d399" },
+        { "label": "Teal", "value": "#2dd4bf" },
+        { "label": "Cyan", "value": "#22d3ee" },
+        { "label": "Sky", "value": "#38bdf8" },
+        { "label": "Blue", "value": "#60a5fa" },
+        { "label": "Indigo", "value": "#818cf8" },
+        { "label": "Violet", "value": "#a78bfa" },
+        { "label": "Purple", "value": "#d8b4fe" },
+        { "label": "Fuchsia", "value": "#e879f9" },
+        { "label": "Pink", "value": "#f472b6" },
+        { "label": "Rose", "value": "#fb7185" }
+      ]
+    }),
   ],
 })
