@@ -20,6 +20,7 @@ import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
 import link from 'schemas/objects/link'
 import milestone from 'schemas/objects/milestone'
+import section from 'schemas/objects/section'
 import timeline from 'schemas/objects/timeline'
 import youtube from 'schemas/objects/youtube'
 import home from 'schemas/singletons/home'
@@ -51,7 +52,8 @@ export default defineConfig({
       milestone,
       timeline,
       youtube,
-      link
+      link,
+      section,
     ],
   },
   plugins: [

@@ -13,6 +13,17 @@ export interface MilestoneItem {
   title?: string
 }
 
+export interface Section {
+  _type: string
+  alignment?: 'left' | 'right'
+  content?: PortableTextBlock[]
+  icon?: any
+  images?: Image[]
+  subtitle?: string
+  title?: string
+  cta?: Link
+}
+
 export interface Link {
   href?: string
   title?: string

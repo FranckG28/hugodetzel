@@ -1,21 +1,6 @@
 import { CogIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
-
-const menuItem = {
-  title: 'Reference',
-  type: 'reference',
-  to: [
-    {
-      type: 'home',
-    },
-    {
-      type: 'page',
-    },
-    {
-      type: 'project',
-    },
-  ],
-};
+import { menuItem } from 'schemas/objects/menu-item'
 
 export default defineType({
   name: 'settings',

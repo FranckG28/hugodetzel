@@ -93,12 +93,7 @@ export function ProjectPage({
             </div>
 
             {/* Description */}
-            {description && (
-              <CustomPortableText
-                paragraphClasses="font-serif max-w-3xl text-xl text-slate-400"
-                value={description}
-              />
-            )}
+            {description && <CustomPortableText value={description} />}
           </div>
           <div className="absolute left-0 w-screen border-t" />
         </div>

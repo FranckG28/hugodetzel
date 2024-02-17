@@ -41,10 +41,7 @@ export function Header(props: HeaderProps) {
       <Container className="z-10 relative pt-48 pb-24 flex flex-col gap-6">
         {/* Title */}
         {cleanedTitle && (
-          <h1
-            className="text-3xl font-extrabold tracking-tight md:text-5xl text-balance max-w-prose"
-            data-vercel-edit-target
-          >
+          <h1 className="max-w-prose" data-vercel-edit-target>
             {cleanedTitle}
             {encodedTitle && (
               <span style={{ display: 'none' }}>{encodedTitle}</span>

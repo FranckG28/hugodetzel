@@ -1,21 +1,33 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
+import classNames from 'classnames'
 import ImageBox from 'components/shared/ImageBox'
 import { TimelineSection } from 'components/shared/TimelineSection'
 import getYouTubeId from 'get-youtube-id'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import type { Image, PortableTextBlock } from 'sanity'
 
+import { SectionItem } from './SectionItem'
+
 export function CustomPortableText({
-  paragraphClasses,
+  className,
   value,
 }: {
-  paragraphClasses?: string
+  className?: string
   value: PortableTextBlock[]
 }) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <p className={paragraphClasses}>{children}</p>
+        return (
+          <p
+            className={classNames(
+              'font-serif text-lg md:text-xl text-slate-300 max-w-prose',
+              className,
+            )}
+          >
+            {children}
+          </p>
+        )
       },
     },
     marks: {
@@ -67,6 +79,9 @@ export function CustomPortableText({
             aspectWidth={aspectWidth}
           />
         )
+      },
+      section: ({ value }) => {
+        return <SectionItem section={value} />
       },
     },
   }

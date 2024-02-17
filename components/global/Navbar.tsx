@@ -22,8 +22,6 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
 
   const ctaHref = menuCta ? resolveHref(menuCta?._type, menuCta?.slug) : null
 
-  console.log(menuCta)
-
   return (
     <div
       className={classNames(

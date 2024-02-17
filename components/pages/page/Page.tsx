@@ -28,14 +28,7 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             <Header title={title} description={overview} image={coverImage} />
 
             {/* Body */}
-            <Container>
-              {body && (
-                <CustomPortableText
-                  paragraphClasses="font-serif max-w-3xl text-slate-200 text-xl"
-                  value={body}
-                />
-              )}
-            </Container>
+            <Container>{body && <CustomPortableText value={body} />}</Container>
           </div>
         </div>
       </Layout>
