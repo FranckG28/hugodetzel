@@ -31,7 +31,7 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
         isScrolled && scrolledStyle,
       )}
     >
-      <Container className="flex flex-wrap items-center gap-x-5">
+      <Container className="flex flex-wrap items-center gap-x-6">
         <Link
           key="home"
           className={`text-xl font-bold text-slate-200 hover:text-white md:text-2xl h-full mr-auto tracking-tight`}
@@ -48,11 +48,7 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
             return (
               <Link
                 key={href}
-                className={`text-lg hover:text-slate-100 py-5 transition-all ${
-                  menuItem?._type === 'home'
-                    ? 'font-extrabold text-white'
-                    : 'text-slate-300'
-                }`}
+                className="text-lg hover:text-slate-100 py-5 transition-all text-slate-300 font-medium tracking-tight"
                 href={href}
               >
                 {menuItem.title}
@@ -61,7 +57,7 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
           })}
         {ctaHref && (
           <Link href={ctaHref}>
-            <Button className="!text-lg" variant="outline">
+            <Button className="!text-lg !font-medium" variant="outline">
               {menuCta.title}
             </Button>
           </Link>
