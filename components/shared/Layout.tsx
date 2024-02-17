@@ -1,10 +1,12 @@
 import { Footer } from 'components/global/Footer'
 import { Navbar } from 'components/global/Navbar'
+import { title } from 'lib/demo.data'
 import { SettingsPayload } from 'types'
 
 const fallbackSettings: SettingsPayload = {
   menuItems: [],
   footer: [],
+  title: title,
 }
 
 export interface LayoutProps {
@@ -21,7 +23,7 @@ export default function Layout({
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
       <Navbar menuItems={settings?.menuItems} siteTitle={settings?.title} />
       <div className="flex-grow">{children}</div>
-      <Footer footer={settings?.footer} />
+      <Footer footer={settings?.footer} siteName={settings.title} />
     </div>
   )
 }

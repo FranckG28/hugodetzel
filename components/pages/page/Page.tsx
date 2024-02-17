@@ -41,7 +41,6 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             {/* Workaround: scroll to top on route change */}
             <ScrollUp />
           </div>
-          <div className="absolute left-0 w-screen border-t border-slate-500" />
         </div>
       </Layout>
     </>
