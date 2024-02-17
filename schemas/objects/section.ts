@@ -9,10 +9,10 @@ export default defineType({
         defineField({
             name: 'images',
             title: 'Images',
-            description: 'Up to 3 images to be displayed in the section.',
+            description: 'Up to 2 images to be displayed in the section.',
             type: 'array',
             of: [{ type: 'image', options: { hotspot: true } }],
-            validation: (rule) => rule.min(1).max(3),
+            validation: (rule) => rule.min(1).max(2),
         }),
         defineField({
             name: 'color',
