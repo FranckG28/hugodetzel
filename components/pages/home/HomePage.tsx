@@ -43,7 +43,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         <Container>
           {/* Showcase pages */}
           {showcasePages && showcasePages.length > 0 && (
-            <div className="gap-4 grid md:grid-cols-2 xl:grid-cols-4 items-stretch">
+            <div className="gap-6 grid md:grid-cols-2 xl:grid-cols-4 items-stretch">
               {showcasePages.map((project, key) => {
                 const href = resolveHref(project._type, project.slug)
                 if (!href) {

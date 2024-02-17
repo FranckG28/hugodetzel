@@ -11,4 +11,7 @@ module.exports = {
       serif: 'var(--font-serif)',
     },
   },
+  plugins: [
+    require('tailwindcss-easing'),
+  ]
 }

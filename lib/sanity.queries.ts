@@ -67,6 +67,11 @@ export const settingsQuery = groq`
       "slug": slug.current,
       title
     },
+    menuCta->{
+      _type,
+      "slug": slug.current,
+      title
+    },
     ogImage,
   }
 `

@@ -1,6 +1,22 @@
 import { CogIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
+const menuItem = {
+  title: 'Reference',
+  type: 'reference',
+  to: [
+    {
+      type: 'home',
+    },
+    {
+      type: 'page',
+    },
+    {
+      type: 'project',
+    },
+  ],
+};
+
 export default defineType({
   name: 'settings',
   title: 'Settings',
@@ -23,22 +39,14 @@ export default defineType({
       description: 'Links displayed on the header of your site.',
       type: 'array',
       of: [
-        {
-          title: 'Reference',
-          type: 'reference',
-          to: [
-            {
-              type: 'home',
-            },
-            {
-              type: 'page',
-            },
-            {
-              type: 'project',
-            },
-          ],
-        },
+        menuItem
       ],
+    }),
+    defineField({
+      ...menuItem,
+      name: 'menuCta',
+      title: 'Menu Call to Action',
+      description: 'This is a button that will be displayed on the navbar.',
     }),
     defineField({
       name: 'footer',

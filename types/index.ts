@@ -67,6 +67,7 @@ export interface ProjectPayload {
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
+  menuCta?: MenuItem
   ogImage?: Image
   title?: string
 }
