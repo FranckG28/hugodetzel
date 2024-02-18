@@ -57,6 +57,15 @@ export default defineType({
             },
             initialValue: 'left',
         }),
+        defineField({
+            name: 'background',
+            title: 'Background',
+            type: 'string',
+            options: {
+                list: ['none', 'primary', 'secondary']
+            },
+            initialValue: 'none',
+        })
     ],
     preview: {
         select: {

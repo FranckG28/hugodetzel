@@ -6,19 +6,22 @@ import getYouTubeId from 'get-youtube-id'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import type { Image, PortableTextBlock } from 'sanity'
 
+import { Container } from './Container'
 import { SectionItem } from './SectionItem'
 
 export function CustomPortableText({
   className,
   value,
+  container = false,
 }: {
   className?: string
   value: PortableTextBlock[]
+  container?: boolean
 }) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return (
+        const content = (
           <p
             className={classNames(
               'font-serif text-lg md:text-xl text-slate-300 max-w-prose',
@@ -28,6 +31,12 @@ export function CustomPortableText({
             {children}
           </p>
         )
+
+        if (container) {
+          return <Container>{content}</Container>
+        }
+
+        return content
       },
     },
     marks: {
@@ -50,7 +59,7 @@ export function CustomPortableText({
         value: Image & { alt?: string; caption?: string }
       }) => {
         return (
-          <div className="my-6 space-y-2">
+          <Container className="my-6 space-y-2">
             <ImageBox
               image={value}
               alt={value.alt}
@@ -61,23 +70,29 @@ export function CustomPortableText({
                 {value.caption}
               </div>
             )}
-          </div>
+          </Container>
         )
       },
       timeline: ({ value }) => {
         const { items } = value || {}
-        return <TimelineSection timelines={items} />
+        return (
+          <Container>
+            <TimelineSection timelines={items} />
+          </Container>
+        )
       },
       youtube: ({ value }) => {
         const { url, title, aspectHeight, aspectWidth } = value
         const id = getYouTubeId(url)
         return (
-          <LiteYouTubeEmbed
-            id={id}
-            title={title}
-            aspectHeight={aspectHeight}
-            aspectWidth={aspectWidth}
-          />
+          <Container>
+            <LiteYouTubeEmbed
+              id={id}
+              title={title}
+              aspectHeight={aspectHeight}
+              aspectWidth={aspectWidth}
+            />
+          </Container>
         )
       },
       section: ({ value }) => {

@@ -21,6 +21,7 @@ export interface MilestoneItem {
 export interface Section {
   _type: string
   alignment?: 'left' | 'right'
+  background: 'none' | 'primary' | 'secondary'
   content?: PortableTextBlock[]
   icon?: any
   images?: Image[]

@@ -1,4 +1,3 @@
-import { Container } from 'components/shared/Container'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
@@ -28,7 +27,7 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             <Header title={title} description={overview} image={coverImage} />
 
             {/* Body */}
-            <Container>{body && <CustomPortableText value={body} />}</Container>
+            {body && <CustomPortableText value={body} container />}
           </div>
         </div>
       </Layout>
