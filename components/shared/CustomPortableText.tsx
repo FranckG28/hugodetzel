@@ -58,8 +58,8 @@ export function CustomPortableText({
       }: {
         value: Image & { alt?: string; caption?: string }
       }) => {
-        return (
-          <Container className="my-6 space-y-2">
+        const content = (
+          <div className="my-6 space-y-2">
             <ImageBox
               image={value}
               alt={value.alt}
@@ -70,30 +70,39 @@ export function CustomPortableText({
                 {value.caption}
               </div>
             )}
-          </Container>
+          </div>
         )
+
+        if (container) {
+          return <Container>{content}</Container>
+        }
+
+        return content
       },
       timeline: ({ value }) => {
         const { items } = value || {}
-        return (
-          <Container>
-            <TimelineSection timelines={items} />
-          </Container>
-        )
+        const content = <TimelineSection timelines={items} />
+
+        if (container) {
+          return <Container>{content}</Container>
+        }
+        return content
       },
       youtube: ({ value }) => {
         const { url, title, aspectHeight, aspectWidth } = value
         const id = getYouTubeId(url)
-        return (
-          <Container>
-            <LiteYouTubeEmbed
-              id={id}
-              title={title}
-              aspectHeight={aspectHeight}
-              aspectWidth={aspectWidth}
-            />
-          </Container>
+        const content = (
+          <LiteYouTubeEmbed
+            id={id}
+            title={title}
+            aspectHeight={aspectHeight}
+            aspectWidth={aspectWidth}
+          />
         )
+        if (container) {
+          return <Container>{content}</Container>
+        }
+        return content
       },
       section: ({ value }) => {
         return <SectionItem section={value} />
