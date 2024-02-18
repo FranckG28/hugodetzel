@@ -12,7 +12,7 @@ export default defineType({
             description: 'Up to 2 images to be displayed in the section.',
             type: 'array',
             of: [{ type: 'image', options: { hotspot: true } }],
-            validation: (rule) => rule.min(1).max(2),
+            validation: (rule) => rule.max(2),
         }),
         defineField({
             name: 'color',

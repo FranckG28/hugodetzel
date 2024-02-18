@@ -14,7 +14,12 @@ export const SectionItem = ({ section }: { section: Section }) => {
   const hex = color?.value
 
   return (
-    <section className="grid lg:grid-cols-2 gap-8 lg:gap-16 py-10 items-center">
+    <section
+      className={classNames(
+        'grid gap-8 lg:gap-16 py-10 items-center',
+        images?.length ? 'lg:grid-cols-2' : 'justify-center',
+      )}
+    >
       <ImageStack
         images={images}
         className={classNames(
@@ -22,7 +27,12 @@ export const SectionItem = ({ section }: { section: Section }) => {
         )}
       />
 
-      <div className="flex flex-col gap-5 py-6">
+      <div
+        className={classNames(
+          'flex flex-col gap-5 py-6',
+          !images?.length && 'text-center',
+        )}
+      >
         {icon && <DynamicIcon icon={icon} className="text-2xl" color={hex} />}
 
         {subtitle && <h5 style={{ color: hex }}>{subtitle}</h5>}

@@ -18,7 +18,7 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
 
   const isScrolled = y > 100
 
-  const scrolledStyle = 'bg-slate-950/80 backdrop-blur shadow-xl'
+  const scrolledStyle = 'bg-slate-950/80 backdrop-blur'
 
   const ctaHref = menuCta ? resolveHref(menuCta?._type, menuCta?.slug) : null
 
