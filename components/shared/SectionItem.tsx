@@ -8,7 +8,13 @@ import { CustomPortableText } from './CustomPortableText'
 import DynamicIcon from './DynamicIcon'
 import { ImageStack } from './ImageStack'
 
-export const SectionItem = ({ section }: { section: Section }) => {
+export const SectionItem = ({
+  section,
+  thumbnail = false,
+}: {
+  section: Section
+  thumbnail?: boolean
+}) => {
   const {
     title,
     icon,
@@ -42,6 +48,7 @@ export const SectionItem = ({ section }: { section: Section }) => {
           className={classNames(
             alignment === 'right' ? 'order-last' : 'order-first',
           )}
+          thumbnail={thumbnail}
         />
 
         <div
