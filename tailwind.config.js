@@ -11,4 +11,5 @@ module.exports = {
       serif: 'var(--font-serif)',
     },
   },
+  plugins: []
 }

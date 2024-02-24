@@ -1,5 +1,10 @@
 import type { Image, PortableTextBlock } from 'sanity'
 
+interface Color {
+  label: string
+  value: string
+}
+
 export interface MenuItem {
   _type: string
   slug?: string
@@ -11,6 +16,19 @@ export interface MilestoneItem {
   image?: Image
   tags?: string[]
   title?: string
+}
+
+export interface Section {
+  _type: string
+  alignment?: 'left' | 'right'
+  background: 'none' | 'primary' | 'secondary'
+  content?: PortableTextBlock[]
+  icon?: any
+  images?: Image[]
+  subtitle?: string
+  title?: string
+  cta?: Link
+  color?: Color
 }
 
 export interface Link {
@@ -67,6 +85,7 @@ export interface ProjectPayload {
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
+  menuCta?: MenuItem
   ogImage?: Image
   title?: string
 }

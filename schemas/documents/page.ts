@@ -1,4 +1,4 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
+import { BlockContentIcon, DocumentIcon, ImageIcon } from '@sanity/icons'
 import { iconPickerOptions } from 'lib/iconPicker'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
@@ -43,7 +43,7 @@ export default defineType({
     defineField({
       name: 'overview',
       description:
-        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
+        'Used both for the <meta> description tag for SEO and the subheader.',
       title: 'Overview',
       type: 'array',
       of: [
@@ -98,6 +98,11 @@ export default defineType({
           styles: [],
         }),
         // Custom blocks
+        defineArrayMember({
+          name: 'section',
+          type: 'section',
+          icon: BlockContentIcon
+        }),
         defineArrayMember({
           name: 'timeline',
           type: 'timeline',

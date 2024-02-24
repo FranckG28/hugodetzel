@@ -1,7 +1,6 @@
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import ImageBox from 'components/shared/ImageBox'
-import ScrollUp from 'components/shared/ScrollUp'
 import Link from 'next/link'
 import type { ProjectPayload, SettingsPayload } from 'types'
 
@@ -94,14 +93,7 @@ export function ProjectPage({
             </div>
 
             {/* Description */}
-            {description && (
-              <CustomPortableText
-                paragraphClasses="font-serif max-w-3xl text-xl text-slate-400"
-                value={description}
-              />
-            )}
-            {/* Workaround: scroll to top on route change */}
-            <ScrollUp />
+            {description && <CustomPortableText value={description} />}
           </div>
           <div className="absolute left-0 w-screen border-t" />
         </div>

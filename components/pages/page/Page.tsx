@@ -1,8 +1,6 @@
-import { Container } from 'components/shared/Container'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
-import ScrollUp from 'components/shared/ScrollUp'
 import type { PagePayload, SettingsPayload } from 'types'
 
 import PageHead from './PageHead'
@@ -29,19 +27,8 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             <Header title={title} description={overview} image={coverImage} />
 
             {/* Body */}
-            <Container>
-              {body && (
-                <CustomPortableText
-                  paragraphClasses="font-serif max-w-3xl text-slate-200 text-xl"
-                  value={body}
-                />
-              )}
-            </Container>
-
-            {/* Workaround: scroll to top on route change */}
-            <ScrollUp />
+            {body && <CustomPortableText value={body} container />}
           </div>
-          <div className="absolute left-0 w-screen border-t border-slate-500" />
         </div>
       </Layout>
     </>

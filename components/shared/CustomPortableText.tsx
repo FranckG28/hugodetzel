@@ -1,21 +1,42 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
+import classNames from 'classnames'
 import ImageBox from 'components/shared/ImageBox'
 import { TimelineSection } from 'components/shared/TimelineSection'
 import getYouTubeId from 'get-youtube-id'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import type { Image, PortableTextBlock } from 'sanity'
 
+import { Container } from './Container'
+import { SectionItem } from './SectionItem'
+
 export function CustomPortableText({
-  paragraphClasses,
+  className,
   value,
+  container = false,
 }: {
-  paragraphClasses?: string
+  className?: string
   value: PortableTextBlock[]
+  container?: boolean
 }) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <p className={paragraphClasses}>{children}</p>
+        const content = (
+          <p
+            className={classNames(
+              'font-serif text-lg md:text-xl text-slate-300 max-w-prose',
+              className,
+            )}
+          >
+            {children}
+          </p>
+        )
+
+        if (container) {
+          return <Container>{content}</Container>
+        }
+
+        return content
       },
     },
     marks: {
@@ -37,7 +58,7 @@ export function CustomPortableText({
       }: {
         value: Image & { alt?: string; caption?: string }
       }) => {
-        return (
+        const content = (
           <div className="my-6 space-y-2">
             <ImageBox
               image={value}
@@ -51,15 +72,26 @@ export function CustomPortableText({
             )}
           </div>
         )
+
+        if (container) {
+          return <Container>{content}</Container>
+        }
+
+        return content
       },
       timeline: ({ value }) => {
         const { items } = value || {}
-        return <TimelineSection timelines={items} />
+        const content = <TimelineSection timelines={items} />
+
+        if (container) {
+          return <Container>{content}</Container>
+        }
+        return content
       },
       youtube: ({ value }) => {
         const { url, title, aspectHeight, aspectWidth } = value
         const id = getYouTubeId(url)
-        return (
+        const content = (
           <LiteYouTubeEmbed
             id={id}
             title={title}
@@ -67,6 +99,13 @@ export function CustomPortableText({
             aspectWidth={aspectWidth}
           />
         )
+        if (container) {
+          return <Container>{content}</Container>
+        }
+        return content
+      },
+      section: ({ value }) => {
+        return <SectionItem section={value} />
       },
     },
   }
