@@ -17,6 +17,7 @@ export const homePageQuery = groq`
     heading,
     links,
     coverImage,
+    body,
   }
 `
 
