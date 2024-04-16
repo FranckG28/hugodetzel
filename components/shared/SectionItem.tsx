@@ -8,7 +8,13 @@ import { CustomPortableText } from './CustomPortableText'
 import DynamicIcon from './DynamicIcon'
 import { ImageStack } from './ImageStack'
 
-export const SectionItem = ({ section }: { section: Section }) => {
+export const SectionItem = ({
+  section,
+  thumbnail = false,
+}: {
+  section: Section
+  thumbnail?: boolean
+}) => {
   const {
     title,
     icon,
@@ -27,7 +33,7 @@ export const SectionItem = ({ section }: { section: Section }) => {
     <section
       className={classNames(
         background === 'primary' && 'bg-blue-800 border-blue-700/50',
-        background === 'secondary' && 'bg-slate-800 border-slate-700/50',
+        background === 'secondary' && 'bg-slate-900 border-t border-slate-800',
         background !== 'none' && 'shadow border-t my-8',
       )}
     >
@@ -42,6 +48,7 @@ export const SectionItem = ({ section }: { section: Section }) => {
           className={classNames(
             alignment === 'right' ? 'order-last' : 'order-first',
           )}
+          thumbnail={thumbnail}
         />
 
         <div

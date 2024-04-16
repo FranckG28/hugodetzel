@@ -3,31 +3,38 @@ import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { Image as SanityImage } from 'sanity'
 
-const width = 650
-const height = 480
+const WIDTH = 600
+const HEIGHT = 440
+
+const THUMBNAIL_RATIO = 0.5
 
 export const ImageStack = ({
   images,
   className,
+  thumbnail = false,
 }: {
   images: SanityImage[]
   className?: string
+  thumbnail?: boolean
 }) => {
   if (!images) {
     return null
   }
 
+  const width = thumbnail ? WIDTH * THUMBNAIL_RATIO : WIDTH
+  const height = thumbnail ? HEIGHT * THUMBNAIL_RATIO : HEIGHT
+
   if (images.length === 1) {
     const imageUrl = urlForImage(images[0])?.height(height).width(width).url()
     return (
-      <div
-        className={classNames(
-          'aspect-[4/3] overflow-hidden object-cover relative',
-          className,
-        )}
-      >
-        <Image alt="" src={imageUrl} fill />
-      </div>
+      <Image
+        alt=""
+        src={imageUrl}
+        className={classNames('object-cover aspect-[4/3]', className)}
+        sizes="(min-width: 1024px) 650px, 100vw"
+        width={width}
+        height={height}
+      />
     )
   }
 
@@ -58,7 +65,7 @@ export const ImageStack = ({
           >
             <Image
               alt=""
-              className="rounded-xl shadow-xl aspect-[4/3] object-cover"
+              className="rounded-xl shadow-xl aspect-[4/3] object-cover max-w-full"
               src={imageUrl}
               width={width}
               height={height}

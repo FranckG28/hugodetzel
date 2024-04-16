@@ -25,5 +25,6 @@ export default function DynamicIcon({
   color?: string
 }) {
   const Icon = getIconProvider(icon.provider)[icon.name]
+  if (!Icon) return null
   return <Icon className={className} style={{ color }} />
 }
