@@ -1,5 +1,6 @@
 import { PageListItem } from 'components/pages/home/PageListItem'
 import { Container } from 'components/shared/Container'
+import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import { resolveHref } from 'lib/sanity.links'
@@ -22,6 +23,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
     heading = 'Personal website',
     links,
     coverImage,
+    body,
   } = page ?? {}
 
   return (
@@ -40,7 +42,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
           />
         )}
 
-        <Container>
+        <Container className="flex flex-col gap-3">
           {/* Showcase pages */}
           {showcasePages && showcasePages.length > 0 && (
             <div className="gap-6 grid md:grid-cols-2 xl:grid-cols-4 items-stretch">
@@ -57,6 +59,9 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
               })}
             </div>
           )}
+
+          {/* Body */}
+          {body && <CustomPortableText value={body} />}
         </Container>
       </Layout>
     </>

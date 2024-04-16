@@ -56,6 +56,7 @@ export interface HomePagePayload {
   heading?: string
   links?: Link[]
   coverImage?: Image
+  body?: PortableTextBlock[]
 }
 
 export interface PagePayload {
