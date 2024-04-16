@@ -85,6 +85,7 @@ export const quotationQuery = groq`
       title,
       description,
       price,
+      included,
     }
   }
 `

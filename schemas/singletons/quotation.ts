@@ -55,16 +55,23 @@ export default defineType({
               type: 'number',
               initialValue: 0,
             }),
+            defineField({
+              name: 'included',
+              title: 'Included',
+              type: 'boolean',
+              initialValue: false,
+            }),
           ],
           preview: {
             select: {
               title: 'title',
               price: 'price',
+              included: 'included',
             },
-            prepare({ title, price }) {
+            prepare({ title, price, included }) {
               return {
                 title: title,
-                subtitle: price ? `${price}€` : 'Included',
+                subtitle: `${price}€ ${included ? '(Included)' : ''}`,
               }
             },
           },

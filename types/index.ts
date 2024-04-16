@@ -100,6 +100,7 @@ export interface QuotationOption {
   title: string
   description: PortableTextBlock[]
   price: number
+  included: boolean
 }
 
 export interface QuotationPayload {

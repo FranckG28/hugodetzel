@@ -1,19 +1,19 @@
-import { useSet } from '@uidotdev/usehooks'
 import { Container } from 'components/shared/Container'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import Layout from 'components/shared/Layout'
 import { Checkbox } from 'components/ui/checkbox'
 import { Slider } from 'components/ui/slider'
+import useSet from 'lib/hooks/useSet'
 import { FC, useEffect, useState } from 'react'
 import { QuotationPayload, SettingsPayload } from 'types'
 
 const DEFAULT_TITLES = 1
-const DEFAULT_MINUTES = 2
-const DEFAULT_TRACKS = 1
+const DEFAULT_MINUTES = 3
+const DEFAULT_TRACKS = 5
 
 const MAX_TITLES = 50
 const MAX_MINUTES = 30
-const MAX_TRACKS = 10
+const MAX_TRACKS = 30
 
 export const QuotationPage: FC<{
   quotation: QuotationPayload
@@ -24,18 +24,24 @@ export const QuotationPage: FC<{
   const [tracks, setTracks] = useState(DEFAULT_TRACKS)
   const [minutes, setMinutes] = useState(DEFAULT_MINUTES)
 
-  const selectedOptions = useSet<string>(
+  const [selectedOptions, { add, remove, has }] = useSet<string>(
     options.reduce((acc, option) => {
-      if (option.price === 0) {
-        acc.push(option.title)
+      if (option.included) {
+        acc.add(option.title)
       }
       return acc
-    }, []),
+    }, new Set([])),
   )
 
   useEffect(() => {
-    setTotal(50 * titles * (tracks / baseTracks) * (minutes / baseMinutes))
-  }, [titles, tracks, minutes, baseMinutes, baseTracks])
+    const optionsPrice = options
+      .filter((option) => has(option.title))
+      .reduce((acc, option) => acc + option.price, 0)
+
+    setTotal(
+      optionsPrice * titles * (tracks / baseTracks) * (minutes / baseMinutes),
+    )
+  }, [titles, tracks, minutes, baseMinutes, baseTracks, options, has])
 
   return (
     <Layout settings={settings}>
@@ -75,14 +81,14 @@ export const QuotationPage: FC<{
           <div className="flex items-center gap-4" key={option.title}>
             <Checkbox
               id={option.title}
-              disabled={option.price === 0}
+              disabled={option.included}
               value={option.title}
-              checked={selectedOptions.has(option.title)}
+              checked={has(option.title)}
               onCheckedChange={(checked) => {
                 if (checked) {
-                  selectedOptions.add(option.title)
+                  add(option.title)
                 } else {
-                  selectedOptions.delete(option.title)
+                  remove(option.title)
                 }
               }}
             />
@@ -96,7 +102,7 @@ export const QuotationPage: FC<{
                 className="text-xs"
               />
               <p className="text-sm font-bold">
-                {option.price === 0 ? <>Inclus</> : <>{option.price} €</>}
+                {option.included ? <>Inclus</> : <>{option.price} €</>}
               </p>
             </label>
           </div>
