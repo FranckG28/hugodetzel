@@ -2,11 +2,11 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { Section } from 'types'
 
-import { Button } from './Button'
-import { Container } from './Container'
-import { CustomPortableText } from './CustomPortableText'
-import DynamicIcon from './DynamicIcon'
-import { ImageStack } from './ImageStack'
+import { Button } from '../../shared/Button'
+import { Container } from '../../shared/Container'
+import { CustomPortableText } from '../../shared/CustomPortableText'
+import DynamicIcon from '../../shared/DynamicIcon'
+import { ImageStack } from '../../shared/ImageStack'
 
 export const SectionItem = ({
   section,

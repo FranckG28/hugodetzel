@@ -49,6 +49,11 @@ export interface ShowcasePage {
 
 // Page payloads
 
+export interface SharedPageProps {
+  draftMode: boolean
+  token: string
+}
+
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
