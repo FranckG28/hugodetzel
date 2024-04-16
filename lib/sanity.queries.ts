@@ -76,3 +76,15 @@ export const settingsQuery = groq`
     ogImage,
   }
 `
+
+export const quotationQuery = groq`
+  *[_type == "quotation"][0]{
+    baseMinutes,
+    baseTracks,
+    options[]{
+      title,
+      description,
+      price,
+    }
+  }
+`

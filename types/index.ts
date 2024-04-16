@@ -98,7 +98,7 @@ export interface SettingsPayload {
 
 export interface QuotationOption {
   title: string
-  description: string
+  description: PortableTextBlock[]
   price: number
 }
 
