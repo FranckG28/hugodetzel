@@ -1,5 +1,6 @@
 import { HomeIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { customBlocks } from 'schemas/objects/custom-blocks'
 
 export default defineType({
   name: 'home',
@@ -79,6 +80,7 @@ export default defineType({
         }),
       ],
     }),
+    customBlocks,
     defineField({
       name: 'showcasePages',
       title: 'Showcase pages',
