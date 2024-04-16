@@ -1,25 +1,13 @@
 import { FC } from 'react'
+import { QuotationPayload } from 'types'
 
-type QuotationProps = {
-  unitPrice?: number
-  baseMinutes?: number
-  baseTracks?: number
-  options: {
-    title: string
-    description: string
-    price: number
-  }[]
-}
-
-export const Quotiation: FC<QuotationProps> = ({
-  unitPrice,
+export const Quotation: FC<QuotationPayload> = ({
   baseMinutes,
   baseTracks,
   options,
 }) => {
   return (
     <div>
-      <>unit price : {unitPrice}</>
       <>base minutes : {baseMinutes}</>
       <>base tracks : {baseTracks}</>
       {options.map((option) => (

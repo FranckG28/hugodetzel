@@ -95,3 +95,15 @@ export interface SettingsPayload {
   ogImage?: Image
   title?: string
 }
+
+export interface QuotationOption {
+  title: string
+  description: string
+  price: number
+}
+
+export interface QuotationPayload {
+  baseMinutes: number
+  baseTracks: number
+  options: QuotationOption[]
+}
