@@ -1,6 +1,8 @@
+import { useSet } from '@uidotdev/usehooks'
 import { Container } from 'components/shared/Container'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import Layout from 'components/shared/Layout'
+import { Checkbox } from 'components/ui/checkbox'
 import { Slider } from 'components/ui/slider'
 import { FC, useEffect, useState } from 'react'
 import { QuotationPayload, SettingsPayload } from 'types'
@@ -21,6 +23,15 @@ export const QuotationPage: FC<{
   const [titles, setTitles] = useState(DEFAULT_TITLES)
   const [tracks, setTracks] = useState(DEFAULT_TRACKS)
   const [minutes, setMinutes] = useState(DEFAULT_MINUTES)
+
+  const selectedOptions = useSet<string>(
+    options.reduce((acc, option) => {
+      if (option.price === 0) {
+        acc.push(option.title)
+      }
+      return acc
+    }, []),
+  )
 
   useEffect(() => {
     setTotal(50 * titles * (tracks / baseTracks) * (minutes / baseMinutes))
@@ -59,15 +70,37 @@ export const QuotationPage: FC<{
         />
 
         <p>Options</p>
-        {/* {options.map((option) => (
-          <div key={option.title}>
-            <>title : {option.title}</>
-            <>
-              description : <CustomPortableText value={option.description} />
-            </>
-            <>price : {option.price}</>
+
+        {options.map((option) => (
+          <div className="flex items-center gap-4" key={option.title}>
+            <Checkbox
+              id={option.title}
+              disabled={option.price === 0}
+              value={option.title}
+              checked={selectedOptions.has(option.title)}
+              onCheckedChange={(checked) => {
+                if (checked) {
+                  selectedOptions.add(option.title)
+                } else {
+                  selectedOptions.delete(option.title)
+                }
+              }}
+            />
+            <label
+              htmlFor={option.title}
+              className="peer-disabled:cursor-not-allowed flex flex-col"
+            >
+              <p className="text-lg font-bold">{option.title}</p>
+              <CustomPortableText
+                value={option.description}
+                className="text-xs"
+              />
+              <p className="text-sm font-bold">
+                {option.price === 0 ? <>Inclus</> : <>{option.price} €</>}
+              </p>
+            </label>
           </div>
-        ))} */}
+        ))}
 
         <h3>
           Total : <span className="font-bold">{Math.round(total)} €</span>
