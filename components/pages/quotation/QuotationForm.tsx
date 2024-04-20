@@ -9,6 +9,7 @@ import { QuotationSlider } from './QuotationSlider'
 import { QuotationPreview } from './QuotationPreview'
 import { Button } from 'components/shared/Button'
 import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
+import { BackgroundGradient } from 'components/shared/BackgroundGradient'
 
 const DEFAULT_TITLES = 1
 const DEFAULT_MINUTES = 3
@@ -46,7 +47,7 @@ export const QuotationForm: FC<{
   }, [titles, tracks, minutes, baseMinutes, baseTracks, options, has])
 
   return (
-    <div className="grid lg:grid-cols-2 gap-12 rounded-xl shadow-xl bg-slate-900/50 p-8 border-t border-slate-800/40">
+    <BackgroundGradient className="grid lg:grid-cols-2 gap-12 rounded-[22px] shadow-xl bg-slate-900 p-6 lg:p-8">
       <div className="flex flex-col gap-6">
         <p className="font-medium text-slate-400 leading-tight">
           Obtenez un devis
@@ -110,13 +111,13 @@ export const QuotationForm: FC<{
         </div>
       </div>
 
-      <div className="flex gap-2 items-center justify-between lg:col-start-2">
+      <div className="flex gap-4 lg:gap-2 lg:items-center justify-between lg:col-start-2 max-lg:flex-col">
         <h3 className="tracking-tight">
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
         <Button variant="primary">Réserver une session</Button>
       </div>
-    </div>
+    </BackgroundGradient>
   )
 }

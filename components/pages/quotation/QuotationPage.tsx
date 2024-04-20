@@ -10,7 +10,7 @@ export const QuotationPage: FC<{
 }> = ({ quotation, settings }) => {
   return (
     <Layout settings={settings}>
-      <Container className="py-32 flex flex-col gap-8">
+      <Container className="pt-28 pb-10 flex flex-col gap-8">
         <QuotationForm quotation={quotation} />
       </Container>
     </Layout>

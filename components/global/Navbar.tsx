@@ -29,10 +29,10 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
         isScrolled && scrolledStyle,
       )}
     >
-      <Container className="flex flex-wrap items-center gap-x-6">
+      <Container className="flex flex-wrap items-center gap-x-6 h-16">
         <Link
           key="home"
-          className={`text-xl font-bold text-slate-200 hover:text-white md:text-2xl h-full mr-auto tracking-tight`}
+          className={`text-xl font-bold text-slate-200 hover:text-white md:text-2xl my-auto mr-auto tracking-tight`}
           href={'/'}
         >
           {siteTitle ?? title}

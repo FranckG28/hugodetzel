@@ -20,7 +20,7 @@ export const QuotationPreview: FC<QuestionPreviewProps> = ({
   return (
     <div
       className={cn(
-        'items-center justify-center transition-all flex lg:-space-x-28 -space-x-8 bg-slate-900 rounded-xl p-4 lg:hover:-space-x-24',
+        'items-center justify-center transition-all flex lg:-space-x-28 -space-x-1 bg-slate-800 rounded-xl p-4 lg:hover:-space-x-24 overflow-hidden',
         className,
       )}
     >
@@ -52,7 +52,7 @@ const PreviewTitle: FC<PreviewTitleProps> = ({
   displayContent,
 }) => {
   return (
-    <div className="flex w-12 lg:w-32 aspect-square rounded lg:rounded-xl bg-gradient-to-br from-slate-800 to-slate-950 border border-slate-700/80 relative flex-col gap-1 justify-start overflow-hidden p-1 transition-all">
+    <div className="flex w-20 lg:w-32 aspect-square rounded lg:rounded-xl bg-gradient-to-br from-slate-800 to-slate-950 border border-slate-700/80 relative flex-col gap-1 justify-start overflow-hidden p-1 transition-all">
       {displayContent && (
         <>
           {Array(Math.min(tracks, MAX_TRACKS))
