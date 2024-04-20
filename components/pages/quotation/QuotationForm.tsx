@@ -46,9 +46,17 @@ export const QuotationForm: FC<{
   }, [titles, tracks, minutes, baseMinutes, baseTracks, options, has])
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 rounded-xl shadow-xl bg-slate-900/80 p-8 border-t border-slate-800/50">
-      <div className="flex flex-col gap-10">
-        <QuotationPreview className="flex-1" />
+    <div className="grid lg:grid-cols-2 gap-12 rounded-xl shadow-xl bg-slate-900/50 p-8 border-t border-slate-800/40">
+      <div className="flex flex-col gap-6">
+        <p className="font-medium text-slate-400 leading-tight">
+          Obtenez un devis
+        </p>
+        <QuotationPreview
+          className="flex-1"
+          titles={titles}
+          minutes={minutes}
+          tracks={tracks}
+        />
         <QuotationSlider
           label="Nombre de titre"
           valueDisplay={(value) => `${value} titre${value > 1 ? 's' : ''}`}
@@ -103,7 +111,7 @@ export const QuotationForm: FC<{
       </div>
 
       <div className="flex gap-2 items-center justify-between lg:col-start-2">
-        <h3 className="text-right">
+        <h3 className="tracking-tight">
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>

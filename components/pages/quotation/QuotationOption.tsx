@@ -12,10 +12,8 @@ export const QuotationOption: FC<{
   return (
     <button
       className={cn(
-        'flex flex-col gap-2 p-4 rounded-xl border transition-all shadow relative',
-        checked
-          ? 'border-slate-400 bg-slate-800 shadow-border'
-          : 'border-slate-800 bg-slate-900',
+        'flex flex-col gap-2 p-4 rounded-xl transition-all shadow relative',
+        checked ? 'bg-blue-200/20 ring-1 ring-blue-200/30' : 'bg-slate-900',
         option.included && 'cursor-not-allowed',
       )}
       onClick={() => {

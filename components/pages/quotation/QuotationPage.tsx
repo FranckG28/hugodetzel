@@ -11,8 +11,6 @@ export const QuotationPage: FC<{
   return (
     <Layout settings={settings}>
       <Container className="py-32 flex flex-col gap-8">
-        <h1>Devis</h1>
-
         <QuotationForm quotation={quotation} />
       </Container>
     </Layout>
