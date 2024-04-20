@@ -1,5 +1,5 @@
-import classNames from 'classnames'
 import { urlForImage } from 'lib/sanity.image'
+import { cn } from 'lib/utils'
 import Image from 'next/image'
 import { Image as SanityImage } from 'sanity'
 
@@ -30,7 +30,7 @@ export const ImageStack = ({
       <Image
         alt=""
         src={imageUrl}
-        className={classNames('object-cover aspect-[4/3]', className)}
+        className={cn('object-cover aspect-[4/3]', className)}
         sizes="(min-width: 1024px) 650px, 100vw"
         width={width}
         height={height}
@@ -40,7 +40,7 @@ export const ImageStack = ({
 
   return (
     <div
-      className={classNames(
+      className={cn(
         'relative max-md:min-h-64 md:max-lg:min-h-96 h-full w-full max-h-96 max-w-lg lg:mx-auto',
         className,
       )}
@@ -58,7 +58,7 @@ export const ImageStack = ({
         return (
           <div
             key={index}
-            className={classNames(
+            className={cn(
               'absolute w-3/4',
               index === 0 ? 'top-0 left-0 z-0' : 'bottom-0 right-0 z-10',
             )}

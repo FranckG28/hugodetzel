@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import Link from 'next/link'
 import { Section } from 'types'
 
@@ -7,6 +6,7 @@ import { Container } from '../../shared/Container'
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import DynamicIcon from '../../shared/DynamicIcon'
 import { ImageStack } from '../../shared/ImageStack'
+import { cn } from 'lib/utils'
 
 export const SectionItem = ({
   section,
@@ -31,28 +31,26 @@ export const SectionItem = ({
 
   return (
     <section
-      className={classNames(
+      className={cn(
         background === 'primary' && 'bg-blue-800 border-blue-700/50',
         background === 'secondary' && 'bg-slate-900 border-t border-slate-800',
         background !== 'none' && 'shadow border-t my-8',
       )}
     >
       <Container
-        className={classNames(
+        className={cn(
           'grid gap-8 lg:gap-16 py-10 items-center',
           images?.length ? 'lg:grid-cols-2' : 'justify-center',
         )}
       >
         <ImageStack
           images={images}
-          className={classNames(
-            alignment === 'right' ? 'order-last' : 'order-first',
-          )}
+          className={cn(alignment === 'right' ? 'order-last' : 'order-first')}
           thumbnail={thumbnail}
         />
 
         <div
-          className={classNames(
+          className={cn(
             'flex flex-col gap-5 py-6',
             !images?.length && 'text-center',
           )}

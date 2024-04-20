@@ -8,6 +8,7 @@ import { QuotationOption } from './QuotationOption'
 import { QuotationSlider } from './QuotationSlider'
 import { QuotationPreview } from './QuotationPreview'
 import { Button } from 'components/shared/Button'
+import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
 
 const DEFAULT_TITLES = 1
 const DEFAULT_MINUTES = 3
@@ -45,12 +46,11 @@ export const QuotationForm: FC<{
   }, [titles, tracks, minutes, baseMinutes, baseTracks, options, has])
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 rounded-xl shadow-xl bg-slate-900 p-8 border-t border-slate-800">
-      <QuotationPreview />
-
+    <div className="grid lg:grid-cols-2 gap-8 rounded-xl shadow-xl bg-slate-900/80 p-8 border-t border-slate-800/50">
       <div className="flex flex-col gap-10">
+        <QuotationPreview className="flex-1" />
         <QuotationSlider
-          label="Combien de titres souhaitez vous soumettre ?"
+          label="Nombre de titre"
           valueDisplay={(value) => `${value} titre${value > 1 ? 's' : ''}`}
           value={titles}
           onChange={setTitles}
@@ -59,7 +59,7 @@ export const QuotationForm: FC<{
         />
 
         <QuotationSlider
-          label="Combien de minutes durent vos titres en moyenne ?"
+          label="Durée moyenne d'un titre"
           value={minutes}
           valueDisplay={(value) => `${value} minute${value > 1 ? 's' : ''}`}
           onChange={setMinutes}
@@ -68,41 +68,46 @@ export const QuotationForm: FC<{
         />
 
         <QuotationSlider
-          label="De combien de pistes sont composés vos titres en moyenne ?"
+          label="Nombre moyen de pistes par titre"
           value={tracks}
           valueDisplay={(value) => `${value} piste${value > 1 ? 's' : ''}`}
           onChange={setTracks}
           min={1}
           max={MAX_TRACKS}
         />
+      </div>
 
+      <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-6">
-          <p className="font-medium text-slate-300 leading-tight">
+          <p className="font-medium text-slate-400 leading-tight">
             Prestations
           </p>
 
-          {options.map((option) => (
-            <QuotationOption
-              key={option.title}
-              option={option}
-              checked={has(option.title)}
-              onChange={(checked) => {
-                if (checked) {
-                  add(option.title)
-                } else {
-                  remove(option.title)
-                }
-              }}
-            />
-          ))}
+          <div className="grid lg:grid-cols-2 gap-4">
+            {options.map((option) => (
+              <QuotationOption
+                key={option.title}
+                option={option}
+                checked={has(option.title)}
+                onChange={(checked) => {
+                  if (checked) {
+                    add(option.title)
+                  } else {
+                    remove(option.title)
+                  }
+                }}
+              />
+            ))}
+          </div>
         </div>
+      </div>
 
-        <div className="flex gap-2 items-center justify-between">
-          <h3 className="text-right">
-            Total : <span className="font-bold">{Math.round(total)} €</span>
-          </h3>
-          <Button variant="primary">Réserver une session</Button>
-        </div>
+      <div className="flex gap-2 items-center justify-between lg:col-start-2">
+        <h3 className="text-right">
+          <span className="text-slate-500">Total :</span>{' '}
+          <AnimatedNumber value={total}></AnimatedNumber>€
+        </h3>
+        <Button variant="primary">Réserver une session</Button>
       </div>
     </div>
   )

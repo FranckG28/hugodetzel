@@ -10,9 +10,11 @@ export const QuotationSlider: FC<{
   max?: number
 }> = ({ valueDisplay, label, value, onChange, min = 0, max = 10 }) => {
   return (
-    <div className="flex flex-col gap-2">
-      <p className="font-medium text-slate-300">{label}</p>
-      <p className="font-semibold text-2xl">{valueDisplay(value)}</p>
+    <div className="flex flex-col gap-3">
+      <div className="flex items-center justify-between gap-2">
+        <p className="font-medium text-slate-400">{label}</p>
+        <p className="font-semibold text-xl">{valueDisplay(value)}</p>
+      </div>
       <Slider
         value={[value]}
         onValueChange={([val]) => onChange(val)}

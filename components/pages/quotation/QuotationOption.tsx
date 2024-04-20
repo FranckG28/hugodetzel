@@ -1,5 +1,4 @@
 import { CustomPortableText } from 'components/shared/CustomPortableText'
-import { Badge } from 'components/ui/badge'
 import { Checkbox } from 'components/ui/checkbox'
 import { cn } from 'lib/utils'
 import { FC } from 'react'
@@ -11,30 +10,39 @@ export const QuotationOption: FC<{
   onChange: (checked: boolean) => void
 }> = ({ option, checked, onChange }) => {
   return (
-    <div className="flex gap-4">
+    <button
+      className={cn(
+        'flex flex-col gap-2 p-4 rounded-xl border transition-all shadow relative',
+        checked
+          ? 'border-slate-400 bg-slate-800 shadow-border'
+          : 'border-slate-800 bg-slate-900',
+        option.included && 'cursor-not-allowed',
+      )}
+      onClick={() => {
+        if (!option.included) {
+          onChange(!checked)
+        }
+      }}
+    >
       <Checkbox
         id={option.title}
-        disabled={option.included}
+        aria-readonly="true"
         value={option.title}
         checked={checked}
-        onCheckedChange={onChange}
+        disabled={option.included}
+        className="absolute top-4 right-4"
       />
-      <label
-        htmlFor={option.title}
-        className="peer-disabled:cursor-not-allowed cursor-pointer flex flex-col flex-1 gap-1"
-      >
-        <div className="flex items-center gap-2">
-          <p className="text-lg font-bold leading-none">{option.title} </p>
-          <Badge variant={option.included ? 'outline' : 'secondary'}>
-            {option.included ? <>Inclus</> : <>{option.price} € / titre</>}
-          </Badge>
-        </div>
 
-        <CustomPortableText
-          value={option.description}
-          className="!text-base !text-slate-400"
-        />
-      </label>
-    </div>
+      <p className="text-lg font-bold leading-none">{option.title}</p>
+
+      <CustomPortableText
+        value={option.description}
+        className="!text-sm !text-slate-400 !text-left flex-1"
+      />
+
+      <p className="text-sm text-slate-300 font-medium leading-none pt-1">
+        {option.included ? <>Offert</> : <>{option.price} € / titre</>}
+      </p>
+    </button>
   )
 }
