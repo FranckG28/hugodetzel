@@ -8,7 +8,7 @@ export function AnimatedNumber({
   value: number
   className?: string
 }) {
-  const spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 })
+  const spring = useSpring(value, { mass: 0.8, stiffness: 128, damping: 20 })
   const display = useTransform(spring, (current) =>
     Math.round(current).toString(),
   )
