@@ -20,7 +20,7 @@ export default function Layout({
   settings = fallbackSettings,
 }: LayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 dark">
       <Navbar
         menuItems={settings?.menuItems}
         siteTitle={settings?.title}

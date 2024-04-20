@@ -1,4 +1,5 @@
 import { CustomPortableText } from 'components/shared/CustomPortableText'
+import { Badge } from 'components/ui/badge'
 import { Checkbox } from 'components/ui/checkbox'
 import { cn } from 'lib/utils'
 import { FC } from 'react'
@@ -20,21 +21,15 @@ export const QuotationOption: FC<{
       />
       <label
         htmlFor={option.title}
-        className="peer-disabled:cursor-not-allowed cursor-pointer flex flex-col gap-1"
+        className="peer-disabled:cursor-not-allowed cursor-pointer flex flex-col flex-1 gap-1"
       >
-        <p className="text-lg font-bold leading-none">
-          {option.title}{' '}
-          <span
-            className={cn(
-              'px-2.5 py-1 rounded-full font-medium tracking-tighter ml-1',
-              option.included
-                ? 'bg-green-200/10 text-green-300'
-                : 'bg-slate-200/10 text-slate-300',
-            )}
-          >
-            {option.included ? <>Inclus</> : <>{option.price} €</>}
-          </span>
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="text-lg font-bold leading-none">{option.title} </p>
+          <Badge variant={option.included ? 'outline' : 'secondary'}>
+            {option.included ? <>Inclus</> : <>{option.price} € / titre</>}
+          </Badge>
+        </div>
+
         <CustomPortableText
           value={option.description}
           className="!text-base !text-slate-400"

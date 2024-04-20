@@ -7,6 +7,7 @@ import { QuotationPayload } from 'types'
 import { QuotationOption } from './QuotationOption'
 import { QuotationSlider } from './QuotationSlider'
 import { QuotationPreview } from './QuotationPreview'
+import { Button } from 'components/shared/Button'
 
 const DEFAULT_TITLES = 1
 const DEFAULT_MINUTES = 3
@@ -44,7 +45,7 @@ export const QuotationForm: FC<{
   }, [titles, tracks, minutes, baseMinutes, baseTracks, options, has])
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 rounded-xl shadow-xl bg-slate-800 p-8">
+    <div className="grid lg:grid-cols-2 gap-8 rounded-xl shadow-xl bg-slate-900 p-8 border-t border-slate-800">
       <QuotationPreview />
 
       <div className="flex flex-col gap-10">
@@ -96,9 +97,12 @@ export const QuotationForm: FC<{
           ))}
         </div>
 
-        <h3 className="text-right">
-          Total : <span className="font-bold">{Math.round(total)} €</span>
-        </h3>
+        <div className="flex gap-2 items-center justify-between">
+          <h3 className="text-right">
+            Total : <span className="font-bold">{Math.round(total)} €</span>
+          </h3>
+          <Button variant="primary">Réserver une session</Button>
+        </div>
       </div>
     </div>
   )

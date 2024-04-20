@@ -4,7 +4,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="fr">
       <body>{children}</body>
     </html>
   )
