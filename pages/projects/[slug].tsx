@@ -10,9 +10,7 @@ import {
   siteTitleQuery,
 } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
-import { ProjectPayload, SettingsPayload } from 'types'
-
-import type { SharedPageProps } from '../_app'
+import { ProjectPayload, SettingsPayload, SharedPageProps } from 'types'
 
 interface PageProps extends SharedPageProps {
   project?: ProjectPayload
