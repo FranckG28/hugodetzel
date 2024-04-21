@@ -1,6 +1,6 @@
 import { HomeIcon } from '@sanity/icons'
-import { defineArrayMember, defineField, defineType } from 'sanity'
-import { customBlocks } from 'schemas/objects/custom-blocks'
+import { defineField, defineType, defineArrayMember } from 'sanity'
+import { allBlocks } from 'schemas/objects/blocks'
 
 export default defineType({
   name: 'home',
@@ -34,41 +34,7 @@ export default defineType({
         'Used both for the <meta> description tag for SEO, and the personal website subheader.',
       title: 'Description',
       type: 'array',
-      of: [
-        // Paragraphs
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-            decorators: [
-              {
-                title: 'Italic',
-                value: 'em',
-              },
-              {
-                title: 'Strong',
-                value: 'strong',
-              },
-            ],
-          },
-          styles: [],
-          type: 'block',
-        }),
-      ],
-      validation: (rule) => rule.max(155).required(),
+      of: allBlocks,
     }),
     defineField({
       name: 'links',
@@ -77,20 +43,6 @@ export default defineType({
       of: [
         defineArrayMember({
           type: 'link',
-        }),
-      ],
-    }),
-    customBlocks,
-    defineField({
-      name: 'showcasePages',
-      title: 'Showcase pages',
-      description:
-        'These are the pages that will appear first on your landing page.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'reference',
-          to: [{ type: 'page' }],
         }),
       ],
     }),
