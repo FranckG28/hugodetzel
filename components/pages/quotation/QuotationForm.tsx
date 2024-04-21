@@ -47,7 +47,7 @@ export const QuotationForm: FC<{
   }, [titles, tracks, minutes, baseMinutes, baseTracks, options, has])
 
   return (
-    <BackgroundGradient className="grid lg:grid-cols-2 gap-12 rounded-[22px] shadow-xl bg-slate-900 p-6 lg:p-8">
+    <BackgroundGradient className="grid xl:grid-cols-2 gap-12 rounded-[22px] shadow-xl bg-slate-900 p-6 xl:p-8">
       <div className="flex flex-col gap-6">
         <p className="font-medium text-slate-400 leading-tight">
           Obtenez un devis
@@ -111,7 +111,7 @@ export const QuotationForm: FC<{
         </div>
       </div>
 
-      <div className="flex gap-4 lg:gap-2 lg:items-center justify-between lg:col-start-2 max-lg:flex-col">
+      <div className="fixed xl:relative max-xl:bottom-0 max-xl:left-4 max-xl:right-4 max-xl:border-t max-xl:border-slate-800 max-xl:bg-slate-900/80 rounded-t-xl max-xl:backdrop-blur max-xl:p-4 flex gap-2 items-center justify-between xl:col-start-2 max-md:flex-col">
         <h3 className="tracking-tight">
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
