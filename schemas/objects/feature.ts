@@ -1,7 +1,9 @@
 import { iconPickerOptions } from 'lib/iconPicker'
-import { defineField } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
-export const feature = {
+export default defineType({
+  name: 'feature',
+  title: 'Encouragement',
   type: 'object',
   fields: [
     defineField({
@@ -23,4 +25,4 @@ export const feature = {
       validation: (rule) => rule.required(),
     }),
   ],
-}
+})

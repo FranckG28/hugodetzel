@@ -46,6 +46,16 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'features',
+      type: 'array',
+      title: 'Encouragements',
+      of: [
+        defineArrayMember({
+          type: 'feature',
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {
