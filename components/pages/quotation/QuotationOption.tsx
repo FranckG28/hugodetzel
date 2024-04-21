@@ -15,7 +15,7 @@ export const QuotationOption: FC<{
       className={cn(
         'flex flex-col gap-2 p-4 rounded-xl transition-all shadow relative',
         checked ? 'bg-blue-200/30 ring-1 ring-blue-200/50' : 'bg-slate-800',
-        option.included && 'cursor-not-allowed',
+        option.included ? 'cursor-not-allowed' : 'cursor-pointer',
       )}
     >
       <Checkbox
