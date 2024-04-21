@@ -21,7 +21,7 @@ export function Navbar({ menuItems, siteTitle }: NavbarProps) {
   return (
     <div
       className={cn(
-        'fixed top-0 left-0 right-0 z-20 transition-all duration-500 bg-gradient-to-b from-slate-950/50 to-transparent',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-gradient-to-b from-slate-950/50 to-transparent',
         isScrolled && scrolledStyle,
       )}
     >
