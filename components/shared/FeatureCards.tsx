@@ -42,11 +42,7 @@ export const FeatureCards: FC<FeatureCardsProps> = ({
               />
             )}
           </AnimatePresence>
-          <Card
-            className={
-              selected !== idx && 'hover:bg-slate-200/5 transition-all'
-            }
-          >
+          <Card className="hover:bg-slate-200/5 transition-all">
             <div className="bg-slate-700 rounded-full p-2 mb-2">
               <DynamicIcon icon={item.icon} className="w-6 h-6" />
             </div>
