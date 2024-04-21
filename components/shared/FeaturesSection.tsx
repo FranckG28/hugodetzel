@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import { Feature } from 'types'
 import { Container } from './Container'
 import { FeatureCards } from './FeatureCards'
+import { cn } from 'lib/utils'
 
 type FeatureSectionProps = {
   items: Feature[]
@@ -15,7 +16,9 @@ export const FeatureSection: FC<FeatureSectionProps> = ({
   const [selected, setSelected] = useState(0)
 
   return (
-    <Container className="grid lg:grid-cols-2 gap-2 bg-slate-950 py-4">
+    <Container
+      className={cn('grid lg:grid-cols-2 gap-2 bg-slate-950 py-4', className)}
+    >
       <div></div>
       {items && (
         <FeatureCards

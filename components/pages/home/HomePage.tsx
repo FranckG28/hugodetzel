@@ -42,7 +42,9 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
           />
         )}
 
-        <FeatureSection items={features} />
+        <FeatureSection items={features} className="pb-16" />
+
+        <div className="h-96 bg-slate-100"></div>
       </Layout>
     </>
   )
