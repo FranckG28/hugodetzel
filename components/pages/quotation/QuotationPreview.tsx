@@ -11,27 +11,31 @@ type QuestionPreviewProps = {
   className?: string
 }
 
+const MAX_TITLES = 12
+
 export const QuotationPreview: FC<QuestionPreviewProps> = ({
   className,
   titles,
   minutes,
   tracks,
 }) => {
+  const displayedTitles = Math.min(titles, MAX_TITLES)
+
   return (
     <div
       className={cn(
-        'items-center justify-center transition-all flex lg:-space-x-28 -space-x-1 bg-slate-800 rounded-xl p-4 lg:hover:-space-x-24 overflow-hidden',
+        'items-center justify-center transition-all flex lg:-space-x-28 -space-x-16 bg-slate-800 rounded-xl p-4 lg:hover:-space-x-24 overflow-hidden',
         className,
       )}
     >
-      {Array(titles)
+      {Array(displayedTitles)
         .fill('')
         .map((_, i) => (
           <PreviewTitle
             key={i}
             duration={`${minutes}:00`}
             tracks={tracks}
-            displayContent={i === titles - 1}
+            displayContent={i === displayedTitles - 1}
           />
         ))}
     </div>
