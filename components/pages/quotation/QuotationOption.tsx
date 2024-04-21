@@ -10,17 +10,13 @@ export const QuotationOption: FC<{
   onChange: (checked: boolean) => void
 }> = ({ option, checked, onChange }) => {
   return (
-    <button
+    <label
+      htmlFor={option.title}
       className={cn(
         'flex flex-col gap-2 p-4 rounded-xl transition-all shadow relative',
         checked ? 'bg-blue-200/30 ring-1 ring-blue-200/50' : 'bg-slate-800',
         option.included && 'cursor-not-allowed',
       )}
-      onClick={() => {
-        if (!option.included) {
-          onChange(!checked)
-        }
-      }}
     >
       <Checkbox
         id={option.title}
@@ -29,6 +25,7 @@ export const QuotationOption: FC<{
         checked={checked}
         disabled={option.included}
         className="absolute top-4 right-4"
+        onCheckedChange={onChange}
       />
 
       <p className="text-lg font-bold leading-none">{option.title}</p>
@@ -41,6 +38,6 @@ export const QuotationOption: FC<{
       <p className="text-sm text-slate-300 font-medium leading-none pt-1">
         {option.included ? <>Offert</> : <>{option.price} € / titre</>}
       </p>
-    </button>
+    </label>
   )
 }
