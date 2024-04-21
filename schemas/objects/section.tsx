@@ -1,4 +1,4 @@
-import { SectionItem } from 'components/shared/SectionItem'
+import { SectionItem } from 'components/blocks/section/SectionItem'
 import { iconPickerOptions } from 'lib/iconPicker'
 import { defineField, defineType } from 'sanity'
 

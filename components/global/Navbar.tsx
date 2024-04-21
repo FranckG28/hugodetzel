@@ -1,9 +1,9 @@
 import { useWindowScroll } from '@uidotdev/usehooks'
-import classNames from 'classnames'
 import { Button } from 'components/shared/Button'
 import { Container } from 'components/shared/Container'
 import { title } from 'lib/demo.data'
 import { resolveHref } from 'lib/sanity.links'
+import { cn } from 'lib/utils'
 import Link from 'next/link'
 import { MenuItem } from 'types'
 
@@ -24,15 +24,15 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
 
   return (
     <div
-      className={classNames(
+      className={cn(
         'fixed top-0 left-0 right-0 z-20 transition-all duration-500 bg-gradient-to-b from-slate-950/50 to-transparent',
         isScrolled && scrolledStyle,
       )}
     >
-      <Container className="flex flex-wrap items-center gap-x-6">
+      <Container className="flex flex-wrap items-center gap-x-6 h-16">
         <Link
           key="home"
-          className={`text-xl font-bold text-slate-200 hover:text-white md:text-2xl h-full mr-auto tracking-tight`}
+          className={`text-xl font-bold text-slate-200 hover:text-white md:text-2xl my-auto mr-auto tracking-tight`}
           href={'/'}
         >
           {siteTitle ?? title}

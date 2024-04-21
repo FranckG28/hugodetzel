@@ -4,9 +4,7 @@ import { readToken } from 'lib/sanity.api'
 import { getClient } from 'lib/sanity.client'
 import { homePageQuery, settingsQuery } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
-import { HomePagePayload, SettingsPayload } from 'types'
-
-import type { SharedPageProps } from './_app'
+import { HomePagePayload, SettingsPayload, SharedPageProps } from 'types'
 
 interface PageProps extends SharedPageProps {
   page: HomePagePayload

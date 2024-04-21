@@ -1,13 +1,13 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
-import classNames from 'classnames'
 import ImageBox from 'components/shared/ImageBox'
-import { TimelineSection } from 'components/shared/TimelineSection'
+import { TimelineSection } from 'components/blocks/timeline/TimelineSection'
 import getYouTubeId from 'get-youtube-id'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import type { Image, PortableTextBlock } from 'sanity'
 
 import { Container } from './Container'
-import { SectionItem } from './SectionItem'
+import { SectionItem } from '../blocks/section/SectionItem'
+import { cn } from 'lib/utils'
 
 export function CustomPortableText({
   className,
@@ -23,7 +23,7 @@ export function CustomPortableText({
       normal: ({ children }) => {
         const content = (
           <p
-            className={classNames(
+            className={cn(
               'font-serif text-lg md:text-xl text-slate-300 max-w-prose',
               className,
             )}

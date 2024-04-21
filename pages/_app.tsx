@@ -5,11 +5,7 @@ import { AppProps } from 'next/app'
 import { Albert_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 import { lazy } from 'react'
-
-export interface SharedPageProps {
-  draftMode: boolean
-  token: string
-}
+import { SharedPageProps } from 'types'
 
 const PreviewProvider = lazy(() => import('components/preview/PreviewProvider'))
 const SanityVisualEditing = lazy(

@@ -49,6 +49,11 @@ export interface ShowcasePage {
 
 // Page payloads
 
+export interface SharedPageProps {
+  draftMode: boolean
+  token: string
+}
+
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
@@ -89,4 +94,17 @@ export interface SettingsPayload {
   menuCta?: MenuItem
   ogImage?: Image
   title?: string
+}
+
+export interface QuotationOption {
+  title: string
+  description: PortableTextBlock[]
+  price: number
+  included: boolean
+}
+
+export interface QuotationPayload {
+  baseMinutes: number
+  baseTracks: number
+  options: QuotationOption[]
 }

@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import { cn } from 'lib/utils'
 
 export const Container = ({
   children,
@@ -9,7 +9,7 @@ export const Container = ({
 }) => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'container max-w-screen-2xl mx-auto px-4 md:px-16 lg:px-32',
         className,
       )}
