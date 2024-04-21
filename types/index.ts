@@ -37,15 +37,10 @@ export interface Link {
   title?: string
 }
 
-export interface ShowcasePage {
-  _type: string
-  // coverImage?: Image
-  overview?: PortableTextBlock[]
-  slug?: string
-  // tags?: string[]
-  title?: string
+export type Feature = {
   icon?: any
-  coverImage?: Image
+  title: string
+  description: string
 }
 
 // Page payloads
@@ -58,11 +53,10 @@ export interface SharedPageProps {
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
-  showcasePages?: ShowcasePage[]
   heading?: string
   links?: Link[]
   coverImage?: Image
-  body?: PortableTextBlock[]
+  features: Feature[]
 }
 
 export interface PagePayload {

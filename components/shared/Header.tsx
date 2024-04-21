@@ -36,37 +36,40 @@ export function Header(props: HeaderProps) {
         fill
       />
 
-      <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-slate-950 z-0" />
+      <div className="absolute h-full w-full bg-gradient-to-b from-slate-950/40 to-slate-950 z-0" />
 
-      <Container className="z-10 relative pt-48 pb-24 flex flex-col gap-6">
+      <Container className="z-10 relative pt-48 pb-24 grid lg:grid-cols-2 gap-8">
         {/* Title */}
-        {cleanedTitle && (
-          <h1 className="max-w-prose" data-vercel-edit-target>
-            {cleanedTitle}
-            {encodedTitle && (
-              <span style={{ display: 'none' }}>{encodedTitle}</span>
-            )}
-          </h1>
-        )}
-        {/* Description */}
-        {description && (
-          <div className="font-serif text-xl text-slate-200 md:text-2xl max-w-prose text-balance">
-            <CustomPortableText value={description} />
-          </div>
-        )}
-        {links?.length > 0 && (
-          <div className="flex gap-4 flex-wrap">
-            {links.map((link, key) => {
-              return (
-                <Link key={key} href={link.href}>
-                  <Button variant={key === 0 ? 'primary' : 'default'}>
-                    {link.title}
-                  </Button>
-                </Link>
-              )
-            })}
-          </div>
-        )}
+        <div className="flex flex-col gap-6">
+          {cleanedTitle && (
+            <h1 className="max-w-prose" data-vercel-edit-target>
+              {cleanedTitle}
+              {encodedTitle && (
+                <span style={{ display: 'none' }}>{encodedTitle}</span>
+              )}
+            </h1>
+          )}
+          {/* Description */}
+          {description && (
+            <div className="font-serif text-xl text-slate-200 md:text-2xl max-w-prose text-balance">
+              <CustomPortableText value={description} />
+            </div>
+          )}
+          {links?.length > 0 && (
+            <div className="flex gap-4 flex-wrap">
+              {links.map((link, key) => {
+                return (
+                  <Link key={key} href={link.href}>
+                    <Button variant={key === 0 ? 'primary' : 'default'}>
+                      {link.title}
+                    </Button>
+                  </Link>
+                )
+              })}
+            </div>
+          )}
+        </div>
+        <div></div>
       </Container>
     </div>
   )
