@@ -63,16 +63,7 @@ export const settingsQuery = groq`
   *[_type == "settings"][0]{
     title,
     footer,
-    menuItems[]->{
-      _type,
-      "slug": slug.current,
-      title
-    },
-    menuCta->{
-      _type,
-      "slug": slug.current,
-      title
-    },
+    menuItems,
     ogImage,
   }
 `

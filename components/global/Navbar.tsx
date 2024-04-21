@@ -2,7 +2,6 @@ import { useWindowScroll } from '@uidotdev/usehooks'
 import { Button } from 'components/shared/Button'
 import { Container } from 'components/shared/Container'
 import { title } from 'lib/demo.data'
-import { resolveHref } from 'lib/sanity.links'
 import { cn } from 'lib/utils'
 import Link from 'next/link'
 import { MenuItem } from 'types'
@@ -10,17 +9,14 @@ import { MenuItem } from 'types'
 interface NavbarProps {
   siteTitle?: string
   menuItems?: MenuItem[]
-  menuCta?: MenuItem
 }
 
-export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
+export function Navbar({ menuItems, siteTitle }: NavbarProps) {
   const [{ y }] = useWindowScroll()
 
   const isScrolled = y > 100
 
   const scrolledStyle = 'bg-slate-950/80 backdrop-blur'
-
-  const ctaHref = menuCta ? resolveHref(menuCta?._type, menuCta?.slug) : null
 
   return (
     <div
@@ -39,27 +35,31 @@ export function Navbar({ menuItems, menuCta, siteTitle }: NavbarProps) {
         </Link>
         {menuItems &&
           menuItems.map((menuItem) => {
-            const href = resolveHref(menuItem?._type, menuItem?.slug)
-            if (!href) {
-              return null
+            if (menuItem.button) {
+              return (
+                <Link
+                  key={menuItem.link}
+                  href={menuItem.link}
+                  target={menuItem.newTab ? '_blank' : undefined}
+                >
+                  <Button className="!text-lg !font-medium" variant="outline">
+                    {menuItem.title}
+                  </Button>
+                </Link>
+              )
             }
+
             return (
               <Link
-                key={href}
+                key={menuItem.link}
                 className="text-lg hover:text-slate-100 py-5 transition-all text-slate-300 font-medium tracking-tight"
-                href={href}
+                href={menuItem.link}
+                target={menuItem.newTab ? '_blank' : undefined}
               >
                 {menuItem.title}
               </Link>
             )
           })}
-        {ctaHref && (
-          <Link href={ctaHref}>
-            <Button className="!text-lg !font-medium" variant="outline">
-              {menuCta.title}
-            </Button>
-          </Link>
-        )}
       </Container>
     </div>
   )

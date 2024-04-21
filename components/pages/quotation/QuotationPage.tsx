@@ -1,5 +1,5 @@
 import { Container } from 'components/shared/Container'
-import Layout from 'components/shared/Layout'
+import Layout from 'components/global/Layout'
 import { FC } from 'react'
 import { QuotationPayload, SettingsPayload } from 'types'
 import { QuotationForm } from './QuotationForm'

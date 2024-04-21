@@ -23,15 +23,7 @@ export default defineType({
       title: 'Menu Item list',
       description: 'Links displayed on the header of your site.',
       type: 'array',
-      of: [
-        menuItem
-      ],
-    }),
-    defineField({
-      ...menuItem,
-      name: 'menuCta',
-      title: 'Menu Call to Action',
-      description: 'This is a button that will be displayed on the navbar.',
+      of: [menuItem],
     }),
     defineField({
       name: 'footer',

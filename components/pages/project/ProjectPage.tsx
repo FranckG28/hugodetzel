@@ -4,7 +4,7 @@ import ImageBox from 'components/shared/ImageBox'
 import Link from 'next/link'
 import type { ProjectPayload, SettingsPayload } from 'types'
 
-import Layout from '../../shared/Layout'
+import Layout from '../../global/Layout'
 import ProjectPageHead from './ProjectPageHead'
 
 export interface ProjectPageProps {

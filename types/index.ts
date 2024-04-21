@@ -6,9 +6,10 @@ interface Color {
 }
 
 export interface MenuItem {
-  _type: string
-  slug?: string
-  title?: string
+  link: string
+  title: string
+  newTab?: boolean
+  button?: boolean
 }
 
 export interface MilestoneItem {
@@ -91,7 +92,6 @@ export interface ProjectPayload {
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
-  menuCta?: MenuItem
   ogImage?: Image
   title?: string
 }
