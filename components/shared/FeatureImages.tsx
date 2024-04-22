@@ -80,38 +80,4 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
       </CarouselContent>
     </Carousel>
   )
-
-  // const [api, setApi] = useState<CarouselApi>()
-
-  // useEffect(() => {
-  //   if (!api) {
-  //     return
-  //   }
-
-  //   api.scrollTo(selected)
-  // }, [api, selected])
-
-  // return (
-  //   <Carousel orientation="vertical" setApi={setApi} className="h-full">
-  //     <CarouselContent className="h-full">
-  //       {items.map(({ image, title }) => {
-  //         const imageUrl =
-  //           image &&
-  //           urlForImage(image)?.height(800).width(600).fit('crop').url()
-
-  //         return (
-  //           <CarouselItem key={title} className="basis-1">
-  //             <Image
-  //               className="absolute aspect-[3/4] object-cover rounded-xl"
-  //               alt={title}
-  //               src={imageUrl}
-  //               width={600}
-  //               height={800}
-  //             />
-  //           </CarouselItem>
-  //         )
-  //       })}
-  //     </CarouselContent>
-  //   </Carousel>
-  // )
 }
