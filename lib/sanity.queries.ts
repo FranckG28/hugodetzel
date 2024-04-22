@@ -71,3 +71,11 @@ export const quotationQuery = groq`
     }
   }
 `
+
+export const questionsQuery = groq`
+  *[_type == "questions"][0]{
+    questions,
+    title,
+    description,
+  }
+`

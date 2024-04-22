@@ -24,7 +24,7 @@ export function CustomPortableText({
         const content = (
           <p
             className={cn(
-              'font-serif text-lg md:text-xl text-slate-300 max-w-prose',
+              'font-serif md:text-lg text-slate-300 max-w-prose',
               className,
             )}
           >

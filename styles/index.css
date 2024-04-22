@@ -58,7 +58,7 @@ ol {
   }
 
   h5 {
-    @apply text-xl font-bold;
+    @apply text-xl font-bold tracking-tight;
   }
 
   h6 {
