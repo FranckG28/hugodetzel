@@ -18,7 +18,7 @@ export function TimelineItem({
   //   : 'Now'
 
   return (
-    <div className={`flex min-h-[200px] font-sans ${!isLast && 'pb-2'}`}>
+    <div className={`flex min-h-[200px] ${!isLast && 'pb-2'}`}>
       <div className="flex flex-col">
         {/* Thumbnail */}
         <div
@@ -50,7 +50,7 @@ export function TimelineItem({
           {/* {startYear} - {endYear} */}
         </div>
         {/* Description */}
-        <div className="pb-5 pt-3 font-serif text-slate-200">{description}</div>
+        <div className="pb-5 pt-3 text-slate-200">{description}</div>
       </div>
     </div>
   )

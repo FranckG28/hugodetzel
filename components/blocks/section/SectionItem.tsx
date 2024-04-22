@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { Section } from 'types'
 
-import { Button } from '../../shared/Button'
 import { Container } from '../../shared/Container'
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import DynamicIcon from '../../shared/DynamicIcon'
 import { ImageStack } from '../../shared/ImageStack'
 import { cn } from 'lib/utils'
+import { Button } from 'components/ui/button'
 
 export const SectionItem = ({
   section,

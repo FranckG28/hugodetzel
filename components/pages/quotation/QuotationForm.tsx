@@ -7,7 +7,7 @@ import { QuotationPayload } from 'types'
 import { QuotationOption } from './QuotationOption'
 import { QuotationSlider } from './QuotationSlider'
 import { QuotationPreview } from './QuotationPreview'
-import { Button } from 'components/shared/Button'
+import { Button } from 'components/ui/button'
 import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
 import { BackgroundGradient } from 'components/shared/BackgroundGradient'
 

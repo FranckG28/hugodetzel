@@ -57,7 +57,7 @@ export type QuestionItem = {
 
 export type Stat = {
   title: string
-  value: number
+  value: string
 }
 
 export type WhoAmI = {

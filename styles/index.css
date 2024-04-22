@@ -16,21 +16,6 @@ body,
     'cv05' 1;
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  margin: 0;
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* p:not(:last-child) {
-  margin-bottom: 0.875rem;
-} */
-
 ol,
 ul {
   margin-left: 1rem;
@@ -42,23 +27,23 @@ ol {
 
 @layer components {
   h1 {
-    @apply text-3xl font-bold tracking-tight md:text-5xl;
+    @apply text-3xl font-bold md:text-5xl;
   }
 
   h2 {
-    @apply text-2xl font-bold tracking-tight md:text-4xl;
+    @apply text-2xl font-bold md:text-4xl;
   }
 
   h3 {
-    @apply text-2xl font-medium tracking-tight md:text-3xl;
+    @apply text-2xl font-medium md:text-3xl;
   }
 
   h4 {
-    @apply text-xl font-bold tracking-tight md:text-2xl;
+    @apply text-xl font-semibold md:text-2xl;
   }
 
   h5 {
-    @apply text-xl font-bold tracking-tight;
+    @apply text-xl font-bold;
   }
 
   h6 {
@@ -71,6 +56,6 @@ ol {
   h4,
   h5,
   h6 {
-    @apply text-balance font-sans;
+    @apply text-balance tracking-tight;
   }
 }

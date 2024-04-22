@@ -81,5 +81,11 @@ export const questionsQuery = groq`
 `
 
 export const whoAmIQuery = groq`
-  *[_type == "whoAmI"][0]
+  *[_type == "whoami"][0]{
+    avatar,
+    body,
+    name,
+    job,
+    stats,
+  }
 `

@@ -1,5 +1,5 @@
 import { useWindowScroll } from '@uidotdev/usehooks'
-import { Button } from 'components/shared/Button'
+import { Button } from 'components/ui/button'
 import { Container } from 'components/shared/Container'
 import { title } from 'lib/demo.data'
 import { cn } from 'lib/utils'
@@ -25,7 +25,7 @@ export function Navbar({ menuItems, siteTitle }: NavbarProps) {
         isScrolled && scrolledStyle,
       )}
     >
-      <Container className="flex flex-wrap items-center gap-x-6 h-16">
+      <Container className="flex flex-wrap items-center gap-x-2 h-16">
         <Link
           key="home"
           className={`text-xl font-bold text-slate-200 hover:text-white md:text-2xl my-auto mr-auto tracking-tight`}
@@ -35,28 +35,15 @@ export function Navbar({ menuItems, siteTitle }: NavbarProps) {
         </Link>
         {menuItems &&
           menuItems.map((menuItem) => {
-            if (menuItem.button) {
-              return (
-                <Link
-                  key={menuItem.link}
-                  href={menuItem.link}
-                  target={menuItem.newTab ? '_blank' : undefined}
-                >
-                  <Button className="!text-lg !font-medium" variant="outline">
-                    {menuItem.title}
-                  </Button>
-                </Link>
-              )
-            }
-
             return (
               <Link
                 key={menuItem.link}
-                className="text-lg hover:text-slate-100 py-5 transition-all text-slate-300 font-medium tracking-tight"
                 href={menuItem.link}
                 target={menuItem.newTab ? '_blank' : undefined}
               >
-                {menuItem.title}
+                <Button variant={menuItem.button ? 'outline' : 'ghost'}>
+                  {menuItem.title}
+                </Button>
               </Link>
             )
           })}

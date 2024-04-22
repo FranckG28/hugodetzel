@@ -20,22 +20,22 @@ export default defineType({
           type: 'object',
           fields: [
             defineField({
+              name: 'value',
+              title: 'Valeur',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
               name: 'title',
               title: 'Titre',
               type: 'string',
               validation: (rule) => rule.required(),
             }),
-            defineField({
-              name: 'value',
-              title: 'Valeur',
-              type: 'number',
-              initialValue: 0,
-            }),
           ],
           preview: {
             select: {
-              title: 'title',
-              subtitle: 'value',
+              title: 'value',
+              subtitle: 'title',
             },
           },
         }),

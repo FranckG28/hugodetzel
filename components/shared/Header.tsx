@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Link as SanityLink } from 'types'
 
-import { Button } from './Button'
+import { Button } from '../ui/button'
 import { Container } from './Container'
 import { TextGenerateEffect } from './TextGenerate'
 
@@ -45,7 +45,7 @@ export function Header(props: HeaderProps) {
           {cleanedTitle && <TextGenerateEffect words={cleanedTitle} />}
           {/* Description */}
           {description && (
-            <div className="font-serif text-xl text-slate-200 md:text-2xl max-w-prose text-balance animate-in fade-in duration-1000">
+            <div className="text-xl text-slate-200 md:text-2xl max-w-prose text-balance animate-in fade-in duration-1000">
               <CustomPortableText value={description} />
             </div>
           )}
@@ -54,7 +54,7 @@ export function Header(props: HeaderProps) {
               {links.map((link, key) => {
                 return (
                   <Link key={key} href={link.href}>
-                    <Button variant={key === 0 ? 'primary' : 'default'}>
+                    <Button variant={key === 0 ? 'default' : 'outline'}>
                       {link.title}
                     </Button>
                   </Link>
