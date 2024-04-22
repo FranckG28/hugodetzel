@@ -6,6 +6,7 @@ import {
   homePageQuery,
   questionsQuery,
   settingsQuery,
+  whoAmIQuery,
 } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import {
@@ -13,12 +14,14 @@ import {
   QuestionsPayload,
   SettingsPayload,
   SharedPageProps,
+  WhoAmI,
 } from 'types'
 
 interface PageProps extends SharedPageProps {
   page: HomePagePayload
   settings: SettingsPayload
   questions: QuestionsPayload
+  whoami: WhoAmI
 }
 
 interface Query {
@@ -26,13 +29,20 @@ interface Query {
 }
 
 export default function IndexPage(props: PageProps) {
-  const { page, settings, draftMode, questions } = props
+  const { page, settings, draftMode, questions, whoami } = props
 
   if (draftMode) {
     return <HomePagePreview page={page} settings={settings} />
   }
 
-  return <HomePage page={page} settings={settings} questions={questions} />
+  return (
+    <HomePage
+      page={page}
+      settings={settings}
+      questions={questions}
+      whoAmI={whoami}
+    />
+  )
 }
 
 const fallbackPage: HomePagePayload = {
@@ -45,10 +55,11 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const [settings, page, questions] = await Promise.all([
+  const [settings, page, questions, whoami] = await Promise.all([
     client.fetch<SettingsPayload | null>(settingsQuery),
     client.fetch<HomePagePayload | null>(homePageQuery),
     client.fetch<QuestionsPayload | null>(questionsQuery),
+    client.fetch<WhoAmI | null>(whoAmIQuery),
   ])
 
   return {
@@ -57,6 +68,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
       settings: settings ?? {},
       questions,
       draftMode,
+      whoami,
       token: draftMode ? readToken : null,
     },
   }

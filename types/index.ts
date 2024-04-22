@@ -55,6 +55,19 @@ export type QuestionItem = {
   answer: PortableTextBlock[]
 }
 
+export type Stat = {
+  title: string
+  value: string
+}
+
+export type WhoAmI = {
+  stats: Stat[]
+  body: PortableTextBlock[]
+  avatar: Image
+  name: string
+  job: string
+}
+
 // Page payloads
 
 export interface SharedPageProps {

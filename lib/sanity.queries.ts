@@ -79,3 +79,13 @@ export const questionsQuery = groq`
     description,
   }
 `
+
+export const whoAmIQuery = groq`
+  *[_type == "whoami"][0]{
+    avatar,
+    body,
+    name,
+    job,
+    stats,
+  }
+`

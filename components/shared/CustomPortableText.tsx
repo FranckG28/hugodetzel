@@ -22,12 +22,7 @@ export function CustomPortableText({
     block: {
       normal: ({ children }) => {
         const content = (
-          <p
-            className={cn(
-              'font-serif md:text-lg text-slate-300 max-w-prose',
-              className,
-            )}
-          >
+          <p className={cn('text-slate-200 max-w-prose', className)}>
             {children}
           </p>
         )
@@ -66,9 +61,7 @@ export function CustomPortableText({
               classesWrapper="relative aspect-[16/9]"
             />
             {value?.caption && (
-              <div className="font-sans text-sm text-slate-200">
-                {value.caption}
-              </div>
+              <div className="text-sm text-slate-200">{value.caption}</div>
             )}
           </div>
         )

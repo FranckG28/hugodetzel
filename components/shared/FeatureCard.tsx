@@ -37,11 +37,9 @@ const Card: FC<Props> = ({ className, children }) => {
 }
 
 const CardTitle: FC<Props> = ({ className, children }) => {
-  return <h4 className={cn('text-white font-bold', className)}>{children}</h4>
+  return <h4 className={cn('text-white', className)}>{children}</h4>
 }
 
 const CardDescription: FC<Props> = ({ className, children }) => {
-  return (
-    <p className={cn('text-slate-300 font-serif', className)}>{children}</p>
-  )
+  return <p className={cn('text-slate-300', className)}>{children}</p>
 }

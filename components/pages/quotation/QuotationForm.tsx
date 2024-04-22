@@ -7,7 +7,7 @@ import { QuotationPayload } from 'types'
 import { QuotationOption } from './QuotationOption'
 import { QuotationSlider } from './QuotationSlider'
 import { QuotationPreview } from './QuotationPreview'
-import { Button } from 'components/shared/Button'
+import { Button } from 'components/ui/button'
 import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
 import { BackgroundGradient } from 'components/shared/BackgroundGradient'
 
@@ -116,7 +116,7 @@ export const QuotationForm: FC<{
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
-        <Button variant="primary">Réserver une session</Button>
+        <Button variant="default">Réserver une session</Button>
       </div>
     </BackgroundGradient>
   )
