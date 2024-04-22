@@ -22,7 +22,7 @@ export function CustomPortableText({
     block: {
       normal: ({ children }) => {
         const content = (
-          <p className={cn('md:text-lg text-slate-200 max-w-prose', className)}>
+          <p className={cn('text-slate-200 max-w-prose', className)}>
             {children}
           </p>
         )

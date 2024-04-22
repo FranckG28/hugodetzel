@@ -51,7 +51,7 @@ export function HomePage({
           />
         )}
 
-        {features && <FeatureSection items={features} className="pb-16" />}
+        {features && <FeatureSection items={features} className="pb-20" />}
         {whoAmI && <WhoAmISection whoAmI={whoAmI} />}
         {questions && <QuestionsSection questions={questions} />}
       </Layout>

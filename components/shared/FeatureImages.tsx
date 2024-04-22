@@ -8,8 +8,9 @@ import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
 import { Feature } from 'types'
-import { FeatureCard } from './FeatureCard'
 import { useBreakpoint } from 'lib/hooks/useBreakpoint'
+import Autoplay from 'embla-carousel-autoplay'
+import { FeatureCard } from './FeatureCard'
 
 type FeatureImagesProps = {
   items: Feature[]
@@ -52,6 +53,11 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
         align: 'start',
       }}
       setApi={setApi}
+      plugins={[
+        Autoplay({
+          delay: 6000,
+        }),
+      ]}
     >
       <CarouselContent className="h-[600px] lg:h-[800px]">
         {items.map((feature, index) => {

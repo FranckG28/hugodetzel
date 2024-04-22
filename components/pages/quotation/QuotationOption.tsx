@@ -13,8 +13,8 @@ export const QuotationOption: FC<{
     <label
       htmlFor={option.title}
       className={cn(
-        'flex flex-col gap-2 p-4 rounded-xl transition-all shadow relative',
-        checked ? 'bg-blue-200/30 ring-1 ring-blue-200/50' : 'bg-slate-800',
+        'flex flex-col gap-2 p-4 rounded-xl transition-all shadow relative ring-1',
+        checked ? 'bg-blue-200/20 ring-slate-300/30' : 'ring-slate-800',
         option.included ? 'cursor-not-allowed' : 'cursor-pointer',
       )}
     >
@@ -28,14 +28,14 @@ export const QuotationOption: FC<{
         onCheckedChange={onChange}
       />
 
-      <p className="text-lg font-bold leading-none">{option.title}</p>
+      <p className="font-bold">{option.title}</p>
 
       <CustomPortableText
         value={option.description}
-        className="!text-sm !text-slate-400 !text-left flex-1"
+        className="text-slate-300 flex-1"
       />
 
-      <p className="text-sm text-slate-300 font-medium leading-none pt-1">
+      <p className="text-slate-300 tracking-tight font-medium text-right leading-none pt-2">
         {option.included ? <>Offert</> : <>{option.price} € / titre</>}
       </p>
     </label>

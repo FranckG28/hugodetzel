@@ -116,7 +116,7 @@ export const QuotationForm: FC<{
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
-        <Button variant="primary">Réserver une session</Button>
+        <Button variant="default">Réserver une session</Button>
       </div>
     </BackgroundGradient>
   )
