@@ -10,7 +10,7 @@ export function Footer({
   siteName: string
 }) {
   return (
-    <footer className="bottom-0 w-full py-6 md:py-10 bg-slate-900 border-t border-slate-800 mt-12">
+    <footer className="bottom-0 w-full py-6 md:py-10 bg-slate-900 border-t border-slate-800">
       <Container className="flex gap-2">
         <div className="max-w-prose flex flex-col">
           <h4>{siteName}</h4>

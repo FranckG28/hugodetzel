@@ -44,6 +44,17 @@ export type Feature = {
   image?: Image
 }
 
+export type QuestionsPayload = {
+  questions: QuestionItem[]
+  title: string
+  description: string
+}
+
+export type QuestionItem = {
+  question: string
+  answer: PortableTextBlock[]
+}
+
 // Page payloads
 
 export interface SharedPageProps {

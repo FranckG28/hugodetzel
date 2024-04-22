@@ -1,23 +1,29 @@
-import { Container } from 'components/shared/Container'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/global/Layout'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import type { HomePagePayload } from 'types'
+import type { HomePagePayload, QuestionsPayload } from 'types'
 import { SettingsPayload } from 'types'
 
 import HomePageHead from './HomePageHead'
 import { FeatureCards } from 'components/shared/FeatureCards'
 import { FeatureSection } from 'components/shared/FeaturesSection'
+import { QuestionsSection } from 'components/questions/QuestionsSection'
 
 export interface HomePageProps {
   settings?: SettingsPayload
   page?: HomePagePayload
   preview?: boolean
+  questions?: QuestionsPayload
 }
 
-export function HomePage({ page, settings, preview }: HomePageProps) {
+export function HomePage({
+  page,
+  settings,
+  preview,
+  questions,
+}: HomePageProps) {
   const {
     overview,
     features,
@@ -44,7 +50,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
 
         <FeatureSection items={features} className="pb-16" />
 
-        <div className="h-96 bg-slate-100"></div>
+        <QuestionsSection questions={questions} />
       </Layout>
     </>
   )
