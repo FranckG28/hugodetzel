@@ -3,6 +3,7 @@ import { Feature } from 'types'
 import { Container } from './Container'
 import { FeatureCards } from './FeatureCards'
 import { cn } from 'lib/utils'
+import { FeatureImages } from './FeatureImages'
 
 type FeatureSectionProps = {
   items: Feature[]
@@ -17,15 +18,21 @@ export const FeatureSection: FC<FeatureSectionProps> = ({
 
   return (
     <Container
-      className={cn('grid lg:grid-cols-2 gap-2 bg-slate-950 py-4', className)}
+      className={cn('grid lg:grid-cols-2 gap-10 bg-slate-950 py-4', className)}
     >
-      <div></div>
       {items && (
-        <FeatureCards
-          items={items}
-          selected={selected}
-          setSelected={setSelected}
-        />
+        <>
+          <FeatureImages
+            items={items}
+            selected={selected}
+            setSelected={setSelected}
+          />
+          <FeatureCards
+            items={items}
+            selected={selected}
+            setSelected={setSelected}
+          />
+        </>
       )}
     </Container>
   )
