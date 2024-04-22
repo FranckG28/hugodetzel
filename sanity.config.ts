@@ -29,6 +29,7 @@ import settings from 'schemas/singletons/settings'
 import quotation from 'schemas/singletons/quotation'
 import feature from 'schemas/objects/feature'
 import questions from 'schemas/singletons/questions'
+import whoami from 'schemas/singletons/whoami'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE
 
@@ -53,6 +54,7 @@ export default defineConfig({
       settings,
       quotation,
       questions,
+      whoami,
       // Documents
       page,
       project,
@@ -67,10 +69,16 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings, quotation, questions]),
+      structure: pageStructure([home, settings, quotation, questions, whoami]),
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name, quotation.name, questions.name]),
+    singletonPlugin([
+      home.name,
+      settings.name,
+      quotation.name,
+      questions.name,
+      whoami.name,
+    ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

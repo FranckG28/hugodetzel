@@ -79,3 +79,7 @@ export const questionsQuery = groq`
     description,
   }
 `
+
+export const whoAmIQuery = groq`
+  *[_type == "whoAmI"][0]
+`
