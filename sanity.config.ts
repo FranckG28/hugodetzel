@@ -27,6 +27,7 @@ import youtube from 'schemas/objects/youtube'
 import home from 'schemas/singletons/home'
 import settings from 'schemas/singletons/settings'
 import quotation from 'schemas/singletons/quotation'
+import feature from 'schemas/objects/feature'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE
 
@@ -57,6 +58,7 @@ export default defineConfig({
       timeline,
       youtube,
       link,
+      feature,
       section,
     ],
   },

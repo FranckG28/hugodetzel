@@ -1,6 +1,6 @@
 import { NumberIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { simpleBlocks } from 'schemas/objects/custom-blocks'
+import { simpleBlocks } from 'schemas/objects/blocks'
 
 export default defineType({
   name: 'quotation',

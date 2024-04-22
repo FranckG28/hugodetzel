@@ -10,7 +10,7 @@ const buttonVariants = cva(
         primary:
           'bg-blue-600 shadow-xl font-bold shadow-blue-500/10 text-slate-100 hover:bg-blue-700 focus:bg-blue-700 hover:ring-slate-100 active:ring-slate-100 hover:shadow-blue-500/20 focus:shadow-blue-500/40',
         outline:
-          'bg-transparent ring-1 ring-slate-200/50 hover:ring-slate-100 focus:ring-slate-100 text-slate-100 hover:bg-slate-200/20 focus:bg-slate-200/20',
+          'bg-white/5 ring-1 ring-slate-300/20 hover:ring-slate-100 focus:ring-slate-100 text-slate-100 hover:bg-slate-200/20 focus:bg-slate-200/20',
       },
     },
   },

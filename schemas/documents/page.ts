@@ -1,7 +1,7 @@
 import { DocumentIcon } from '@sanity/icons'
 import { iconPickerOptions } from 'lib/iconPicker'
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { customBlocks } from 'schemas/objects/custom-blocks'
+import { bodyObject } from 'schemas/objects/blocks'
 
 export default defineType({
   type: 'document',
@@ -30,7 +30,7 @@ export default defineType({
       type: 'iconPicker',
       name: 'icon',
       title: 'Icon',
-      options: iconPickerOptions
+      options: iconPickerOptions,
     }),
     defineField({
       type: 'slug',
@@ -70,7 +70,7 @@ export default defineType({
       ],
       validation: (rule) => rule.max(155).required(),
     }),
-    customBlocks,
+    bodyObject,
   ],
   preview: {
     select: {
