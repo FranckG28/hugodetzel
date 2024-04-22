@@ -31,6 +31,7 @@ export const FeatureSection: FC<FeatureSectionProps> = ({
             items={items}
             selected={selected}
             setSelected={setSelected}
+            className="max-lg:hidden"
           />
         </>
       )}

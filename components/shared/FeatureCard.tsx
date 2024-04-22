@@ -8,7 +8,7 @@ export const FeatureCard: FC<{
   className?: string
 }> = ({ feature, className }) => {
   return (
-    <Card className={cn('hover:bg-slate-200/5 transition-all', className)}>
+    <Card className={className}>
       <div className="bg-slate-700 rounded-full p-2 mb-2">
         <DynamicIcon icon={feature.icon} className="w-6 h-6" />
       </div>

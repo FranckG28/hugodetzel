@@ -8,6 +8,8 @@ import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
 import { Feature } from 'types'
+import { FeatureCard } from './FeatureCard'
+import { useBreakpoint } from 'lib/hooks/useBreakpoint'
 
 type FeatureImagesProps = {
   items: Feature[]
@@ -21,6 +23,8 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
   setSelected,
 }) => {
   const [api, setApi] = useState<CarouselApi>()
+
+  const isDesktop = useBreakpoint('lg')
 
   useEffect(() => {
     if (!api) {
@@ -42,28 +46,34 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
 
   return (
     <Carousel
-      className="w-fit overflow-hidden rounded-2xl"
-      orientation="vertical"
+      className="lg:w-fit overflow-hidden rounded-2xl"
+      orientation={isDesktop ? 'vertical' : 'horizontal'}
       opts={{
         align: 'start',
       }}
       setApi={setApi}
     >
-      <CarouselContent className="h-[800px]">
-        {items.map(({ image, title }, index) => {
+      <CarouselContent className="h-[600px] lg:h-[800px]">
+        {items.map((feature, index) => {
           const imageUrl =
-            image &&
-            urlForImage(image)?.height(800).width(600).fit('crop').url()
+            feature.image &&
+            urlForImage(feature.image)?.height(800).width(600).fit('crop').url()
 
           return (
-            <CarouselItem key={index} className="md:basis-full relative">
+            <CarouselItem key={index} className="relative">
               <Image
-                className="object-cover rounded-2xl"
-                alt={title}
+                className="object-cover rounded-2xl mx-auto"
+                alt={feature.title}
                 src={imageUrl}
                 width={600}
                 height={800}
               />
+              <div className="absolute lg:hidden bottom-4 left-8 right-4 h-fit">
+                <FeatureCard
+                  feature={feature}
+                  className="bg-slate-900/80 backdrop-blur rounded-xl"
+                />
+              </div>
             </CarouselItem>
           )
         })}

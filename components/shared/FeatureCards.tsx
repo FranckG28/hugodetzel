@@ -43,7 +43,10 @@ export const FeatureCards: FC<FeatureCardsProps> = ({
               />
             )}
           </AnimatePresence>
-          <FeatureCard feature={item} />
+          <FeatureCard
+            feature={item}
+            className="hover:bg-slate-200/5 transition-all"
+          />
         </button>
       ))}
     </div>
