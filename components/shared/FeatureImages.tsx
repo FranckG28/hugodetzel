@@ -4,12 +4,13 @@ import {
   CarouselContent,
   CarouselItem,
 } from 'components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
+import { useBreakpoint } from 'lib/hooks/useBreakpoint'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
 import { Feature } from 'types'
-import { useBreakpoint } from 'lib/hooks/useBreakpoint'
-import Autoplay from 'embla-carousel-autoplay'
+
 import { FeatureCard } from './FeatureCard'
 
 type FeatureImagesProps = {
@@ -47,7 +48,7 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
 
   return (
     <Carousel
-      className="lg:w-fit overflow-hidden rounded-2xl"
+      className="overflow-hidden rounded-2xl"
       orientation={isDesktop ? 'vertical' : 'horizontal'}
       opts={{
         align: 'start',
@@ -59,7 +60,7 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
         }),
       ]}
     >
-      <CarouselContent className="h-[600px] lg:h-[800px]">
+      <CarouselContent className="h-[500px] sm:h-[600px] lg:h-[800px]">
         {items.map((feature, index) => {
           const imageUrl =
             feature.image &&
@@ -68,16 +69,15 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
           return (
             <CarouselItem key={index} className="relative">
               <Image
-                className="object-cover rounded-2xl mx-auto"
+                className="object-cover rounded-2xl h-full w-full"
                 alt={feature.title}
                 src={imageUrl}
-                width={600}
-                height={800}
+                fill
               />
-              <div className="absolute lg:hidden bottom-4 left-8 right-4 h-fit">
+              <div className="absolute lg:hidden bottom-0 left-0 right-0 top-0">
                 <FeatureCard
                   feature={feature}
-                  className="bg-slate-900/80 backdrop-blur rounded-xl"
+                  className="bg-gradient-to-b from-slate-900/10 to-slate-900 rounded-none justify-end pb-6"
                 />
               </div>
             </CarouselItem>

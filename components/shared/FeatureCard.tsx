@@ -1,6 +1,7 @@
 import { cn } from 'lib/utils'
 import { FC } from 'react'
 import { Feature } from 'types'
+
 import DynamicIcon from './DynamicIcon'
 
 export const FeatureCard: FC<{
@@ -37,9 +38,11 @@ const Card: FC<Props> = ({ className, children }) => {
 }
 
 const CardTitle: FC<Props> = ({ className, children }) => {
-  return <h4 className={cn('text-white', className)}>{children}</h4>
+  return <h5 className={cn('text-white', className)}>{children}</h5>
 }
 
 const CardDescription: FC<Props> = ({ className, children }) => {
-  return <p className={cn('text-slate-300', className)}>{children}</p>
+  return (
+    <p className={cn('text-slate-300 max-md:text-sm', className)}>{children}</p>
+  )
 }

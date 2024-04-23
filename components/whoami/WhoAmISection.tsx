@@ -14,18 +14,18 @@ const avatarSize = 60
 
 export const WhoAmISection: FC<Props> = ({ whoAmI }) => {
   return (
-    <div className="bg-slate-50 text-black py-20">
-      <Container className="grid lg:grid-cols-3 divide-x-2 divide-slate-200">
-        <div className="flex flex-col gap-12 lg:col-span-2 lg:pr-12">
+    <div className="bg-slate-100 text-slate-900 py-10 lg:py-20">
+      <Container className="grid lg:grid-cols-3 max-lg:divide-y-2 lg:divide-x-2 divide-slate-200">
+        <div className="flex flex-col gap-6 lg:gap-12 lg:col-span-2 lg:pr-12 max-lg:pb-8">
           <div className="flex flex-col gap-4">
             <CustomPortableText
-              className="text-black text-lg lg:text-xl"
+              className="text-slate-900 text-lg lg:text-xl"
               value={whoAmI.body}
             />
           </div>
           <div className="flex gap-10 items-center ml-auto">
             <div>
-              <p className="font-bold text-xl">{whoAmI.name}</p>
+              <p className="font-bold text-lg">{whoAmI.name}</p>
               <p className="text-slate-700">{whoAmI.job}</p>
             </div>
             <Image
@@ -41,7 +41,7 @@ export const WhoAmISection: FC<Props> = ({ whoAmI }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-10 justify-between lg:pl-12 py-4">
+        <div className="flex flex-col gap-8 lg:gap-10 justify-between lg:pl-12 max-lg:pt-8 lg:py-4">
           {whoAmI.stats.map((stat) => {
             return (
               <div key={stat.title} className="flex flex-col gap-2">

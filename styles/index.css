@@ -43,7 +43,7 @@ ol {
   }
 
   h5 {
-    @apply text-xl font-bold;
+    @apply md:text-xl font-semibold;
   }
 
   h6 {
@@ -53,9 +53,7 @@ ol {
   h1,
   h2,
   h3,
-  h4,
-  h5,
-  h6 {
+  h4 {
     @apply text-balance tracking-tight;
   }
 }

@@ -1,8 +1,9 @@
+import { cn } from 'lib/utils'
 import { FC, useState } from 'react'
 import { Feature } from 'types'
+
 import { Container } from './Container'
 import { FeatureCards } from './FeatureCards'
-import { cn } from 'lib/utils'
 import { FeatureImages } from './FeatureImages'
 
 type FeatureSectionProps = {
@@ -18,7 +19,10 @@ export const FeatureSection: FC<FeatureSectionProps> = ({
 
   return (
     <Container
-      className={cn('grid lg:grid-cols-2 gap-10 bg-slate-950 py-4', className)}
+      className={cn(
+        'grid lg:grid-cols-2 gap-10 bg-slate-950 lg:py-12',
+        className,
+      )}
     >
       {items && (
         <>
