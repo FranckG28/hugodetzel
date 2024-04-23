@@ -1,16 +1,17 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import { Header } from 'components/shared/Header'
 import Layout from 'components/global/Layout'
-import { resolveHref } from 'lib/sanity.links'
-import Link from 'next/link'
-import type { HomePagePayload, QuestionsPayload, WhoAmI } from 'types'
+import { QuestionsSection } from 'components/questions/QuestionsSection'
+import { FeatureSection } from 'components/shared/FeaturesSection'
+import { Header } from 'components/shared/Header'
+import { WhoAmISection } from 'components/whoami/WhoAmISection'
+import type {
+  HomePagePayload,
+  MixingStepsPayload,
+  QuestionsPayload,
+  WhoAmI,
+} from 'types'
 import { SettingsPayload } from 'types'
 
 import HomePageHead from './HomePageHead'
-import { FeatureCards } from 'components/shared/FeatureCards'
-import { FeatureSection } from 'components/shared/FeaturesSection'
-import { QuestionsSection } from 'components/questions/QuestionsSection'
-import { WhoAmISection } from 'components/whoami/WhoAmISection'
 
 export interface HomePageProps {
   settings?: SettingsPayload
@@ -18,6 +19,7 @@ export interface HomePageProps {
   preview?: boolean
   questions?: QuestionsPayload
   whoAmI?: WhoAmI
+  mixingSteps?: MixingStepsPayload
 }
 
 export function HomePage({

@@ -89,3 +89,16 @@ export const whoAmIQuery = groq`
     stats,
   }
 `
+
+export const mixingStepsQuery = groq`
+  *[_type == "mixingSteps"][0]{
+    title,
+    description,
+    cta,
+    steps[]{
+      title,
+      description,
+      image,
+    }
+  }
+`
