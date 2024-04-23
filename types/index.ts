@@ -1,4 +1,4 @@
-import type { Image, PortableTextBlock } from 'sanity'
+import type { File, Image, PortableTextBlock } from 'sanity'
 
 interface Color {
   label: string
@@ -126,4 +126,21 @@ export interface QuotationPayload {
   baseMinutes: number
   baseTracks: number
   options: QuotationOption[]
+}
+
+export type MixingStep = {
+  title: string
+  description: string
+  image: Image
+  audio: File
+}
+
+export type MixingStepsPayload = {
+  title: string
+  description: string;
+  steps: MixingStep[]
+  cta: {
+    title: string
+    link: string
+  }
 }
