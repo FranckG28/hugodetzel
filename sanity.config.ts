@@ -19,16 +19,17 @@ import { iconPicker } from 'sanity-plugin-icon-picker'
 import { simplerColorInput } from 'sanity-plugin-simpler-color-input'
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
+import feature from 'schemas/objects/feature'
 import link from 'schemas/objects/link'
 import milestone from 'schemas/objects/milestone'
 import section from 'schemas/objects/section'
 import timeline from 'schemas/objects/timeline'
 import youtube from 'schemas/objects/youtube'
 import home from 'schemas/singletons/home'
-import settings from 'schemas/singletons/settings'
-import quotation from 'schemas/singletons/quotation'
-import feature from 'schemas/objects/feature'
+import mixingSteps from 'schemas/singletons/mixing-steps'
 import questions from 'schemas/singletons/questions'
+import quotation from 'schemas/singletons/quotation'
+import settings from 'schemas/singletons/settings'
 import whoami from 'schemas/singletons/whoami'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE
@@ -55,6 +56,7 @@ export default defineConfig({
       quotation,
       questions,
       whoami,
+      mixingSteps,
       // Documents
       page,
       project,
@@ -69,7 +71,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings, quotation, questions, whoami]),
+      structure: pageStructure([home, settings, quotation, questions, whoami, mixingSteps]),
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([
@@ -78,6 +80,7 @@ export default defineConfig({
       quotation.name,
       questions.name,
       whoami.name,
+      mixingSteps.name,
     ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
