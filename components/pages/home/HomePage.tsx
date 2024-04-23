@@ -1,4 +1,5 @@
 import Layout from 'components/global/Layout'
+import { MixingStepsSection } from 'components/mixing-steps/MixingStepsSection'
 import { QuestionsSection } from 'components/questions/QuestionsSection'
 import { FeatureSection } from 'components/shared/FeaturesSection'
 import { Header } from 'components/shared/Header'
@@ -28,6 +29,7 @@ export function HomePage({
   preview,
   questions,
   whoAmI,
+  mixingSteps,
 }: HomePageProps) {
   const {
     overview,
@@ -54,6 +56,7 @@ export function HomePage({
         )}
 
         {features && <FeatureSection items={features} className="pb-20" />}
+        {mixingSteps && <MixingStepsSection mixingSteps={mixingSteps} />}
         {whoAmI && <WhoAmISection whoAmI={whoAmI} />}
         {questions && <QuestionsSection questions={questions} />}
       </Layout>
