@@ -5,13 +5,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { urlForImage } from 'lib/sanity.image'
 import { cn, formatDuration } from 'lib/utils'
 import Image from 'next/image'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { MixingStep } from 'types'
 import useSound from 'use-sound'
 
 type Props = {
   index: number
   step: MixingStep
+  playing: boolean
+  setPlaying: (index: number) => void
 }
 
 const stepNumber = (n: number) => {
@@ -19,24 +21,31 @@ const stepNumber = (n: number) => {
   return index < 10 ? `0${index}` : index
 }
 
-export const MixingStepDisplay: FC<Props> = ({ step, index }) => {
+export const MixingStepDisplay: FC<Props> = ({
+  step,
+  index,
+  playing,
+  setPlaying,
+}) => {
   const [play, { stop, duration }] = useSound(step.audioUrl)
-  const [playing, setPlaying] = useState(false)
 
   const imageUrl =
     step.image &&
     urlForImage(step.image)?.height(600).width(1920).fit('crop').url()
 
+  useEffect(() => {
+    if (playing) {
+      play()
+    } else {
+      stop()
+    }
+  }, [play, playing, stop])
+
   return (
     <button
       className="flex flex-col gap-3 text-left group"
       onClick={() => {
-        if (playing) {
-          stop()
-        } else {
-          play()
-        }
-        setPlaying(!playing)
+        setPlaying(index)
       }}
     >
       <div className="rounded-xl shadow-lg bg-slate-400 w-full aspect-video mb-3 backdrop-blur group/preview">
