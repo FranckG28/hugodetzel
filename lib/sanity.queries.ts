@@ -99,6 +99,7 @@ export const mixingStepsQuery = groq`
       title,
       description,
       image,
+      "audioUrl": audio.asset->url,
     }
   }
 `

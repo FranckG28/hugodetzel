@@ -132,7 +132,7 @@ export type MixingStep = {
   title: string
   description: string
   image: Image
-  audio: File
+  audioUrl: string
 }
 
 export type MixingStepsPayload = {

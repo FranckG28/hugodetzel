@@ -49,9 +49,11 @@
     "sanity-plugin-asset-source-unsplash": "1.1.2",
     "sanity-plugin-icon-picker": "^3.3.0",
     "sanity-plugin-simpler-color-input": "^2.2.0",
+    "simplex-noise": "^4.0.1",
     "styled-components": "6.1.1",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/react": "18.2.42",
