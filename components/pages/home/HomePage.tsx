@@ -57,6 +57,7 @@ export function HomePage({
 
         {features && <FeatureSection items={features} className="pb-20" />}
         {mixingSteps && <MixingStepsSection mixingSteps={mixingSteps} />}
+        <div className="h-96 bg-slate-900"></div>
         {whoAmI && <WhoAmISection whoAmI={whoAmI} />}
         {questions && <QuestionsSection questions={questions} />}
       </Layout>

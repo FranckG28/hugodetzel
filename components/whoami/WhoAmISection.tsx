@@ -14,7 +14,7 @@ const avatarSize = 60
 
 export const WhoAmISection: FC<Props> = ({ whoAmI }) => {
   return (
-    <div className="bg-slate-100 text-slate-900 py-10 lg:py-20">
+    <div className="bg-slate-50 text-slate-900 py-10 lg:py-20">
       <Container className="grid lg:grid-cols-3 max-lg:divide-y-2 lg:divide-x-2 divide-slate-200">
         <div className="flex flex-col gap-6 lg:gap-12 lg:col-span-2 lg:pr-12 max-lg:pb-8">
           <div className="flex flex-col gap-4">

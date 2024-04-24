@@ -139,8 +139,4 @@ export type MixingStepsPayload = {
   title: string
   description: string;
   steps: MixingStep[]
-  cta: {
-    title: string
-    link: string
-  }
 }

@@ -69,23 +69,6 @@ export default defineType({
                 }),
             ],
         }),
-        defineField({
-            name: 'cta',
-            type: 'object',
-            title: 'Call to action',
-            fields: [
-                defineField({
-                    name: 'title',
-                    title: 'Titre du bouton',
-                    type: 'string',
-                }),
-                defineField({
-                    name: 'link',
-                    title: 'Lien du bouton',
-                    type: 'string',
-                }),
-            ],
-        })
     ],
     preview: {
         prepare() {
