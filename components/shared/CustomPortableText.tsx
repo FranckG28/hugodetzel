@@ -1,13 +1,13 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
-import ImageBox from 'components/shared/ImageBox'
 import { TimelineSection } from 'components/blocks/timeline/TimelineSection'
+import ImageBox from 'components/shared/ImageBox'
 import getYouTubeId from 'get-youtube-id'
+import { cn } from 'lib/utils'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import type { Image, PortableTextBlock } from 'sanity'
 
-import { Container } from './Container'
 import { SectionItem } from '../blocks/section/SectionItem'
-import { cn } from 'lib/utils'
+import { Container } from './Container'
 
 export function CustomPortableText({
   className,

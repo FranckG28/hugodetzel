@@ -43,11 +43,11 @@ ol {
   }
 
   h5 {
-    @apply md:text-xl font-semibold;
+    @apply md:text-lg font-semibold;
   }
 
   h6 {
-    @apply text-lg font-bold;
+    @apply font-medium;
   }
 
   h1,

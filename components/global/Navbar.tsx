@@ -1,6 +1,6 @@
 import { useWindowScroll } from '@uidotdev/usehooks'
-import { Button } from 'components/ui/button'
 import { Container } from 'components/shared/Container'
+import { Button } from 'components/ui/button'
 import { title } from 'lib/demo.data'
 import { cn } from 'lib/utils'
 import Link from 'next/link'
@@ -16,19 +16,19 @@ export function Navbar({ menuItems, siteTitle }: NavbarProps) {
 
   const isScrolled = y > 100
 
-  const scrolledStyle = 'bg-slate-950/80 backdrop-blur'
+  const scrolledStyle = 'bg-slate-950/90 backdrop-blur'
 
   return (
     <div
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-gradient-to-b from-slate-950/50 to-transparent',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled && scrolledStyle,
       )}
     >
-      <Container className="flex flex-wrap items-center gap-x-2 h-16">
+      <Container className="flex flex-wrap items-center gap-x-2 h-14">
         <Link
           key="home"
-          className={`text-xl font-bold text-slate-200 hover:text-white md:text-2xl my-auto mr-auto tracking-tight`}
+          className={`text-lg font-bold text-slate-200 hover:text-white md:text-xl my-auto mr-auto tracking-tight`}
           href={'/'}
         >
           {siteTitle ?? title}
