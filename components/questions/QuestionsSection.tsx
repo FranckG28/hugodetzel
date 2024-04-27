@@ -22,7 +22,7 @@ export const QuestionsSection: FC<Props> = ({ questions }) => {
           <div key={index} className="flex flex-col gap-2">
             <h5>{question.question}</h5>
             <CustomPortableText
-              className="!text-base"
+              className="!text-base text-slate-300"
               value={question.answer}
             />
           </div>
