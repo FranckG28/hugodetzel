@@ -16,13 +16,12 @@ export function Navbar({ menuItems, siteTitle }: NavbarProps) {
 
   const isScrolled = y > 100
 
-  const scrolledStyle =
-    'bg-slate-950/80 backdrop-blur shadow shadow-slate-800/50'
+  const scrolledStyle = 'bg-slate-950/90 backdrop-blur'
 
   return (
     <div
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-gradient-to-b from-slate-950/50 to-transparent',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled && scrolledStyle,
       )}
     >

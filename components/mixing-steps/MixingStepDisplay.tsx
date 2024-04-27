@@ -43,15 +43,15 @@ export const MixingStepDisplay: FC<Props> = ({
 
   return (
     <button
-      className="flex flex-col gap-3 text-left group"
+      className="flex flex-col gap-2 text-left group"
       onClick={() => {
         setPlaying(index)
       }}
     >
-      <div className="rounded-xl shadow-lg bg-slate-400 w-full aspect-video mb-3 backdrop-blur group/preview">
+      <div className="w-full aspect-video mb-5 group/preview relative rounded-2xl overflow-hidden shadow-lg max-h-48">
         <Image
           className={cn(
-            'rounded-xl m-3 object-cover transition-all brightness-75',
+            'rounded-xl object-cover transition-all brightness-75',
             playing && 'brightness-50',
           )}
           alt={step.title}
@@ -59,42 +59,40 @@ export const MixingStepDisplay: FC<Props> = ({
           fill
           loading="lazy"
         />
-        {playing ? (
-          <AnimatePresence>
+        <AnimatePresence>
+          {playing ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="rounded-xl overflow-hidden relative h-full w-full m-3"
+              className="rounded-xl overflow-hidden relative h-full w-full"
             >
               <PauseIcon className="text-transparent w-8 h-8 group-hover/preview:text-white transition-all absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20" />
               <WavyBackground
-                className="rounded-xl m-3 overflow-hidden"
+                className="rounded-xl overflow-hidden"
                 speed={'fast'}
               ></WavyBackground>
             </motion.div>
-          </AnimatePresence>
-        ) : (
-          <AnimatePresence>
+          ) : (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-3"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             >
-              <PlayIcon className="text-white/60 w-8 h-8 group-hover:text-white transition-all" />
+              <PlayIcon className="text-white/50 w-8 h-8 group-hover:text-white transition-all" />
             </motion.div>
-          </AnimatePresence>
-        )}
+          )}
+        </AnimatePresence>
         <AudioPlayer
           playing={playing}
           duration={formatDuration(duration / 1000)}
-          className="absolute bottom-0 left-6"
+          className="absolute bottom-2 left-2"
         />
       </div>
       <p className="text-sm text-slate-500">{stepNumber(index)}</p>
       <h6>{step.title}</h6>
-      <p className="text-slate-600">{step.description}</p>
+      <p className="text-slate-600 text-sm">{step.description}</p>
     </button>
   )
 }
