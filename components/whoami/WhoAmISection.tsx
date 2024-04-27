@@ -19,7 +19,7 @@ export const WhoAmISection: FC<Props> = ({ whoAmI }) => {
         <div className="flex flex-col gap-6 lg:gap-12 lg:col-span-2 lg:pr-12 max-lg:pb-8">
           <div className="flex flex-col gap-4">
             <CustomPortableText
-              className="text-slate-900 text-lg lg:text-xl"
+              className="text-slate-800 text-lg"
               value={whoAmI.body}
             />
           </div>
