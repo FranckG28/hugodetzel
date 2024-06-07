@@ -17,7 +17,9 @@ import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { iconPicker } from 'sanity-plugin-icon-picker'
 import { simplerColorInput } from 'sanity-plugin-simpler-color-input'
+import author from 'schemas/documents/author'
 import page from 'schemas/documents/page'
+import post from 'schemas/documents/post'
 import project from 'schemas/documents/project'
 import feature from 'schemas/objects/feature'
 import link from 'schemas/objects/link'
@@ -60,6 +62,8 @@ export default defineConfig({
       // Documents
       page,
       project,
+      author,
+      post,
       // Objects
       milestone,
       timeline,

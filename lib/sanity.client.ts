@@ -1,4 +1,4 @@
-import { createClient } from '@sanity/client/stega'
+import { createClient, SanityClient } from '@sanity/client/stega'
 import {
   apiVersion,
   basePath,
@@ -6,6 +6,9 @@ import {
   projectId,
   useCdn,
 } from 'lib/sanity.api'
+import { Post } from 'types'
+
+import { postAndMoreStoriesQuery, postBySlugQuery, postSlugsQuery, postsQuery } from './sanity.queries'
 
 export function getClient(preview?: { token: string }) {
   const client = createClient({
@@ -50,4 +53,29 @@ export function getClient(preview?: { token: string }) {
     })
   }
   return client
+}
+
+
+export async function getAllPosts(client: SanityClient): Promise<Post[]> {
+  return (await client.fetch(postsQuery)) || []
+}
+
+export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
+  const client = getClient()
+  const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
+  return slugs.map((slug) => ({ slug }))
+}
+
+export async function getPostBySlug(
+  client: SanityClient,
+  slug: string,
+): Promise<Post> {
+  return (await client.fetch(postBySlugQuery, { slug })) || ({} as any)
+}
+
+export async function getPostAndMoreStories(
+  client: SanityClient,
+  slug: string,
+): Promise<{ post: Post; morePosts: Post[] }> {
+  return await client.fetch(postAndMoreStoriesQuery, { slug })
 }
