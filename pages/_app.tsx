@@ -2,10 +2,9 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import 'styles/index.css'
 
 import { AppProps } from 'next/app'
+import localFont from 'next/font/local'
 import { lazy } from 'react'
 import { SharedPageProps } from 'types'
-
-import localFont from 'next/font/local'
 
 const font = localFont({
   src: '../public/fonts/InterVariable.woff2',

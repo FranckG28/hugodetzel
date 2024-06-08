@@ -38,7 +38,7 @@ export default function PostPage(props: PostPageProps) {
           {preview && !post ? (
             <h1>Loading…</h1>
           ) : (
-            <div className="flex flex-col gap-2 divide-y divide-slate-700">
+            <div className="flex flex-col gap-2">
               <article>
                 <PostHeader
                   title={post.title}
@@ -46,7 +46,10 @@ export default function PostPage(props: PostPageProps) {
                   date={post.date}
                   author={post.author}
                 />
-                <CustomPortableText value={post.content} />
+                <CustomPortableText
+                  value={post.content}
+                  className="lg:text-lg"
+                />
               </article>
               {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
             </div>

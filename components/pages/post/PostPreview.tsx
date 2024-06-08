@@ -28,11 +28,13 @@ export default function PostPreview({
           {title}
         </Link>
       </h4>
-      <div className="mb-4 text-lg">
+      <div className="mb-4 text-slate-300">
         <PostDate dateString={date} />
       </div>
       {excerpt && (
-        <p className="mb-4 text-lg leading-relaxed text-pretty">{excerpt}</p>
+        <p className="mb-4 text-lg leading-relaxed text-pretty text-slate-200">
+          {excerpt}
+        </p>
       )}
       {author && <AuthorAvatar name={author.name} picture={author.picture} />}
     </div>

@@ -17,13 +17,19 @@ export default defineType({
             name: 'picture',
             title: 'Picture',
             type: 'image',
-            field: [
-                {
+            fields: [
+                defineField({
+                    title: 'Caption',
+                    name: 'caption',
+                    type: 'string',
+                }),
+                defineField({
                     name: 'alt',
                     type: 'string',
-                    title: 'Alternative text',
-                    description: 'Important for SEO and accessiblity.',
-                },
+                    title: 'Alt text',
+                    description:
+                        'Alternative text for screenreaders. Falls back on caption if not set',
+                }),
             ],
             options: { hotspot: true },
             validation: (rule) => rule.required(),

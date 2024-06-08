@@ -1,7 +1,7 @@
-import { DiscIcon } from '@radix-ui/react-icons'
 import { Badge } from 'components/ui/badge'
 import { cn } from 'lib/utils'
 import { FC } from 'react'
+
 import { QuotationPreviewWaveform } from './QuotationPreviewWaveform'
 
 type QuestionPreviewProps = {
