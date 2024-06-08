@@ -14,11 +14,11 @@ export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
   const [playing, setPlaying] = useState<number | null>(null)
 
   return (
-    <div className="py-12 lg:py-20 bg-white text-slate-950 bg-grid-slate-100/50">
+    <div className="py-16 lg:py-24 bg-slate-800 bg-grid-slate-700/30">
       <Container className="flex flex-col gap-10 lg:gap-16">
         <div className="flex flex-col gap-3 lg:gap-6">
           <h2 className="text-center">{mixingSteps.title}</h2>
-          <p className="max-w-prose md:text-lg text-center mx-auto text-slate-700">
+          <p className="max-w-prose md:text-lg text-center mx-auto text-slate-200">
             {mixingSteps.description}
           </p>
         </div>

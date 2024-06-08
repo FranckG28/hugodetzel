@@ -1,11 +1,12 @@
-import { PauseIcon, PlayIcon } from '@radix-ui/react-icons'
+import { PauseIcon } from '@radix-ui/react-icons'
 import { AudioPlayer } from 'components/shared/AudioPlayer'
 import { WavyBackground } from 'components/ui/wavy'
 import { AnimatePresence, motion } from 'framer-motion'
 import { urlForImage } from 'lib/sanity.image'
 import { cn, formatDuration } from 'lib/utils'
 import Image from 'next/image'
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect } from 'react'
+import { FiVolume2 } from 'react-icons/fi'
 import { MixingStep } from 'types'
 import useSound from 'use-sound'
 
@@ -80,7 +81,7 @@ export const MixingStepDisplay: FC<Props> = ({
               exit={{ opacity: 0 }}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             >
-              <PlayIcon className="text-white/50 w-8 h-8 group-hover:text-white transition-all" />
+              <FiVolume2 className="text-white/50 w-8 h-8 group-hover:text-white transition-all" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -90,9 +91,9 @@ export const MixingStepDisplay: FC<Props> = ({
           className="absolute bottom-2 left-2"
         />
       </div>
-      <p className="text-sm text-slate-500">{stepNumber(index)}</p>
+      <p className="text-sm text-slate-400">{stepNumber(index)}</p>
       <h6>{step.title}</h6>
-      <p className="text-slate-600 text-sm">{step.description}</p>
+      <p className="text-slate-400 text-sm">{step.description}</p>
     </button>
   )
 }

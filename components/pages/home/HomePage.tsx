@@ -7,11 +7,13 @@ import { WhoAmISection } from 'components/whoami/WhoAmISection'
 import type {
   HomePagePayload,
   MixingStepsPayload,
+  Post,
   QuestionsPayload,
   WhoAmI,
 } from 'types'
 import { SettingsPayload } from 'types'
 
+import { PostsSection } from '../post/PostsSection'
 import HomePageHead from './HomePageHead'
 
 export interface HomePageProps {
@@ -21,6 +23,7 @@ export interface HomePageProps {
   questions?: QuestionsPayload
   whoAmI?: WhoAmI
   mixingSteps?: MixingStepsPayload
+  posts?: Post[]
 }
 
 export function HomePage({
@@ -30,6 +33,7 @@ export function HomePage({
   questions,
   whoAmI,
   mixingSteps,
+  posts,
 }: HomePageProps) {
   const {
     overview,
@@ -57,7 +61,7 @@ export function HomePage({
 
         {features && <FeatureSection items={features} className="pb-20" />}
         {mixingSteps && <MixingStepsSection mixingSteps={mixingSteps} />}
-        <div className="h-96 bg-slate-600"></div>
+        {posts && <PostsSection posts={posts} />}
         {whoAmI && <WhoAmISection whoAmI={whoAmI} />}
         {questions && <QuestionsSection questions={questions} />}
       </Layout>

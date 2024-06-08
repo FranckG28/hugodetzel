@@ -1,6 +1,6 @@
+import Layout from 'components/global/Layout'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
-import Layout from 'components/global/Layout'
 import type { PagePayload, SettingsPayload } from 'types'
 
 import PageHead from './PageHead'

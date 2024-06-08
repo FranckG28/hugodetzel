@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from 'lib/utils'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Feature } from 'types'
-import DynamicIcon from './DynamicIcon'
+
 import { FeatureCard } from './FeatureCard'
 
 type FeatureCardsProps = {
