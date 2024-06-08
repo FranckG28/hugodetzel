@@ -27,7 +27,7 @@ export default function PostsPage(props: PostPageProps) {
         <Container className="py-16 flex flex-col gap-10">
           <h1 className="mt-12 lg:mt-32">Blog</h1>
 
-          <div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
+          <div className="mb-32 grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
             {posts.map((post) => (
               <PostPreview
                 key={post._id}

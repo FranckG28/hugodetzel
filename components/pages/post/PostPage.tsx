@@ -5,9 +5,9 @@ import * as demo from 'lib/demo.data'
 import Error from 'next/error'
 import { Post, SettingsPayload } from 'types'
 
-import MoreStories from './MoreStories'
 import PostHeader from './PostHeader'
 import PostPageHead from './PostPageHead'
+import PostsPreviews from './PostsPreviews'
 
 export interface PostPageProps {
   preview?: boolean
@@ -21,7 +21,6 @@ const NO_POSTS: Post[] = []
 
 export default function PostPage(props: PostPageProps) {
   const { preview, loading, morePosts = NO_POSTS, post, settings } = props
-  const { title = demo.title } = settings || {}
 
   const slug = post?.slug
 
@@ -48,10 +47,17 @@ export default function PostPage(props: PostPageProps) {
                 />
                 <CustomPortableText
                   value={post.content}
-                  className="lg:text-lg"
+                  className="lg:text-lg max-w-prose"
                 />
               </article>
-              {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
+              {morePosts?.length > 0 && (
+                <>
+                  <h3 className="py-8 mt-12 border-t border-slate-700 ">
+                    Découvrez d&apos;autres articles
+                  </h3>
+                  <PostsPreviews posts={morePosts} />
+                </>
+              )}
             </div>
           )}
         </Container>

@@ -1,8 +1,17 @@
 import { format, parseISO } from 'date-fns'
 
-export default function PostDate({ dateString }: { dateString: string }) {
+type Props = {
+  dateString: string
+  className?: string
+}
+
+export default function PostDate({ dateString, className }: Props) {
   if (!dateString) return null
 
   const date = parseISO(dateString)
-  return <time dateTime={dateString}>{format(date, 'd LLLL yyyy')}</time>
+  return (
+    <time dateTime={dateString} className={className}>
+      {format(date, 'd LLLL yyyy')}
+    </time>
+  )
 }

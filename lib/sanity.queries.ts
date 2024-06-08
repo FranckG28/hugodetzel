@@ -133,6 +133,12 @@ export const postAndMoreStoriesQuery = groq`
   }
 }`
 
+export const latestPostsPreview = groq`
+*[_type == "post"] | order(date desc, _updatedAt desc) [0...2] {
+  ${postFields}
+}
+`
+
 export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `

@@ -4,6 +4,7 @@ import { readToken } from 'lib/sanity.api'
 import { getClient } from 'lib/sanity.client'
 import {
   homePageQuery,
+  latestPostsPreview,
   mixingStepsQuery,
   questionsQuery,
   settingsQuery,
@@ -13,6 +14,7 @@ import { GetStaticProps } from 'next'
 import {
   HomePagePayload,
   MixingStepsPayload,
+  Post,
   QuestionsPayload,
   SettingsPayload,
   SharedPageProps,
@@ -24,6 +26,7 @@ interface PageProps extends SharedPageProps {
   settings: SettingsPayload
   questions: QuestionsPayload
   whoami: WhoAmI
+  posts: Post[]
   mixingSteps: MixingStepsPayload
 }
 
@@ -32,7 +35,8 @@ interface Query {
 }
 
 export default function IndexPage(props: PageProps) {
-  const { page, settings, draftMode, questions, whoami, mixingSteps } = props
+  const { page, settings, draftMode, questions, whoami, mixingSteps, posts } =
+    props
 
   if (draftMode) {
     return <HomePagePreview page={page} settings={settings} />
@@ -45,6 +49,7 @@ export default function IndexPage(props: PageProps) {
       questions={questions}
       whoAmI={whoami}
       mixingSteps={mixingSteps}
+      posts={posts}
     />
   )
 }
@@ -59,13 +64,15 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const [settings, page, questions, whoami, mixingSteps] = await Promise.all([
-    client.fetch<SettingsPayload | null>(settingsQuery),
-    client.fetch<HomePagePayload | null>(homePageQuery),
-    client.fetch<QuestionsPayload | null>(questionsQuery),
-    client.fetch<WhoAmI | null>(whoAmIQuery),
-    client.fetch<MixingStepsPayload | null>(mixingStepsQuery),
-  ])
+  const [settings, page, questions, whoami, mixingSteps, posts] =
+    await Promise.all([
+      client.fetch<SettingsPayload | null>(settingsQuery),
+      client.fetch<HomePagePayload | null>(homePageQuery),
+      client.fetch<QuestionsPayload | null>(questionsQuery),
+      client.fetch<WhoAmI | null>(whoAmIQuery),
+      client.fetch<MixingStepsPayload | null>(mixingStepsQuery),
+      client.fetch<Post[]>(latestPostsPreview),
+    ])
 
   return {
     props: {
@@ -75,6 +82,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
       draftMode,
       whoami,
       mixingSteps,
+      posts,
       token: draftMode ? readToken : null,
     },
   }
