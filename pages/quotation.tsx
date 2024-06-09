@@ -1,7 +1,6 @@
 import { QuotationPage } from 'components/pages/quotation/QuotationPage'
 import { readToken } from 'lib/sanity.api'
-import { getClient } from 'lib/sanity.client'
-import { quotationQuery, settingsQuery } from 'lib/sanity.queries'
+import { getClient, getQuotation, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
 import { QuotationPayload, SettingsPayload, SharedPageProps } from 'types'
 
@@ -35,8 +34,8 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
   const [settings, quotation] = await Promise.all([
-    client.fetch<SettingsPayload | null>(settingsQuery),
-    client.fetch<QuotationPayload | null>(quotationQuery),
+    getSettings(client),
+    getQuotation(client),
   ])
 
   return {

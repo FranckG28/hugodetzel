@@ -5,7 +5,6 @@ import {
   CarouselItem,
 } from 'components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
-import { useBreakpoint } from 'lib/hooks/useBreakpoint'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
@@ -25,8 +24,6 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
   setSelected,
 }) => {
   const [api, setApi] = useState<CarouselApi>()
-
-  const isDesktop = useBreakpoint('lg')
 
   useEffect(() => {
     if (!api) {
@@ -49,7 +46,7 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
   return (
     <Carousel
       className="overflow-hidden rounded-2xl"
-      orientation={isDesktop ? 'vertical' : 'horizontal'}
+      orientation="vertical"
       opts={{
         align: 'start',
       }}
@@ -77,7 +74,7 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
               <div className="absolute lg:hidden bottom-0 left-0 right-0 top-0">
                 <FeatureCard
                   feature={feature}
-                  className="bg-gradient-to-b from-slate-900/10 to-slate-900 rounded-none justify-end pb-6"
+                  className="bg-gradient-to-b from-slate-900/10 to-slate-950 rounded-none justify-end pb-6"
                 />
               </div>
             </CarouselItem>

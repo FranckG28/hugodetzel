@@ -1,12 +1,11 @@
 import { ProjectPage } from 'components/pages/project/ProjectPage'
 import ProjectPreview from 'components/pages/project/ProjectPreview'
 import { readToken } from 'lib/sanity.api'
-import { getClient } from 'lib/sanity.client'
+import { getClient, getSettings } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
 import {
   projectBySlugQuery,
   projectPaths,
-  settingsQuery,
   siteTitleQuery,
 } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
@@ -49,7 +48,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
   const [settings, project, homePageTitle] = await Promise.all([
-    client.fetch<SettingsPayload | null>(settingsQuery),
+    getSettings(client),
     client.fetch<ProjectPayload | null>(projectBySlugQuery, {
       slug: params.slug,
     }),

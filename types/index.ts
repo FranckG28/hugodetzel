@@ -129,6 +129,7 @@ export interface QuotationPayload {
 }
 
 export type MixingStep = {
+  _id: string
   title: string
   description: string
   image: Image
@@ -156,4 +157,17 @@ export interface Post {
   author?: Author
   slug?: string
   content?: any
+}
+
+export type Reference = {
+  _id: string
+  name: string
+  date: string
+  description?: string
+  picture: Image
+  category: {
+    name: string
+  }
+  mixedAudio: string
+  unmixedAudio?: string
 }

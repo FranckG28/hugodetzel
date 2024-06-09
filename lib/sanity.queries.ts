@@ -148,3 +148,20 @@ export const postBySlugQuery = groq`
   ${postFields}
 }
 `
+
+const referenceFields = groq`
+  _id,
+  category->{name},
+  description,
+  name,
+  date,
+  picture,
+  "unmixedAudio": unmixedAudio.asset->url,
+  "mixedAudio": mixedAudio.asset->url,
+`
+
+export const referencesQuery = groq`
+  *[_type == "workReference"]{
+    ${referenceFields}
+  }
+`

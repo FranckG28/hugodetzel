@@ -2,7 +2,7 @@ import { cn } from 'lib/utils'
 import { FC } from 'react'
 import { Feature } from 'types'
 
-import DynamicIcon from './DynamicIcon'
+import DynamicIcon from '../shared/DynamicIcon'
 
 export const FeatureCard: FC<{
   feature: Feature

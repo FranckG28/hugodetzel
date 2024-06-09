@@ -39,9 +39,9 @@ export function Header(props: HeaderProps) {
 
       <div className="absolute h-full w-full bg-gradient-to-b from-slate-950/40 to-slate-950 z-0" />
 
-      <Container className="z-10 relative pt-40 lg:pt-48 pb-8 grid lg:grid-cols-2 gap-8">
+      <Container className="z-10 relative py-48 grid gap-8">
         {/* Title */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 text-center items-center max-w-screen-md mx-auto">
           {cleanedTitle && <TextGenerateEffect words={cleanedTitle} />}
           {/* Description */}
           {description && (
@@ -51,7 +51,7 @@ export function Header(props: HeaderProps) {
             />
           )}
           {links?.length > 0 && (
-            <div className="flex gap-4 flex-wrap animate-in fade-in duration-1000">
+            <div className="flex gap-4 flex-wrap animate-in fade-in duration-1000 justify-center">
               {links.map((link, key) => {
                 return (
                   <Link key={key} href={link.href}>

@@ -45,7 +45,9 @@ export const FeatureCards: FC<FeatureCardsProps> = ({
           </AnimatePresence>
           <FeatureCard
             feature={item}
-            className="hover:bg-slate-200/5 transition-all"
+            className={cn(
+              idx !== selected && 'hover:bg-slate-900/80 transition-all',
+            )}
           />
         </button>
       ))}

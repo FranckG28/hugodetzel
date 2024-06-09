@@ -1,14 +1,9 @@
 import { Page } from 'components/pages/page/Page'
 import PagePreview from 'components/pages/page/PagePreview'
 import { readToken } from 'lib/sanity.api'
-import { getClient } from 'lib/sanity.client'
+import { getClient, getSettings } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
-import {
-  pagePaths,
-  pagesBySlugQuery,
-  settingsQuery,
-  siteTitleQuery,
-} from 'lib/sanity.queries'
+import { pagePaths, pagesBySlugQuery, siteTitleQuery } from 'lib/sanity.queries'
 import type { GetStaticProps } from 'next'
 import { PagePayload, SettingsPayload, SharedPageProps } from 'types'
 
@@ -43,7 +38,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
   const [settings, page, homePageTitle] = await Promise.all([
-    client.fetch<SettingsPayload | null>(settingsQuery),
+    getSettings(client),
     client.fetch<PagePayload | null>(pagesBySlugQuery, {
       slug: params.slug,
     }),
