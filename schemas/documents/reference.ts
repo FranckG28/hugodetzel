@@ -19,7 +19,6 @@ export default defineType({
             name: 'date',
             title: 'Date',
             type: 'date',
-            validation: (rule) => rule.required(),
         }),
         defineField({
             name: 'description',
@@ -55,16 +54,15 @@ export default defineType({
         }),
         defineField({
             name: 'unmixedAudio',
-            title: 'Audio mixé',
+            title: 'Audio non mixé',
             type: 'file',
-            validation: (rule) => rule.required(),
             options: {
                 accept: 'audio/*',
             }
         }),
         defineField({
             name: 'mixedAudio',
-            title: 'Audio non mixé',
+            title: 'Audio mixé',
             type: 'file',
             validation: (rule) => rule.required(),
             options: {

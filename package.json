@@ -29,6 +29,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "@vercel/og": "0.5.20",
     "@vercel/stega": "^0.1.0",
+    "@wavesurfer/react": "^1.0.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "3.3.1",

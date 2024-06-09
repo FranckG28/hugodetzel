@@ -12,8 +12,8 @@ type Props = {
 
 export const PostsSection: FC<Props> = ({ posts }) => {
   return (
-    <section>
-      <Container className="flex flex-col gap-12 md:gap-16 py-16 lg:py-24">
+    <section className="space-y-12 lg:space-y-16 py-16 lg:py-24">
+      <Container className="flex flex-col gap-12 md:gap-16">
         <div className="flex flex-col gap-6 items-center text-center">
           <h2>Découvrez mes articles</h2>
           <p className="text-lg">
@@ -24,6 +24,8 @@ export const PostsSection: FC<Props> = ({ posts }) => {
             <Link href={`/posts`}>Voir tous mes articles</Link>
           </Button>
         </div>
+      </Container>
+      <Container className="max-w-[1920px]">
         <PostsPreviews posts={posts} />
       </Container>
     </section>

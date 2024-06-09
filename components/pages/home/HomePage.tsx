@@ -2,6 +2,7 @@ import { FeatureSection } from 'components/features/FeaturesSection'
 import Layout from 'components/global/Layout'
 import { MixingStepsSection } from 'components/mixing-steps/MixingStepsSection'
 import { QuestionsSection } from 'components/questions/QuestionsSection'
+import { ReferencesSection } from 'components/references/ReferencesSection'
 import { Header } from 'components/shared/Header'
 import { WhoAmISection } from 'components/whoami/WhoAmISection'
 import type {
@@ -9,6 +10,7 @@ import type {
   MixingStepsPayload,
   Post,
   QuestionsPayload,
+  Reference,
   WhoAmI,
 } from 'types'
 import { SettingsPayload } from 'types'
@@ -24,6 +26,7 @@ export interface HomePageProps {
   whoAmI?: WhoAmI
   mixingSteps?: MixingStepsPayload
   posts?: Post[]
+  references?: Reference[]
 }
 
 export function HomePage({
@@ -34,6 +37,7 @@ export function HomePage({
   whoAmI,
   mixingSteps,
   posts,
+  references,
 }: HomePageProps) {
   const {
     overview,
@@ -63,6 +67,7 @@ export function HomePage({
           <FeatureSection items={features} className="pb-20 -mt-24" />
         )}
         {mixingSteps && <MixingStepsSection mixingSteps={mixingSteps} />}
+        {references && <ReferencesSection references={references} />}
         {whoAmI && <WhoAmISection whoAmI={whoAmI} />}
         {posts && <PostsSection posts={posts} />}
         {questions && <QuestionsSection questions={questions} />}

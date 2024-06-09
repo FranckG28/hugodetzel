@@ -6,9 +6,9 @@ import {
   projectId,
   useCdn,
 } from 'lib/sanity.api'
-import { Post } from 'types'
+import { HomePagePayload, MixingStepsPayload, Post, QuestionsPayload, QuotationPayload, Reference, SettingsPayload, WhoAmI } from 'types'
 
-import { postAndMoreStoriesQuery, postBySlugQuery, postSlugsQuery, postsQuery } from './sanity.queries'
+import { homePageQuery, latestPostsPreview, mixingStepsQuery, postAndMoreStoriesQuery, postBySlugQuery, postSlugsQuery, postsQuery, questionsQuery, quotationQuery, referencesQuery, settingsQuery, whoAmIQuery } from './sanity.queries'
 
 export function getClient(preview?: { token: string }) {
   const client = createClient({
@@ -60,6 +60,10 @@ export async function getAllPosts(client: SanityClient): Promise<Post[]> {
   return (await client.fetch(postsQuery)) || []
 }
 
+export async function getLatestPosts(client: SanityClient): Promise<Post[]> {
+  return (await client.fetch(latestPostsPreview)) || []
+}
+
 export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
   const client = getClient()
   const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
@@ -78,4 +82,34 @@ export async function getPostAndMoreStories(
   slug: string,
 ): Promise<{ post: Post; morePosts: Post[] }> {
   return await client.fetch(postAndMoreStoriesQuery, { slug })
+}
+
+export async function getSettings(
+  client: SanityClient,
+): Promise<SettingsPayload> {
+  return await client.fetch<SettingsPayload | null>(settingsQuery);
+}
+
+export async function getQuotation(client: SanityClient) {
+  return await client.fetch<QuotationPayload | null>(quotationQuery)
+}
+
+export async function getMixingSteps(client: SanityClient) {
+  return await client.fetch<MixingStepsPayload | null>(mixingStepsQuery)
+}
+
+export async function getWhoAmI(client: SanityClient) {
+  return await client.fetch<WhoAmI | null>(whoAmIQuery)
+}
+
+export async function getQuestions(client: SanityClient) {
+  return await client.fetch<QuestionsPayload | null>(questionsQuery)
+}
+
+export async function getHomepage(client: SanityClient) {
+  return await client.fetch<HomePagePayload | null>(homePageQuery)
+}
+
+export async function getReferences(client: SanityClient) {
+  return await client.fetch<Reference[] | null>(referencesQuery)
 }

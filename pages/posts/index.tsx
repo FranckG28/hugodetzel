@@ -1,7 +1,6 @@
 import PostsPage from 'components/pages/post/PostsPage'
 import { readToken } from 'lib/sanity.api'
-import { getClient } from 'lib/sanity.client'
-import { postsQuery, settingsQuery } from 'lib/sanity.queries'
+import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
 import { Post, SettingsPayload, SharedPageProps } from 'types'
 
@@ -29,8 +28,8 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
   const [settings, posts] = await Promise.all([
-    client.fetch<SettingsPayload | null>(settingsQuery),
-    client.fetch<Post[] | null>(postsQuery),
+    getSettings(client),
+    getAllPosts(client),
   ])
 
   return {

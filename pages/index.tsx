@@ -1,43 +1,35 @@
-import { HomePage } from 'components/pages/home/HomePage'
+import { HomePage, HomePageProps } from 'components/pages/home/HomePage'
 import HomePagePreview from 'components/pages/home/HomePagePreview'
 import { readToken } from 'lib/sanity.api'
-import { getClient } from 'lib/sanity.client'
 import {
-  homePageQuery,
-  latestPostsPreview,
-  mixingStepsQuery,
-  questionsQuery,
-  settingsQuery,
-  whoAmIQuery,
-} from 'lib/sanity.queries'
+  getClient,
+  getHomepage,
+  getLatestPosts,
+  getMixingSteps,
+  getQuestions,
+  getReferences,
+  getSettings,
+  getWhoAmI,
+} from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import {
-  HomePagePayload,
-  MixingStepsPayload,
-  Post,
-  QuestionsPayload,
-  SettingsPayload,
-  SharedPageProps,
-  WhoAmI,
-} from 'types'
+import { HomePagePayload, SharedPageProps } from 'types'
 
-interface PageProps extends SharedPageProps {
-  page: HomePagePayload
-  settings: SettingsPayload
-  questions: QuestionsPayload
-  whoami: WhoAmI
-  posts: Post[]
-  mixingSteps: MixingStepsPayload
-}
+interface PageProps extends SharedPageProps, HomePageProps {}
 
 interface Query {
   [key: string]: string
 }
 
-export default function IndexPage(props: PageProps) {
-  const { page, settings, draftMode, questions, whoami, mixingSteps, posts } =
-    props
-
+export default function IndexPage({
+  page,
+  settings,
+  draftMode,
+  questions,
+  whoAmI,
+  mixingSteps,
+  posts,
+  references,
+}: PageProps) {
   if (draftMode) {
     return <HomePagePreview page={page} settings={settings} />
   }
@@ -47,9 +39,10 @@ export default function IndexPage(props: PageProps) {
       page={page}
       settings={settings}
       questions={questions}
-      whoAmI={whoami}
+      whoAmI={whoAmI}
       mixingSteps={mixingSteps}
       posts={posts}
+      references={references}
     />
   )
 }
@@ -64,14 +57,15 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const [settings, page, questions, whoami, mixingSteps, posts] =
+  const [settings, page, questions, whoAmI, mixingSteps, posts, references] =
     await Promise.all([
-      client.fetch<SettingsPayload | null>(settingsQuery),
-      client.fetch<HomePagePayload | null>(homePageQuery),
-      client.fetch<QuestionsPayload | null>(questionsQuery),
-      client.fetch<WhoAmI | null>(whoAmIQuery),
-      client.fetch<MixingStepsPayload | null>(mixingStepsQuery),
-      client.fetch<Post[]>(latestPostsPreview),
+      getSettings(client),
+      getHomepage(client),
+      getQuestions(client),
+      getWhoAmI(client),
+      getMixingSteps(client),
+      getLatestPosts(client),
+      getReferences(client),
     ])
 
   return {
@@ -80,9 +74,10 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
       settings: settings ?? {},
       questions,
       draftMode,
-      whoami,
+      whoAmI,
       mixingSteps,
       posts,
+      references,
       token: draftMode ? readToken : null,
     },
   }

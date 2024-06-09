@@ -157,3 +157,15 @@ export interface Post {
   slug?: string
   content?: any
 }
+
+export type Reference = {
+  name: string
+  date: string
+  description?: string
+  picture: Image
+  category: {
+    name: string
+  }
+  mixedAudio: string
+  unmixedAudio?: string
+}
