@@ -1,3 +1,4 @@
+import { WaveformPlayerProps } from 'components/shared/WaveformPlayer'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { FC } from 'react'
@@ -5,13 +6,13 @@ import { Reference } from 'types'
 
 import { ReferencePlayer } from './ReferencePlayer'
 
-type Props = {
+interface Props extends Omit<WaveformPlayerProps, 'audio'> {
   reference: Reference
 }
 
 const imageSize = 64
 
-export const ReferenceItem: FC<Props> = ({ reference }) => {
+export const ReferenceItem: FC<Props> = ({ reference, ...props }) => {
   return (
     <div className="rounded-2xl shadow-lg border border-slate-200 p-6 bg-white flex flex-col gap-5">
       {reference.picture && (
@@ -36,7 +37,7 @@ export const ReferenceItem: FC<Props> = ({ reference }) => {
         <p className="text-slate-600 text-sm">{reference.description}</p>
       )}
 
-      <ReferencePlayer reference={reference} />
+      <ReferencePlayer {...props} reference={reference} />
     </div>
   )
 }

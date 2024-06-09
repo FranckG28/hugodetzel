@@ -1,14 +1,17 @@
-import { WaveformPlayer } from 'components/shared/WaveformPlayer'
+import {
+  WaveformPlayer,
+  WaveformPlayerProps,
+} from 'components/shared/WaveformPlayer'
 import { Label } from 'components/ui/label'
 import { Switch } from 'components/ui/switch'
 import { FC, useState } from 'react'
 import { Reference } from 'types'
 
-type Props = {
+interface Props extends Omit<WaveformPlayerProps, 'audio'> {
   reference: Reference
 }
 
-export const ReferencePlayer: FC<Props> = ({ reference }) => {
+export const ReferencePlayer: FC<Props> = ({ reference, ...props }) => {
   const [isMixed, setIsMixed] = useState(true)
 
   return (
@@ -26,6 +29,7 @@ export const ReferencePlayer: FC<Props> = ({ reference }) => {
         </div>
       )}
       <WaveformPlayer
+        {...props}
         audio={isMixed ? reference.mixedAudio : reference.unmixedAudio}
       />
     </>

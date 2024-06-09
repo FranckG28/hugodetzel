@@ -1,5 +1,5 @@
 import { Container } from 'components/shared/Container'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Reference } from 'types'
 
 import { ReferenceItem } from './ReferenceItem'
@@ -20,6 +20,8 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
     Array.from({ length: COLS }, () => []),
   )
 
+  const [playing, setPlaying] = useState<string | null>(null)
+
   return (
     <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100 light">
       <Container className="flex flex-col gap-12 md:gap-16">
@@ -33,8 +35,14 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {cols.map((col, index) => (
             <div key={index} className="flex flex-col gap-4 md:gap-6">
-              {col.map((reference, idx) => (
-                <ReferenceItem key={idx} reference={reference} />
+              {col.map((reference) => (
+                <ReferenceItem
+                  key={reference._id}
+                  reference={reference}
+                  onPause={() => playing === reference._id && setPlaying(null)}
+                  onPlay={() => setPlaying(reference._id)}
+                  isPlaying={playing === reference._id}
+                />
               ))}
             </div>
           ))}

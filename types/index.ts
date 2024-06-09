@@ -159,6 +159,7 @@ export interface Post {
 }
 
 export type Reference = {
+  _id: string
   name: string
   date: string
   description?: string
