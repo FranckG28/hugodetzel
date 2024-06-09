@@ -20,7 +20,22 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
     Array.from({ length: COLS }, () => []),
   )
 
-  const [playing, setPlaying] = useState<string | null>(null)
+  const [playingId, setPlayingId] = useState<string | null>(null)
+  const [playing, setPlaying] = useState<boolean>(false)
+
+  const play = (id: string) => {
+    if (playingId !== id) {
+      setPlayingId(id)
+    }
+    setPlaying(true)
+  }
+
+  const pause = (id: string) => {
+    if (playingId !== id) {
+      return
+    }
+    setPlaying(false)
+  }
 
   return (
     <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100 light">
@@ -39,9 +54,9 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
                 <ReferenceItem
                   key={reference._id}
                   reference={reference}
-                  onPause={() => playing === reference._id && setPlaying(null)}
-                  onPlay={() => setPlaying(reference._id)}
-                  isPlaying={playing === reference._id}
+                  onPause={() => pause(reference._id)}
+                  onPlay={() => play(reference._id)}
+                  isPlaying={playing && playingId === reference._id}
                 />
               ))}
             </div>
