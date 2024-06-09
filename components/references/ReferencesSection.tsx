@@ -1,5 +1,6 @@
 import { Container } from 'components/shared/Container'
-import { FC, useState } from 'react'
+import { useMultiPlay } from 'lib/hooks/useMultiPlay'
+import { FC } from 'react'
 import { Reference } from 'types'
 
 import { ReferenceItem } from './ReferenceItem'
@@ -20,22 +21,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
     Array.from({ length: COLS }, () => []),
   )
 
-  const [playingId, setPlayingId] = useState<string | null>(null)
-  const [playing, setPlaying] = useState<boolean>(false)
-
-  const play = (id: string) => {
-    if (playingId !== id) {
-      setPlayingId(id)
-    }
-    setPlaying(true)
-  }
-
-  const pause = (id: string) => {
-    if (playingId !== id) {
-      return
-    }
-    setPlaying(false)
-  }
+  const { pause, play, isPlaying } = useMultiPlay()
 
   return (
     <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100 light">
@@ -56,7 +42,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
                   reference={reference}
                   onPause={() => pause(reference._id)}
                   onPlay={() => play(reference._id)}
-                  isPlaying={playing && playingId === reference._id}
+                  isPlaying={isPlaying(reference._id)}
                 />
               ))}
             </div>
