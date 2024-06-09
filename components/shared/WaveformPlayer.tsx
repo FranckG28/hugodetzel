@@ -45,18 +45,14 @@ export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
     setDuration && setDuration(ws.getDuration())
   }
 
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      onPause && onPause()
-    } else {
-      onPlay && onPlay()
-    }
-  }
-
   return (
     <div className={cn('flex gap-3 items-center', className)}>
       {showButton && (
-        <Button onClick={togglePlayPause} size="icon" className="rounded-full">
+        <Button
+          onClick={() => wavesurfer && wavesurfer.playPause()}
+          size="icon"
+          className="rounded-full"
+        >
           {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </Button>
       )}

@@ -32,7 +32,7 @@ export const MixingStepDisplay: FC<Props> = ({
 
   return (
     <div className="flex flex-col gap-2 text-left group">
-      <button className="w-full aspect-[4/3] mb-5 group/preview relative rounded-2xl overflow-hidden shadow-lg max-h-48">
+      <div className="w-full aspect-[4/3] mb-5 group/preview relative rounded-2xl overflow-hidden shadow-lg max-h-48">
         <Image
           className={cn(
             'rounded-xl object-cover transition-all brightness-50',
@@ -52,7 +52,7 @@ export const MixingStepDisplay: FC<Props> = ({
             onTimeupdate={onTimeupdate}
           />
         </div>
-      </button>
+      </div>
       <p className="text-sm text-slate-400">{stepNumber(index)}</p>
       <h5>{step.title}</h5>
       <p className="text-slate-300 text-sm leading-relaxed">

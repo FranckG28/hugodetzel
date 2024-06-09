@@ -21,7 +21,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
     Array.from({ length: COLS }, () => []),
   )
 
-  const { pause, play, isPlaying, setTime } = useMultiPlay()
+  const { pause, play, isPlaying } = useMultiPlay()
 
   return (
     <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100 light">
@@ -43,7 +43,6 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
                   onPause={() => pause(reference._id)}
                   onPlay={() => play(reference._id)}
                   isPlaying={isPlaying(reference._id)}
-                  onTimeupdate={setTime}
                 />
               ))}
             </div>
