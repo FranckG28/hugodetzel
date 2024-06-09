@@ -1,6 +1,5 @@
 import { ControlsIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { simpleBlocks } from 'schemas/objects/blocks'
 
 export default defineType({
     name: 'mixingSteps',

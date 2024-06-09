@@ -1,5 +1,5 @@
 import { HomeIcon } from '@sanity/icons'
-import { defineField, defineType, defineArrayMember } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { allBlocks } from 'schemas/objects/blocks'
 
 export default defineType({

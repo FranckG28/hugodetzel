@@ -92,8 +92,10 @@ export const MixingStepDisplay: FC<Props> = ({
         />
       </div>
       <p className="text-sm text-slate-400">{stepNumber(index)}</p>
-      <h6>{step.title}</h6>
-      <p className="text-slate-400 text-sm">{step.description}</p>
+      <h5>{step.title}</h5>
+      <p className="text-slate-300 text-sm leading-relaxed">
+        {step.description}
+      </p>
     </button>
   )
 }

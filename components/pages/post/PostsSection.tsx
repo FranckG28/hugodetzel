@@ -17,7 +17,7 @@ export const PostsSection: FC<Props> = ({ posts }) => {
         <div className="flex flex-col gap-6 items-center text-center">
           <h2>Découvrez mes articles</h2>
           <p className="text-lg">
-            Progressez par vous mêmes à travers les conseils que je vous partage
+            Progressez par vous-même à travers les conseils que je vous partage
             gentillement.
           </p>
           <Button variant="outline" asChild>
