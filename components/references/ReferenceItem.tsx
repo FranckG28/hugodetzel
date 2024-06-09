@@ -1,8 +1,9 @@
-import { WaveformPlayer } from 'components/shared/WaveformPlayer'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { FC } from 'react'
 import { Reference } from 'types'
+
+import { ReferencePlayer } from './ReferencePlayer'
 
 type Props = {
   reference: Reference
@@ -35,7 +36,7 @@ export const ReferenceItem: FC<Props> = ({ reference }) => {
         <p className="text-slate-600 text-sm">{reference.description}</p>
       )}
 
-      <WaveformPlayer audio={reference.mixedAudio} />
+      <ReferencePlayer reference={reference} />
     </div>
   )
 }

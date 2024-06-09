@@ -27,12 +27,7 @@ export const WaveformPlayer: FC<Props> = ({ className, audio }) => {
 
   return (
     <div className={cn('flex gap-3 items-center', className)}>
-      <Button
-        onClick={onPlayPause}
-        size="icon"
-        variant="secondary"
-        className="rounded-full"
-      >
+      <Button onClick={onPlayPause} size="icon" className="rounded-full">
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </Button>
 

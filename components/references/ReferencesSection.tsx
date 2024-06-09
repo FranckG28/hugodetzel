@@ -21,7 +21,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
   )
 
   return (
-    <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100">
+    <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100 light">
       <Container className="flex flex-col gap-12 md:gap-16">
         <div className="flex flex-col gap-6 items-center text-center">
           <h2 className="text-black">Ça donne quoi ?</h2>
