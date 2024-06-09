@@ -21,7 +21,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
     Array.from({ length: COLS }, () => []),
   )
 
-  const { pause, play, isPlaying } = useMultiPlay()
+  const { pause, play, isPlaying, setTime } = useMultiPlay()
 
   return (
     <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100 light">
@@ -33,7 +33,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
             tout cas.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {cols.map((col, index) => (
             <div key={index} className="flex flex-col gap-4 md:gap-6">
               {col.map((reference) => (
@@ -43,6 +43,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
                   onPause={() => pause(reference._id)}
                   onPlay={() => play(reference._id)}
                   isPlaying={isPlaying(reference._id)}
+                  onTimeupdate={setTime}
                 />
               ))}
             </div>

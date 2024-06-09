@@ -8,20 +8,23 @@ import { FC, useEffect, useState } from 'react'
 
 export type WaveformPlayerProps = {
   className?: string
-  audio: string
   showButton?: boolean
   onPlay?: () => void
   onPause?: () => void
+  onTimeupdate?: (time: number) => void
   isPlaying?: boolean
+  setDuration?: (duration: number) => void
 }
 
-export const WaveformPlayer: FC<WaveformPlayerProps> = ({
+export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
   className,
   audio,
   showButton = true,
   onPause,
   onPlay,
+  onTimeupdate,
   isPlaying,
+  setDuration,
 }) => {
   const [wavesurfer, setWavesurfer] = useState(null)
 
@@ -39,6 +42,7 @@ export const WaveformPlayer: FC<WaveformPlayerProps> = ({
 
   const onReady = (ws) => {
     setWavesurfer(ws)
+    setDuration && setDuration(ws.getDuration())
   }
 
   const togglePlayPause = () => {
@@ -63,12 +67,15 @@ export const WaveformPlayer: FC<WaveformPlayerProps> = ({
           barWidth={2}
           barGap={2}
           waveColor="#94a3b8"
-          progressColor="#1e40af"
+          progressColor="#93c5fd"
           url={audio}
           onReady={onReady}
           onPlay={() => onPlay && onPlay()}
           onPause={() => onPause && onPause()}
           onInteraction={() => wavesurfer && wavesurfer.play()}
+          onAudioprocess={(time) =>
+            time && onTimeupdate && onTimeupdate(time.getCurrentTime())
+          }
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { Container } from 'components/shared/Container'
-import { FC, useState } from 'react'
+import { useMultiPlay } from 'lib/hooks/useMultiPlay'
+import { FC } from 'react'
 import { MixingStepsPayload } from 'types'
 
 import { MixingStepDisplay } from './MixingStepDisplay'
@@ -9,7 +10,7 @@ type Props = {
 }
 
 export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
-  const [playing, setPlaying] = useState<number | null>(null)
+  const { isPlaying, pause, play, setTime } = useMultiPlay()
 
   return (
     <div className="py-16 lg:py-24 bg-slate-800 space-y-12 lg:space-y-16">
@@ -28,14 +29,10 @@ export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
             key={idx}
             index={idx}
             step={step}
-            playing={playing === idx}
-            setPlaying={() => {
-              if (playing === idx) {
-                setPlaying(null)
-              } else {
-                setPlaying(idx)
-              }
-            }}
+            isPlaying={isPlaying(idx + '')}
+            onPause={() => pause(idx + '')}
+            onPlay={() => play(idx + '')}
+            onTimeupdate={setTime}
           />
         ))}
       </Container>
