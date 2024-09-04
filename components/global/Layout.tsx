@@ -22,7 +22,7 @@ export default function Layout({
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 dark">
       <Navbar menuItems={settings?.menuItems} siteTitle={settings?.title} />
-      <div className="flex-grow">{children}</div>
+      <div className="flex-1">{children}</div>
       <Footer footer={settings?.footer} siteName={settings.title} />
     </div>
   )

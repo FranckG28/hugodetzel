@@ -1,4 +1,4 @@
-import { useWindowSize } from '@uidotdev/usehooks'
+import { useWindowSize } from "usehooks-ts"
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 

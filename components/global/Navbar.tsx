@@ -1,7 +1,7 @@
-import { useWindowScroll } from '@uidotdev/usehooks'
 import { Container } from 'components/shared/Container'
 import { Button } from 'components/ui/button'
 import { title } from 'lib/demo.data'
+import { useWindowScroll } from 'lib/hooks/useWindowScroll'
 import { cn } from 'lib/utils'
 import Link from 'next/link'
 import { MenuItem } from 'types'
@@ -12,7 +12,7 @@ interface NavbarProps {
 }
 
 export function Navbar({ menuItems, siteTitle }: NavbarProps) {
-  const [{ y }] = useWindowScroll()
+  const { y } = useWindowScroll()
 
   const isScrolled = y > 100
 

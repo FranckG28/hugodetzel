@@ -18,7 +18,7 @@ export const QuotationOption: FC<Props> = (props) => {
     <label
       htmlFor={option.title}
       className={cn(
-        'flex flex-col gap-2 p-4 rounded-xl transition-all shadow relative ring-1',
+        'flex flex-col gap-2 p-4 rounded-xl transition-all shadow relative ring-1 select-none',
         checked ? 'bg-blue-200/20 ring-slate-300/30' : 'ring-slate-800',
         option.included ? 'cursor-not-allowed' : 'cursor-pointer',
       )}

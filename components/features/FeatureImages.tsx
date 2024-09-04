@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Carousel,
   CarouselApi,
@@ -5,10 +7,12 @@ import {
   CarouselItem,
 } from 'components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
+import { useBreakpoint } from 'lib/hooks/useBreakpoint'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
 import { Feature } from 'types'
+import { useMediaQuery } from 'usehooks-ts'
 
 import { FeatureCard } from './FeatureCard'
 
@@ -43,10 +47,12 @@ export const FeatureImages: FC<FeatureImagesProps> = ({
     })
   }, [api, setSelected])
 
+  const isDesktop = useBreakpoint('lg')
+
   return (
     <Carousel
       className="overflow-hidden rounded-2xl"
-      orientation="vertical"
+      orientation={isDesktop ? 'vertical' : 'horizontal'}
       opts={{
         align: 'start',
       }}
