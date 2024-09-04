@@ -64,7 +64,6 @@ const PreviewTitle: FC<PreviewTitleProps> = ({
             .map((_, i) => (
               <QuotationPreviewWaveform key={i} index={i} />
             ))}
-          {/* <DiscIcon className="w-6 h-6 lg:w-12 lg:h-12 text-slate-400" /> */}
           <Badge variant="secondary" className="absolute bottom-2 right-2">
             {duration}
           </Badge>

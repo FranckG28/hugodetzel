@@ -80,7 +80,7 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[]
   heading?: string
   links?: Link[]
-  coverImage?: Image
+  youtubeId?: string
   features: Feature[]
 }
 
@@ -120,6 +120,7 @@ export interface QuotationOption {
   description: PortableTextBlock[]
   price: number
   included: boolean
+  proportional: boolean
 }
 
 export interface QuotationPayload {

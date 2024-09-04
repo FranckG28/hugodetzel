@@ -11,14 +11,10 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
-      name: 'coverImage',
-      title: 'Cover Image',
-      description:
-        'This image will be used as the cover image for the homepage.',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'youtubeId',
+      title: 'YouTube ID',
+      description: "ID de la vidéo YouTube à afficher en arrière-plan.",
+      type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({

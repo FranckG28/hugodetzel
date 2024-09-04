@@ -8,7 +8,7 @@ export const homePageQuery = groq`
     features,
     heading,
     links,
-    coverImage,
+    youtubeId,
   }
 `
 
@@ -68,6 +68,7 @@ export const quotationQuery = groq`
       description,
       price,
       included,
+      proportional
     }
   }
 `

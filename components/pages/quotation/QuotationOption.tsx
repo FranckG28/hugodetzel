@@ -1,14 +1,19 @@
+import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Checkbox } from 'components/ui/checkbox'
 import { cn } from 'lib/utils'
 import { FC } from 'react'
 import { QuotationOption as QuotationOptionType } from 'types'
 
-export const QuotationOption: FC<{
+type Props = {
   option: QuotationOptionType
   checked: boolean
+  multiplier: number
   onChange: (checked: boolean) => void
-}> = ({ option, checked, onChange }) => {
+}
+
+export const QuotationOption: FC<Props> = (props) => {
+  const { option, checked, onChange } = props
   return (
     <label
       htmlFor={option.title}
@@ -36,8 +41,25 @@ export const QuotationOption: FC<{
       />
 
       <p className="text-slate-300 tracking-tight font-medium text-right leading-none pt-2">
-        {option.included ? <>Offert</> : <>{option.price} € / titre</>}
+        <QuotationPrice {...props} />
       </p>
     </label>
+  )
+}
+
+const QuotationPrice: FC<Props> = ({ option, multiplier }) => {
+  if (option.included) {
+    return <>Offert</>
+  }
+
+  if (!option.proportional) {
+    return <>{option.price} € / titre</>
+  }
+
+  const price = option.price * multiplier
+  return (
+    <>
+      <AnimatedNumber value={price} />€ / titre
+    </>
   )
 }

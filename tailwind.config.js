@@ -23,6 +23,10 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        'aspect-16/9': { raw: '(min-aspect-ratio: 16/9)' },
+        'max-aspect-16/9': { raw: '(max-aspect-ratio: 16/9)' },
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

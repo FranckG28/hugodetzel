@@ -44,7 +44,7 @@ export function HomePage({
     features,
     heading = 'Personal website',
     links,
-    coverImage,
+    youtubeId,
   } = page ?? {}
 
   return (
@@ -52,14 +52,13 @@ export function HomePage({
       <HomePageHead page={page} settings={settings} />
 
       <Layout settings={settings} preview={preview}>
-        {/* Header */}
         {heading && (
           <Header
             centered
             title={heading}
             description={overview}
             links={links}
-            image={coverImage}
+            youtubeId={youtubeId}
           />
         )}
 

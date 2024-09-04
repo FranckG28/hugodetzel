@@ -1,19 +1,17 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import { Checkbox } from 'components/ui/checkbox'
-import { Slider } from 'components/ui/slider'
+import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
+import { BackgroundGradient } from 'components/shared/BackgroundGradient'
+import { Button } from 'components/ui/button'
 import useSet from 'lib/hooks/useSet'
 import { FC, useEffect, useState } from 'react'
 import { QuotationPayload } from 'types'
+
 import { QuotationOption } from './QuotationOption'
-import { QuotationSlider } from './QuotationSlider'
 import { QuotationPreview } from './QuotationPreview'
-import { Button } from 'components/ui/button'
-import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
-import { BackgroundGradient } from 'components/shared/BackgroundGradient'
+import { QuotationSlider } from './QuotationSlider'
 
 const DEFAULT_TITLES = 1
 const DEFAULT_MINUTES = 3
-const DEFAULT_TRACKS = 5
+const DEFAULT_TRACKS = 3
 
 const MAX_TITLES = 50
 const MAX_MINUTES = 30
@@ -26,6 +24,7 @@ export const QuotationForm: FC<{
   const [titles, setTitles] = useState(DEFAULT_TITLES)
   const [tracks, setTracks] = useState(DEFAULT_TRACKS)
   const [minutes, setMinutes] = useState(DEFAULT_MINUTES)
+  const [multiplier, setMultiplier] = useState(1)
 
   const [selectedOptions, { add, remove, has }] = useSet<string>(
     options.reduce((acc, option) => {
@@ -37,13 +36,22 @@ export const QuotationForm: FC<{
   )
 
   useEffect(() => {
-    const optionsPrice = options
-      .filter((option) => has(option.title))
+    const selectedOptions = options.filter((option) => has(option.title))
+
+    const fixedOptionsPrice = selectedOptions
+      .filter((option) => !option.proportional)
       .reduce((acc, option) => acc + option.price, 0)
 
+    const proportionalOptionsPrice = selectedOptions
+      .filter((option) => option.proportional)
+      .reduce((acc, option) => acc + option.price, 0)
+
+    const multiplier = (tracks / baseTracks) * (minutes / baseMinutes)
+
     setTotal(
-      optionsPrice * titles * (tracks / baseTracks) * (minutes / baseMinutes),
+      (fixedOptionsPrice + proportionalOptionsPrice * multiplier) * titles,
     )
+    setMultiplier(multiplier)
   }, [titles, tracks, minutes, baseMinutes, baseTracks, options, has])
 
   return (
@@ -92,11 +100,12 @@ export const QuotationForm: FC<{
             Prestations
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {options.map((option) => (
               <QuotationOption
                 key={option.title}
                 option={option}
+                multiplier={multiplier}
                 checked={has(option.title)}
                 onChange={(checked) => {
                   if (checked) {
