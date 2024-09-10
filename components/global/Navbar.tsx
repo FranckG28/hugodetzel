@@ -1,10 +1,15 @@
+'use client'
+
 import { Container } from 'components/shared/Container'
 import { Button } from 'components/ui/button'
 import { title } from 'lib/demo.data'
+import { useBreakpoint } from 'lib/hooks/useBreakpoint'
 import { useWindowScroll } from 'lib/hooks/useWindowScroll'
 import { cn } from 'lib/utils'
 import Link from 'next/link'
 import { MenuItem } from 'types'
+
+import { MobileNav } from './MobileNav'
 
 interface NavbarProps {
   siteTitle?: string
@@ -13,6 +18,7 @@ interface NavbarProps {
 
 export function Navbar({ menuItems, siteTitle }: NavbarProps) {
   const { y } = useWindowScroll()
+  const isDesktop = useBreakpoint('md')
 
   const isScrolled = y > 100
 
@@ -33,20 +39,25 @@ export function Navbar({ menuItems, siteTitle }: NavbarProps) {
         >
           {siteTitle ?? title}
         </Link>
-        {menuItems &&
-          menuItems.map((menuItem) => {
-            return (
-              <Link
-                key={menuItem.link}
-                href={menuItem.link}
-                target={menuItem.newTab ? '_blank' : undefined}
-              >
-                <Button variant={menuItem.button ? 'outline' : 'ghost'}>
-                  {menuItem.title}
-                </Button>
-              </Link>
-            )
-          })}
+        {menuItems && isDesktop ? (
+          <div className="hidden md:flex items-center gap-2 flex-wrap justify-end">
+            {menuItems.map((menuItem) => {
+              return (
+                <Link
+                  key={menuItem.link}
+                  href={menuItem.link}
+                  target={menuItem.newTab ? '_blank' : undefined}
+                >
+                  <Button variant={menuItem.button ? 'outline' : 'ghost'}>
+                    {menuItem.title}
+                  </Button>
+                </Link>
+              )
+            })}
+          </div>
+        ) : (
+          <MobileNav items={menuItems} />
+        )}
       </Container>
     </div>
   )

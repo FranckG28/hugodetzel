@@ -4,12 +4,10 @@ export const useMultiPlay = () => {
 
     const [playingId, setPlayingId] = useState<string | null>(null)
     const [playing, setPlaying] = useState<boolean>(false)
-    const [time, setTime] = useState<number>(0)
 
     const play = (id: string) => {
         if (playingId !== id) {
             setPlayingId(id)
-            setTime(0)
         }
         setPlaying(true)
     }
@@ -31,6 +29,6 @@ export const useMultiPlay = () => {
 
     const isPlaying = (id: string) => playing && playingId === id
 
-    return { play, pause, playing, playingId, isPlaying, time, setTime, toggle }
+    return { play, pause, playing, playingId, isPlaying, toggle }
 
 }

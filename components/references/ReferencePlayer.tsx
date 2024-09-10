@@ -1,3 +1,4 @@
+import { AudioPositionProvider } from 'components/shared/AudioPositionContext'
 import {
   WaveformPlayer,
   WaveformPlayerProps,
@@ -15,7 +16,7 @@ export const ReferencePlayer: FC<Props> = ({ reference, ...props }) => {
   const [isMixed, setIsMixed] = useState(true)
 
   return (
-    <>
+    <AudioPositionProvider>
       {reference.unmixedAudio && (
         <div className="flex items-center justify-end gap-3">
           <Label htmlFor="isMixed" className="text-slate-600">
@@ -32,6 +33,6 @@ export const ReferencePlayer: FC<Props> = ({ reference, ...props }) => {
         {...props}
         audio={isMixed ? reference.mixedAudio : reference.unmixedAudio}
       />
-    </>
+    </AudioPositionProvider>
   )
 }

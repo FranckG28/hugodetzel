@@ -1,3 +1,4 @@
+import { AudioPositionProvider } from 'components/shared/AudioPositionContext'
 import { Container } from 'components/shared/Container'
 import { useMultiPlay } from 'lib/hooks/useMultiPlay'
 import { FC } from 'react'
@@ -10,7 +11,7 @@ type Props = {
 }
 
 export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
-  const { isPlaying, pause, play, setTime } = useMultiPlay()
+  const { isPlaying, pause, play } = useMultiPlay()
 
   return (
     <div className="py-16 lg:py-24 bg-slate-800 space-y-12 lg:space-y-16">
@@ -23,6 +24,7 @@ export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
         </div>
       </Container>
 
+      <AudioPositionProvider>
       <Container className="max-w-[1920px] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {mixingSteps.steps.map((step, idx) => (
           <MixingStepDisplay
@@ -32,10 +34,10 @@ export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
             isPlaying={isPlaying(idx + '')}
             onPause={() => pause(idx + '')}
             onPlay={() => play(idx + '')}
-            onTimeupdate={setTime}
           />
         ))}
       </Container>
+      </AudioPositionProvider>
     </div>
   )
 }

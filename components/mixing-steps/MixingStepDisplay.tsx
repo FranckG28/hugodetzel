@@ -24,7 +24,6 @@ export const MixingStepDisplay: FC<Props> = ({
   isPlaying,
   onPause,
   onPlay,
-  onTimeupdate,
 }) => {
   const imageUrl =
     step.image &&
@@ -49,7 +48,6 @@ export const MixingStepDisplay: FC<Props> = ({
             isPlaying={isPlaying}
             onPause={onPause}
             onPlay={onPlay}
-            onTimeupdate={onTimeupdate}
           />
         </div>
       </div>

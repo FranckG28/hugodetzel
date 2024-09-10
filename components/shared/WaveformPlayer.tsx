@@ -4,7 +4,9 @@ import { PauseIcon, PlayIcon } from '@radix-ui/react-icons'
 import WavesurferPlayer from '@wavesurfer/react'
 import { Button } from 'components/ui/button'
 import { cn } from 'lib/utils'
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
+
+import { AudioPositionContext } from './AudioPositionContext'
 
 export type WaveformPlayerProps = {
   className?: string
@@ -13,7 +15,6 @@ export type WaveformPlayerProps = {
   onPause?: () => void
   onTimeupdate?: (time: number) => void
   isPlaying?: boolean
-  setDuration?: (duration: number) => void
 }
 
 export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
@@ -22,11 +23,11 @@ export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
   showButton = true,
   onPause,
   onPlay,
-  onTimeupdate,
   isPlaying,
-  setDuration,
 }) => {
   const [wavesurfer, setWavesurfer] = useState(null)
+
+  const positionContext = useContext(AudioPositionContext);
 
   useEffect(() => {
     if (!wavesurfer) return
@@ -42,7 +43,7 @@ export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
 
   const onReady = (ws) => {
     setWavesurfer(ws)
-    setDuration && setDuration(ws.getDuration())
+    positionContext?.registerWavesurfer(ws)
   }
 
   return (
@@ -66,12 +67,14 @@ export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
           progressColor="#93c5fd"
           url={audio}
           onReady={onReady}
-          onPlay={() => onPlay && onPlay()}
+          onPlay={() => {
+            if (positionContext?.position) {
+              wavesurfer.setTime(positionContext.position)
+            }
+            onPlay && onPlay();
+          }}
           onPause={() => onPause && onPause()}
           onInteraction={() => wavesurfer && wavesurfer.play()}
-          onAudioprocess={(time) =>
-            time && onTimeupdate && onTimeupdate(time.getCurrentTime())
-          }
         />
       </div>
     </div>

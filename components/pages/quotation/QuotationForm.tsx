@@ -120,12 +120,12 @@ export const QuotationForm: FC<{
         </div>
       </div>
 
-      <div className="flex gap-2 items-center justify-between lg:col-start-2 max-lg:flex-col">
+      <div className="flex gap-2 items-center justify-end md:justify-between lg:col-start-2 flex-wrap">
         <h3 className="tracking-tight">
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
-        <Button variant="default">Réserver une session</Button>
+        <Button variant="default" className='w-full md:w-fit'>Réserver une session</Button>
       </div>
     </BackgroundGradient>
   )
