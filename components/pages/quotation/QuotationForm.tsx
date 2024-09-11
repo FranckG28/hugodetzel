@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
 import { BackgroundGradient } from 'components/shared/BackgroundGradient'
 import { Button } from 'components/ui/button'
@@ -5,6 +7,7 @@ import useSet from 'lib/hooks/useSet'
 import { FC, useEffect, useState } from 'react'
 import { QuotationPayload } from 'types'
 
+import { QuotationDialog } from './QuotationDialog'
 import { QuotationOption } from './QuotationOption'
 import { QuotationPreview } from './QuotationPreview'
 import { QuotationSlider } from './QuotationSlider'
@@ -20,6 +23,7 @@ const MAX_TRACKS = 30
 export const QuotationForm: FC<{
   quotation: QuotationPayload
 }> = ({ quotation: { baseMinutes, baseTracks, options } }) => {
+
   const [total, setTotal] = useState(0)
   const [titles, setTitles] = useState(DEFAULT_TITLES)
   const [tracks, setTracks] = useState(DEFAULT_TRACKS)
@@ -125,7 +129,9 @@ export const QuotationForm: FC<{
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
+        <QuotationDialog>
         <Button variant="default" className='w-full md:w-fit'>Réserver une session</Button>
+        </QuotationDialog>
       </div>
     </BackgroundGradient>
   )
