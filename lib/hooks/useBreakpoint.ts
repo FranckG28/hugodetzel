@@ -12,6 +12,8 @@ const breakpoints: Record<Breakpoint, number> = {
 }
 
 export const useBreakpoint = (breakpoint: Breakpoint): boolean => {
-  const { width } = useWindowSize()
+  const { width } = useWindowSize({
+    initializeWithValue: false,
+  })
   return width >= breakpoints[breakpoint]
 }
