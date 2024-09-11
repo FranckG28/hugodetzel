@@ -10,12 +10,14 @@ import { Textarea } from "components/ui/textarea";
 import { submitQuotation } from "lib/actions/submit-quotation";
 import { FC } from "react";
 import { useFormState } from "react-dom";
+import { QuotationOutput } from "types/quotation-output";
 
 type Props = {
     children: React.ReactNode;
+    quotation: QuotationOutput;
 }
 
-export const QuotationDialog: FC<Props> = ({ children }) => {
+export const QuotationDialog: FC<Props> = ({ children, quotation }) => {
 
     const [state, formAction] = useFormState(submitQuotation, {success: false})
 
@@ -40,8 +42,8 @@ export const QuotationDialog: FC<Props> = ({ children }) => {
                     <FieldErrors errors={state?.errors?.name?._errors} />
                 </div>
                 <div>
-                    <Label htmlFor="mail">Votre addresse mail</Label>
-                    <Input type="email" id="mail" name="mail" placeholder="Votre adresse mail" />
+                    <Label htmlFor="email">Votre addresse email</Label>
+                    <Input type="email" id="email" name="email" placeholder="Votre adresse email" />
                     <FieldErrors errors={state?.errors?.email?._errors} />
                 </div>
                 <div>
@@ -49,6 +51,7 @@ export const QuotationDialog: FC<Props> = ({ children }) => {
                     <Textarea id="message" name="message" placeholder="Décrivez votre projet afin que je puisse m'adapter à vos besoins." />
                     <FieldErrors errors={state?.errors?.message?._errors} />
                 </div>
+                <input type="hidden" name="quotation" value={JSON.stringify(quotation)} />
             </CredenzaBody>
             <CredenzaFooter>
                 <CredenzaClose asChild>

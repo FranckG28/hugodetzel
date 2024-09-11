@@ -1,10 +1,15 @@
-import { FormState } from "lib/form-state"
+"use server";
+
+import { QuotationEmailTemplate } from "components/email/QuotationEmailTemplate";
+import { getResend } from "lib/resend";
+import { FormState } from "types/form-state";
 import { z } from "zod"
 
 const quotationFields = {
     name: z.string(),
     email: z.string().email(),
     message: z.string().optional(),
+    quotation: z.any()
 };
 
 const quotationSchema = z.object(quotationFields)
@@ -15,12 +20,42 @@ export const submitQuotation = async (previousState: SubmitQuotationState, formD
 
     console.log("submitting quotation", formData)
 
-    const validatedFields = quotationSchema.safeParse(formData);
+    const validatedFields = quotationSchema.safeParse({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+        quotation: formData.get('quotation')
+    });
 
     if (!validatedFields.success) {
         return {
             success: false,
             errors: validatedFields.error.format()
+        }
+    }
+
+    
+    console.log("sending email", validatedFields.data)
+    
+    return;
+    const resend = getResend();
+
+    const {data, error} = await resend.emails.send({
+        from: 'Hugo Detzel <lessichler@gmail.com>',
+        to: ['gutmann.franck@outlook.fr'],
+        subject: 'Nouvelle demande de devis',
+        react: QuotationEmailTemplate({
+            name: validatedFields.data.name,
+            email: validatedFields.data.email,
+            message: validatedFields.data.message,
+            quotation: validatedFields.data.quotation
+        })
+    })
+
+    if (error) {
+        return {
+            success: false,
+            message: error.message
         }
     }
 

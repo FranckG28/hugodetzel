@@ -129,7 +129,13 @@ export const QuotationForm: FC<{
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
-        <QuotationDialog>
+        <QuotationDialog quotation={{
+          total,
+          titles,
+          tracks,
+          minutes,
+          options: Array.from(selectedOptions),
+         }}>
         <Button variant="default" className='w-full md:w-fit'>Réserver une session</Button>
         </QuotationDialog>
       </div>
