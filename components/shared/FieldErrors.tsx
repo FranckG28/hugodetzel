@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC } from 'react'
 
 export const FieldErrors: FC<{ errors?: string[] }> = ({ errors }) => {
   if (!errors || errors.length === 0) {
-    return null;
+    return null
   }
 
   return (
@@ -13,5 +13,5 @@ export const FieldErrors: FC<{ errors?: string[] }> = ({ errors }) => {
         </p>
       ))}
     </div>
-  );
-};
+  )
+}

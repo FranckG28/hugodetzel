@@ -5,8 +5,8 @@ import { FormState } from 'types/form-state'
 import { z } from 'zod'
 
 const quotationFields = {
-    name: z.string(),
-    email: z.string().email(),
+    name: z.string({ message: 'Veuillez entrer votre nom' }),
+    email: z.string().email({ message: 'Veuillez entrer une adresse email valide' }),
     message: z.string().optional(),
     quotation: z.any(),
 }
@@ -35,6 +35,10 @@ export async function POST(request: Request) {
     }
 
     console.log('sending email', validatedFields.data)
+    return Response.json({
+        success: true,
+        message: `Merci ${validatedFields.data.name} pour votre demande. Je vous recontacterai très bientôt à l'adresse ${validatedFields.data.email}.`,
+    });
 
     const resend = getResend()
 
@@ -59,9 +63,5 @@ export async function POST(request: Request) {
         })
     }
 
-    return Response.json({
-        success: true,
-        message: `Merci ${validatedFields.data.name} pour votre demande. Je vous recontacterai très bientôt à l'adresse ${validatedFields.data.email}.`,
-    });
 
 }
