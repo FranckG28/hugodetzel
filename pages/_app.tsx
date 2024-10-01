@@ -8,6 +8,7 @@ import { SharedPageProps } from 'types'
 
 const font = localFont({
   src: '../public/fonts/InterVariable.woff2',
+  variable: '--font-inter',
 })
 
 const PreviewProvider = lazy(() => import('components/preview/PreviewProvider'))

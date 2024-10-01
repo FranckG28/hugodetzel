@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
 import { BackgroundGradient } from 'components/shared/BackgroundGradient'
@@ -23,7 +23,6 @@ const MAX_TRACKS = 30
 export const QuotationForm: FC<{
   quotation: QuotationPayload
 }> = ({ quotation: { baseMinutes, baseTracks, options } }) => {
-
   const [total, setTotal] = useState(0)
   const [titles, setTitles] = useState(DEFAULT_TITLES)
   const [tracks, setTracks] = useState(DEFAULT_TRACKS)
@@ -129,14 +128,18 @@ export const QuotationForm: FC<{
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
-        <QuotationDialog quotation={{
-          total,
-          titles,
-          tracks,
-          minutes,
-          options: Array.from(selectedOptions),
-         }}>
-        <Button variant="default" className='w-full md:w-fit'>Réserver une session</Button>
+        <QuotationDialog
+          quotation={{
+            total,
+            titles,
+            tracks,
+            minutes,
+            options: Array.from(selectedOptions),
+          }}
+        >
+          <Button variant="default" className="w-full md:w-fit">
+            Réserver une session
+          </Button>
         </QuotationDialog>
       </div>
     </BackgroundGradient>
