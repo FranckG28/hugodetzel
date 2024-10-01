@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="fr">
       <Head />
-      <body className="!antialiased dark" vaul-drawer-wrapper="">
+      <body className="!antialiased dark font-sans" vaul-drawer-wrapper="">
         <Main />
         <NextScript />
       </body>

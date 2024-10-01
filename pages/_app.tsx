@@ -6,6 +6,8 @@ import localFont from 'next/font/local'
 import { lazy } from 'react'
 import { SharedPageProps } from 'types'
 
+import { cn } from '@/lib/utils'
+
 const font = localFont({
   src: '../public/fonts/InterVariable.woff2',
   variable: '--font-inter',
@@ -22,18 +24,28 @@ export default function App({
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
   return (
-    <div className={font.className}>
-      {draftMode ? (
-        <PreviewProvider token={token}>
-          <Component {...pageProps} />
-        </PreviewProvider>
-      ) : (
-        <Component {...pageProps} />
-      )}
+    <>
+      <style jsx global>
+        {`
+          :root {
+            --font-inter: ${font.variable};
+          }
+        `}
+      </style>
 
-      {process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true' ? (
-        <SanityVisualEditing />
-      ) : null}
-    </div>
+      <main className={cn(font.className)}>
+        {draftMode ? (
+          <PreviewProvider token={token}>
+            <Component {...pageProps} />
+          </PreviewProvider>
+        ) : (
+          <Component {...pageProps} />
+        )}
+
+        {process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true' ? (
+          <SanityVisualEditing />
+        ) : null}
+      </main>
+    </>
   )
 }

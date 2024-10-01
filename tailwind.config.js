@@ -29,15 +29,6 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: [
-          'var(--font-inter)',
-          {
-            fontFeatureSettings: '"cv11", "ss01", "cv01", "cv05"',
-            fontVariationSettings: '"opsz" 32',
-          },
-        ],
-      },
       screens: {
         'aspect-16/9': {
           raw: '(min-aspect-ratio: 16/9)',
