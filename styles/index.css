@@ -102,13 +102,11 @@ ol {
 
 @layer base {
   html {
-    font-family: var(--font-martian);
     font-feature-settings:
       'ss01' 1,
       'cv01' 1,
       'cv11' 1,
       'cv05' 1;
-    font-variation-settings: '"opsz" 32';
   }
   * {
     @apply border-border;
