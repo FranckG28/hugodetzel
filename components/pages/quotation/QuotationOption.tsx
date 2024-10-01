@@ -33,7 +33,7 @@ export const QuotationOption: FC<Props> = (props) => {
         onCheckedChange={onChange}
       />
 
-      <p className="font-bold">{option.title}</p>
+      <h6 className="font-medium">{option.title}</h6>
 
       <CustomPortableText
         value={option.description}

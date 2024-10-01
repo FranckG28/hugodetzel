@@ -1,3 +1,5 @@
+'use client'
+
 import { AnimatedNumber } from 'components/shared/AnimatedNumbers'
 import { BackgroundGradient } from 'components/shared/BackgroundGradient'
 import { Button } from 'components/ui/button'
@@ -5,6 +7,7 @@ import useSet from 'lib/hooks/useSet'
 import { FC, useEffect, useState } from 'react'
 import { QuotationPayload } from 'types'
 
+import { QuotationDialog } from './QuotationDialog'
 import { QuotationOption } from './QuotationOption'
 import { QuotationPreview } from './QuotationPreview'
 import { QuotationSlider } from './QuotationSlider'
@@ -125,7 +128,19 @@ export const QuotationForm: FC<{
           <span className="text-slate-500">Total :</span>{' '}
           <AnimatedNumber value={total}></AnimatedNumber>€
         </h3>
-        <Button variant="default" className='w-full md:w-fit'>Réserver une session</Button>
+        <QuotationDialog
+          quotation={{
+            total,
+            titles,
+            tracks,
+            minutes,
+            options: Array.from(selectedOptions),
+          }}
+        >
+          <Button variant="default" className="w-full md:w-fit">
+            Réserver une session
+          </Button>
+        </QuotationDialog>
       </div>
     </BackgroundGradient>
   )

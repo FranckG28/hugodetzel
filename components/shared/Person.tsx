@@ -42,7 +42,7 @@ export const Person: FC<Props> = ({
       />
       <div>
         <p className="font-bold text-lg">{name}</p>
-        <p className="text-slate-700">{role}</p>
+        <p>{role}</p>
       </div>
     </div>
   )
