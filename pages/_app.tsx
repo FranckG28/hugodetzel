@@ -33,7 +33,7 @@ export default function App({
         `}
       </style>
 
-      <main className={cn(font.className)}>
+      <main className={cn(font.className, 'dark')}>
         {draftMode ? (
           <PreviewProvider token={token}>
             <Component {...pageProps} />
