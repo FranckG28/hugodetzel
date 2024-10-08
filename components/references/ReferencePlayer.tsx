@@ -1,4 +1,4 @@
-import { AudioPositionProvider } from 'components/shared/AudioPositionContext'
+import { AudioPositionProvider } from 'lib/providers/audio-position.context'
 import {
   WaveformPlayer,
   WaveformPlayerProps,

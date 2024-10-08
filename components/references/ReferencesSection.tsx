@@ -1,9 +1,9 @@
 import { Container } from 'components/shared/Container'
-import { useMultiPlay } from 'lib/hooks/useMultiPlay'
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { Reference } from 'types'
 
 import { ReferenceItem } from './ReferenceItem'
+import { AudioContext } from 'lib/providers/audio-context.provider'
 
 type Props = {
   references: Reference[]
@@ -21,7 +21,7 @@ export const ReferencesSection: FC<Props> = ({ references }) => {
     Array.from({ length: COLS }, () => []),
   )
 
-  const { pause, play, isPlaying } = useMultiPlay()
+  const { pause, play, isPlaying } = useContext(AudioContext)
 
   return (
     <section className="space-y-12 lg:space-y-16 py-16 lg:py-24 bg-slate-100 light">

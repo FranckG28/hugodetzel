@@ -1,17 +1,19 @@
-import { AudioPositionProvider } from 'components/shared/AudioPositionContext'
+'use client'
+
+import { AudioPositionProvider } from 'lib/providers/audio-position.context'
 import { Container } from 'components/shared/Container'
-import { useMultiPlay } from 'lib/hooks/useMultiPlay'
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { MixingStepsPayload } from 'types'
 
 import { MixingStepDisplay } from './MixingStepDisplay'
+import { AudioContext } from 'lib/providers/audio-context.provider'
 
 type Props = {
   mixingSteps: MixingStepsPayload
 }
 
 export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
-  const { isPlaying, pause, play } = useMultiPlay()
+  const { isPlaying, pause, play } = useContext(AudioContext)
 
   return (
     <div className="py-16 lg:py-24 bg-slate-800 space-y-12 lg:space-y-16">

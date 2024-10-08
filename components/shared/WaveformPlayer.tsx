@@ -6,7 +6,7 @@ import { Button } from 'components/ui/button'
 import { cn } from 'lib/utils'
 import { FC, useContext, useEffect, useState } from 'react'
 
-import { AudioPositionContext } from './AudioPositionContext'
+import { AudioPositionContext } from '../../lib/providers/audio-position.context'
 
 export type WaveformPlayerProps = {
   className?: string
@@ -27,7 +27,7 @@ export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
 }) => {
   const [wavesurfer, setWavesurfer] = useState(null)
 
-  const positionContext = useContext(AudioPositionContext);
+  const positionContext = useContext(AudioPositionContext)
 
   useEffect(() => {
     if (!wavesurfer) return
@@ -71,7 +71,7 @@ export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
             if (positionContext?.position) {
               wavesurfer.setTime(positionContext.position)
             }
-            onPlay && onPlay();
+            onPlay && onPlay()
           }}
           onPause={() => onPause && onPause()}
           onInteraction={() => wavesurfer && wavesurfer.play()}
