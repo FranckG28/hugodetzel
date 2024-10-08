@@ -25,18 +25,18 @@ export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
       </Container>
 
       <AudioPositionProvider>
-      <Container className="max-w-[1920px] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {mixingSteps.steps.map((step, idx) => (
-          <MixingStepDisplay
-            key={idx}
-            index={idx}
-            step={step}
-            isPlaying={isPlaying(idx + '')}
-            onPause={() => pause(idx + '')}
-            onPlay={() => play(idx + '')}
-          />
-        ))}
-      </Container>
+        <Container className="max-w-[1920px] grid sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-16">
+          {mixingSteps.steps.map((step, idx) => (
+            <MixingStepDisplay
+              key={idx}
+              index={idx}
+              step={step}
+              isPlaying={isPlaying(idx + '')}
+              onPause={() => pause(idx + '')}
+              onPlay={() => play(idx + '')}
+            />
+          ))}
+        </Container>
       </AudioPositionProvider>
     </div>
   )
