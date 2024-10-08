@@ -24,14 +24,15 @@ module.exports = {
         xl: '5rem',
         '2xl': '6rem',
       },
-      screens: {
-        '2xl': '1400px',
-      },
     },
     extend: {
       screens: {
         'aspect-16/9': { raw: '(min-aspect-ratio: 16/9)' },
         'max-aspect-16/9': { raw: '(max-aspect-ratio: 16/9)' },
+        '2xl': '1400px',
+        'max-lg': { max: '1023px' },
+        'max-md': { max: '767px' },
+        'max-sm': { max: '639px' },
       },
       keyframes: {
         'accordion-down': {
