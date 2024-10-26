@@ -1,17 +1,19 @@
-import { AudioPositionProvider } from 'components/shared/AudioPositionContext'
+'use client'
+
+import { AudioPositionProvider } from 'lib/providers/audio-position.context'
 import { Container } from 'components/shared/Container'
-import { useMultiPlay } from 'lib/hooks/useMultiPlay'
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { MixingStepsPayload } from 'types'
 
 import { MixingStepDisplay } from './MixingStepDisplay'
+import { AudioContext } from 'lib/providers/audio-context.provider'
 
 type Props = {
   mixingSteps: MixingStepsPayload
 }
 
 export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
-  const { isPlaying, pause, play } = useMultiPlay()
+  const { isPlaying, pause, play } = useContext(AudioContext)
 
   return (
     <div className="py-16 lg:py-24 bg-slate-800 space-y-12 lg:space-y-16">
@@ -25,18 +27,18 @@ export const MixingStepsSection: FC<Props> = ({ mixingSteps }) => {
       </Container>
 
       <AudioPositionProvider>
-      <Container className="max-w-[1920px] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {mixingSteps.steps.map((step, idx) => (
-          <MixingStepDisplay
-            key={idx}
-            index={idx}
-            step={step}
-            isPlaying={isPlaying(idx + '')}
-            onPause={() => pause(idx + '')}
-            onPlay={() => play(idx + '')}
-          />
-        ))}
-      </Container>
+        <Container className="max-w-[1920px] grid sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-16">
+          {mixingSteps.steps.map((step, idx) => (
+            <MixingStepDisplay
+              key={idx}
+              index={idx}
+              step={step}
+              isPlaying={isPlaying(idx + '')}
+              onPause={() => pause(idx + '')}
+              onPlay={() => play(idx + '')}
+            />
+          ))}
+        </Container>
       </AudioPositionProvider>
     </div>
   )
