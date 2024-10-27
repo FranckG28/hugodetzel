@@ -20,13 +20,13 @@ export const ContactEmailTemplate = ({
 }: Props) => {
   return (
     <div>
-      <p>
-        Le {date.toLocaleDateString()} par {name} ({email})
-      </p>
-
       {message && <p>{message}</p>}
 
       <QuotationTemplate quotation={quotation} sourceUrl={sourceUrl} />
+
+      <p>
+        Le {date.toLocaleDateString()} par {name} ({email})
+      </p>
     </div>
   )
 }

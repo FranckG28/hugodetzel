@@ -5,6 +5,8 @@ import { getResend } from 'lib/resend'
 import { FormState } from 'types/form-state'
 import { z } from 'zod'
 import { ConfirmationEmailTemplate } from '@/components/email/ConfirmationEmailTemplate'
+import { Contact } from '@/types'
+import { contactQuery } from '@/lib/sanity.queries'
 
 const quotationFields = {
     name: z.string({ message: 'Veuillez entrer votre nom' }),
@@ -23,7 +25,7 @@ export async function POST(request: Request) {
     console.log('submitting quotation', formData)
 
     const validatedFields = quotationSchema.safeParse({
-        name: formData.get('name'),
+        name: formData.get('name') ?? null,
         email: formData.get('email'),
         message: formData.get('message'),
         quotation: formData.get('quotation'),
@@ -36,9 +38,20 @@ export async function POST(request: Request) {
         });
     }
 
-    const client = getClient();
-
     console.log('sending email', validatedFields.data)
+
+    let contact: Contact;
+
+    try {
+        const client = getClient();
+        contact = await client.fetch<Contact>(contactQuery);
+    } catch (error) {
+        console.error('error fetching contact', error);
+        return Response.json({
+            success: false,
+            message: 'Erreur lors de l\'envoi du message. Veuillez réessayer plus tard.',
+        })
+    }
 
     const resend = getResend()
 
@@ -46,9 +59,9 @@ export async function POST(request: Request) {
 
     const mail = await resend.emails.send({
         from: `Hugo Detzel <contact@${sourceUrl}>`,
-        to: ['gutmann.franck@outlook.fr'],
+        to: contact.email,
         replyTo: validatedFields.data.email,
-        subject: `Demande de devis de la part de ${validatedFields.data.name}`,
+        subject: `Devis de ${validatedFields.data.name} sur ${sourceUrl}`,
         react: ContactEmailTemplate({
             name: validatedFields.data.name,
             email: validatedFields.data.email,
@@ -72,11 +85,12 @@ export async function POST(request: Request) {
     const confirm = await resend.emails.send({
         from: `Hugo Detzel <contact@${sourceUrl}>`,
         to: validatedFields.data.email,
-        subject: `Votre demande de devis sur ${sourceUrl}`,
+        subject: contact.confirmationEmail.subject,
+        replyTo: contact.email,
         react: ConfirmationEmailTemplate({
             name: validatedFields.data.name,
-            introText: 'Merci pour votre demande de devis.',
-            outroText: 'Je vous recontacterai très bientôt.',
+            introText: contact.confirmationEmail.introText,
+            outroText: contact.confirmationEmail.outroText,
             message: validatedFields.data.message,
             quotation: JSON.parse(validatedFields.data.quotation),
             sourceUrl,
@@ -95,7 +109,7 @@ export async function POST(request: Request) {
 
     return Response.json({
         success: true,
-        message: `Merci ${validatedFields.data.name} pour votre demande. Je vous recontacterai très bientôt à l'adresse ${validatedFields.data.email}.`,
+        message: contact.successMessage,
     })
 
 

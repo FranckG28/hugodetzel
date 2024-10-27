@@ -39,9 +39,9 @@ export const QuotationContactForm: FC<Props> = ({
         <CheckIcon className="w-12 h-12 text-emerald-500" />
         <h4 className="text-center">Message envoyé !</h4>
         <p className="text-center">{state.message}</p>
-        <CredenzaClose asChild>
-          <Button variant="outline">Fermer</Button>
-        </CredenzaClose>
+        <Button variant="outline" asChild>
+          <Link href="/">Fermer</Link>
+        </Button>
       </div>
     )
   }

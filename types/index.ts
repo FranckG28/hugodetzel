@@ -172,3 +172,13 @@ export type Reference = {
   mixedAudio: string
   unmixedAudio?: string
 }
+
+export type Contact = {
+  email: string
+  successMessage: string
+  confirmationEmail: {
+    subject: string
+    introText: string
+    outroText: string
+  }
+}

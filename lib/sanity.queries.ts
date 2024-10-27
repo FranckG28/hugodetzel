@@ -150,6 +150,15 @@ export const postBySlugQuery = groq`
 }
 `
 
+export const contactQuery = groq`
+  *[_type == "contact"][0]{
+    _id,
+    email,
+    successMessage,
+    confirmationEmail,
+  }
+`
+
 const referenceFields = groq`
   _id,
   category->{name},

@@ -34,8 +34,11 @@ export const QuotationDialog: FC<Props> = ({ children, quotation }) => {
       body: formData,
     })
 
+    const state = await response.json()
+    console.log('state', state)
+
     setIsLoading(false)
-    setState(await response.json())
+    setState(state)
   }
 
   return (
