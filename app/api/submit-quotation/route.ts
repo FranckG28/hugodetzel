@@ -66,7 +66,7 @@ export async function POST(request: Request) {
         })
     }
 
-    const sourceUrl = process.env.NEXT_PUBLIC_VERCEL_URL ?? 'hugodetzel.com'
+    const sourceUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? 'hugodetzel.com'
 
     const mail = await resend.emails.send({
         from: `Hugo Detzel <contact@${sourceUrl}>`,
