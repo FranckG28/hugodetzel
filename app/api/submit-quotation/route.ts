@@ -7,6 +7,7 @@ import { z } from 'zod'
 import { ConfirmationEmailTemplate } from '@/components/email/ConfirmationEmailTemplate'
 import { Contact } from '@/types'
 import { contactQuery } from '@/lib/sanity.queries'
+import { Resend } from 'resend'
 
 const quotationFields = {
     name: z.string({ message: 'Veuillez entrer votre nom' }),
@@ -53,7 +54,17 @@ export async function POST(request: Request) {
         })
     }
 
-    const resend = getResend()
+    let resend: Resend;
+
+    try {
+        resend = getResend();
+    } catch (error) {
+        console.error('error initializing resend', error);
+        return Response.json({
+            success: false,
+            message: 'Erreur lors de l\'envoi du message. Veuillez réessayer plus tard.',
+        })
+    }
 
     const sourceUrl = process.env.NEXT_PUBLIC_VERCEL_URL ?? 'hugodetzel.com'
 
