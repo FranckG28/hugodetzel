@@ -15,6 +15,8 @@ import {
 import { Input } from 'components/ui/input'
 import { Label } from 'components/ui/label'
 import { Textarea } from 'components/ui/textarea'
+import { Loader2 } from 'lucide-react'
+import Link from 'next/link'
 import { FC, FormEvent } from 'react'
 import { QuotationOutput } from 'types/quotation-output'
 
@@ -90,6 +92,7 @@ export const QuotationContactForm: FC<Props> = ({
         </CredenzaClose>
         <Button type="submit" disabled={isLoading}>
           Envoyer
+          {isLoading && <Loader2 className="w-6 h-6 ml-2 animate-spin" />}
         </Button>
       </CredenzaFooter>
     </form>

@@ -7,6 +7,7 @@ import { lazy } from 'react'
 import { SharedPageProps } from 'types'
 
 import { cn } from '@/lib/utils'
+import { AudioContextProvider } from '@/lib/providers/audio-context.provider'
 
 const font = localFont({
   src: '../public/fonts/InterVariable.woff2',
@@ -33,19 +34,21 @@ export default function App({
         `}
       </style>
 
-      <main className={cn(font.className, 'dark')}>
-        {draftMode ? (
-          <PreviewProvider token={token}>
+      <AudioContextProvider>
+        <main className={cn(font.className, 'dark')}>
+          {draftMode ? (
+            <PreviewProvider token={token}>
+              <Component {...pageProps} />
+            </PreviewProvider>
+          ) : (
             <Component {...pageProps} />
-          </PreviewProvider>
-        ) : (
-          <Component {...pageProps} />
-        )}
+          )}
 
-        {process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true' ? (
-          <SanityVisualEditing />
-        ) : null}
-      </main>
+          {process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true' ? (
+            <SanityVisualEditing />
+          ) : null}
+        </main>
+      </AudioContextProvider>
     </>
   )
 }
