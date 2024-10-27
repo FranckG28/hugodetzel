@@ -2,16 +2,18 @@ import * as FiIcons from 'react-icons/fi'
 import * as HiIcons from 'react-icons/hi'
 import * as SiIcons from 'react-icons/si'
 
-function getIconProvider(provider: string) {
+type IconProvider = typeof FiIcons | typeof HiIcons | typeof SiIcons;
+
+function getIconProvider(provider: string): IconProvider {
   switch (provider) {
     case 'fi':
-      return FiIcons
-    case 'fi':
-      return HiIcons
-    case 'fi':
-      return SiIcons
+      return FiIcons;
+    case 'hi':
+      return HiIcons;
+    case 'si':
+      return SiIcons;
     default:
-      return FiIcons
+      return FiIcons;
   }
 }
 
@@ -20,7 +22,7 @@ export default function DynamicIcon({
   className = '',
   color = 'currentColor',
 }: {
-  icon: any
+  icon: { provider: string; name: string }
   className?: string
   color?: string
 }) {
@@ -28,7 +30,7 @@ export default function DynamicIcon({
     console.error('No icon provided', icon)
     return null
   }
-  const Icon = getIconProvider(icon.provider)[icon.name]
+  const Icon = getIconProvider(icon.provider)[icon.name as keyof IconProvider] as React.ElementType
   if (!Icon) return null
   return <Icon className={className} style={{ color }} />
 }

@@ -54,7 +54,7 @@ export function Header(props: HeaderProps) {
             pointer-events-none absolute z-0
             max-aspect-16/9:w-[177.78vh] 
             aspect-16/9:w-full
-            top-0 left-1/2 -translate-x-1/2
+            -top-16 left-1/2 -translate-x-1/2
             aspect-video`)}
         ></iframe>
       )}

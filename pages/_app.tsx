@@ -5,10 +5,13 @@ import { AppProps } from 'next/app'
 import localFont from 'next/font/local'
 import { lazy } from 'react'
 import { SharedPageProps } from 'types'
-import { AudioContextProvider } from 'lib/providers/audio-context.provider'
+
+import { cn } from '@/lib/utils'
+import { AudioContextProvider } from '@/lib/providers/audio-context.provider'
 
 const font = localFont({
   src: '../public/fonts/InterVariable.woff2',
+  variable: '--font-inter',
 })
 
 const PreviewProvider = lazy(() => import('components/preview/PreviewProvider'))
@@ -22,20 +25,30 @@ export default function App({
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
   return (
-    <AudioContextProvider>
-      <div className={font.className}>
-        {draftMode ? (
-          <PreviewProvider token={token}>
-            <Component {...pageProps} />
-          </PreviewProvider>
-        ) : (
-          <Component {...pageProps} />
-        )}
+    <>
+      <style jsx global>
+        {`
+          :root {
+            --font-inter: ${font.variable};
+          }
+        `}
+      </style>
 
-        {process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true' ? (
-          <SanityVisualEditing />
-        ) : null}
-      </div>
-    </AudioContextProvider>
+      <AudioContextProvider>
+        <main className={cn(font.className, 'dark')}>
+          {draftMode ? (
+            <PreviewProvider token={token}>
+              <Component {...pageProps} />
+            </PreviewProvider>
+          ) : (
+            <Component {...pageProps} />
+          )}
+
+          {process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true' ? (
+            <SanityVisualEditing />
+          ) : null}
+        </main>
+      </AudioContextProvider>
+    </>
   )
 }
