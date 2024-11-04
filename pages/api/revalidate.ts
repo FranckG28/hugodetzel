@@ -55,7 +55,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 return res.json({ message: `Revalidated "${type}"` })
         }
 
-        console.error(`No managed type: ${type}`)
+        console.error(`No managed type: ${type}; slug: ${slug}`)
+        console.error(`Body: ${body}`)
         return res.json({ message: "No managed type" })
     } catch (err) {
         return res.status(500).send({ message: "Error revalidating" })
