@@ -36,6 +36,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             case "mixingSteps":
                 await res.revalidate(`/`) // The landing page
                 return res.json({ message: `Revalidated "${type}"` })
+            case "contact":
+                await res.revalidate(`/quotation`)
+                return res.json({ message: `Revalidated "${type}"` })
             case "settings":
                 await res.revalidate(`/`) // The landing page
                 await res.revalidate(`/quotation`) // The Quotation page
