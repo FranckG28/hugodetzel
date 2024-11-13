@@ -34,32 +34,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             case "home":
             case "questions":
             case "mixingSteps":
-                await res.revalidate(`/`) // The landing page
+                await res.revalidate(`/`)
                 return res.json({ message: `Revalidated "${type}"` })
             case "contact":
                 await res.revalidate(`/quotation`)
                 return res.json({ message: `Revalidated "${type}"` })
             case "settings":
-                await res.revalidate(`/`) // The landing page
-                await res.revalidate(`/quotation`) // The Quotation page
-                await res.revalidate(`/posts`) // The Questions page
+                await res.revalidate(`/`)
+                await res.revalidate(`/quotation`)
+                await res.revalidate(`/posts`)
                 return res.json({ message: `Revalidated "${type}"` })
             case "post":
-                await res.revalidate(`/posts/${slug.current}`) // The particular project
-                await res.revalidate(`/posts`)                 // The Projects page
-                await res.revalidate(`/`)                         // The landing page featured projects
+                await res.revalidate(`/posts/${slug.current}`)
+                await res.revalidate(`/posts`)
+                await res.revalidate(`/`)
                 return res.json({ message: `Revalidated "${type}" with slug "${slug.current}"` })
             case "quotation":
-                await res.revalidate(`/quotation`) // The particular project
-                // await res.revalidate(`/`)                         // The landing page featured projects
+                await res.revalidate(`/quotation`)
+                await res.revalidate(`/`)
                 return res.json({ message: `Revalidated "${type}"` })
         }
 
-        console.error(`No managed type: ${type}; slug: ${slug}`)
-        console.error(`Body: ${body}`)
-        return res.json({ message: "No managed type" })
+        return res.json({ message: `No managed type: ${type}; slug: ${slug}` })
     } catch (err) {
-        return res.status(500).send({ message: "Error revalidating" })
+        return res.status(500).send({ message: `Error: ${err.message}` })
     }
 }
 
