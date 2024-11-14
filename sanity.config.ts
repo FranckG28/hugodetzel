@@ -83,6 +83,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
+      //@ts-ignore
       structure: pageStructure([home, settings, quotation, questions, whoami, mixingSteps, contact, referencesSection]),
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
