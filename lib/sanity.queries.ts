@@ -175,3 +175,10 @@ export const referencesQuery = groq`
     ${referenceFields}
   }
 `
+
+export const referencesSectionQuery = groq`
+  *[_type == "referenceSection"][0]{
+    title,
+    description,
+  }
+`

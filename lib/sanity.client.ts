@@ -6,9 +6,9 @@ import {
   projectId,
   useCdn,
 } from 'lib/sanity.api'
-import { HomePagePayload, MixingStepsPayload, Post, QuestionsPayload, QuotationPayload, Reference, SettingsPayload, WhoAmI } from 'types'
+import { HomePagePayload, MixingStepsPayload, Post, QuestionsPayload, QuotationPayload, Reference, ReferencesSection, SettingsPayload, WhoAmI } from 'types'
 
-import { homePageQuery, latestPostsPreview, mixingStepsQuery, postAndMoreStoriesQuery, postBySlugQuery, postSlugsQuery, postsQuery, questionsQuery, quotationQuery, referencesQuery, settingsQuery, whoAmIQuery } from './sanity.queries'
+import { homePageQuery, latestPostsPreview, mixingStepsQuery, postAndMoreStoriesQuery, postBySlugQuery, postSlugsQuery, postsQuery, questionsQuery, quotationQuery, referencesQuery, referencesSectionQuery, settingsQuery, whoAmIQuery } from './sanity.queries'
 
 export function getClient(preview?: { token: string }) {
   const client = createClient({
@@ -112,4 +112,8 @@ export async function getHomepage(client: SanityClient) {
 
 export async function getReferences(client: SanityClient) {
   return await client.fetch<Reference[] | null>(referencesQuery)
+}
+
+export async function getReferencesSection(client: SanityClient) {
+  return await client.fetch<ReferencesSection | null>(referencesSectionQuery)
 }

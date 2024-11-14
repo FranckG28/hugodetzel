@@ -30,7 +30,7 @@ export const ReferenceItem: FC<Props> = ({ reference, ...props }) => {
         )}
         <div className="flex flex-col gap-1">
           <p className="text-slate-500 text-sm uppercase font-medium">
-            {reference.category.name}
+            {reference.category?.name}
           </p>
           <h5 className="text-slate-900">{reference.name}</h5>
         </div>

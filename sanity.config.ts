@@ -36,6 +36,7 @@ import quotation from 'schemas/singletons/quotation'
 import settings from 'schemas/singletons/settings'
 import whoami from 'schemas/singletons/whoami'
 import contact from './schemas/singletons/contact'
+import referencesSection from './schemas/objects/references-section'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE
 
@@ -63,6 +64,7 @@ export default defineConfig({
       whoami,
       mixingSteps,
       contact,
+      referencesSection,
       // Documents
       // page,
       // project,
@@ -81,7 +83,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings, quotation, questions, whoami, mixingSteps, contact]),
+      structure: pageStructure([home, settings, quotation, questions, whoami, mixingSteps, contact, referencesSection]),
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([
@@ -92,6 +94,7 @@ export default defineConfig({
       whoami.name,
       mixingSteps.name,
       contact.name,
+      referencesSection.name,
     ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),

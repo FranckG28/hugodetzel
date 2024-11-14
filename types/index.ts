@@ -143,6 +143,11 @@ export type MixingStepsPayload = {
   steps: MixingStep[]
 }
 
+export type ReferencesSection = {
+  title: string
+  description: string
+}
+
 export interface Author {
   name?: string
   picture?: any

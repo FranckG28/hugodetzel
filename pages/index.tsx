@@ -8,6 +8,7 @@ import {
   getMixingSteps,
   getQuestions,
   getReferences,
+  getReferencesSection,
   getSettings,
   getWhoAmI,
 } from 'lib/sanity.client'
@@ -20,31 +21,12 @@ interface Query {
   [key: string]: string
 }
 
-export default function IndexPage({
-  page,
-  settings,
-  draftMode,
-  questions,
-  whoAmI,
-  mixingSteps,
-  posts,
-  references,
-}: PageProps) {
-  if (draftMode) {
-    return <HomePagePreview page={page} settings={settings} />
+export default function IndexPage(props: PageProps) {
+  if (props.draftMode) {
+    return <HomePagePreview page={props.page} settings={props.settings} />
   }
 
-  return (
-    <HomePage
-      page={page}
-      settings={settings}
-      questions={questions}
-      whoAmI={whoAmI}
-      mixingSteps={mixingSteps}
-      posts={posts}
-      references={references}
-    />
-  )
+  return <HomePage {...props} />
 }
 
 const fallbackPage: HomePagePayload = {
@@ -57,16 +39,25 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const [settings, page, questions, whoAmI, mixingSteps, posts, references] =
-    await Promise.all([
-      getSettings(client),
-      getHomepage(client),
-      getQuestions(client),
-      getWhoAmI(client),
-      getMixingSteps(client),
-      getLatestPosts(client),
-      getReferences(client),
-    ])
+  const [
+    settings,
+    page,
+    questions,
+    whoAmI,
+    mixingSteps,
+    posts,
+    references,
+    referencesSection,
+  ] = await Promise.all([
+    getSettings(client),
+    getHomepage(client),
+    getQuestions(client),
+    getWhoAmI(client),
+    getMixingSteps(client),
+    getLatestPosts(client),
+    getReferences(client),
+    getReferencesSection(client),
+  ])
 
   return {
     props: {
@@ -78,6 +69,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
       mixingSteps,
       posts,
       references,
+      referencesSection,
       token: draftMode ? readToken : null,
     },
   }

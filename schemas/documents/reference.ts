@@ -5,7 +5,7 @@ import categorySchema from './category'
 
 export default defineType({
     name: 'workReference',
-    title: 'Reference',
+    title: 'References',
     icon: PlayIcon,
     type: 'document',
     fields: [
