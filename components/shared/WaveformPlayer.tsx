@@ -75,6 +75,7 @@ export const WaveformPlayer: FC<WaveformPlayerProps & { audio: string }> = ({
           }}
           onPause={() => onPause && onPause()}
           onInteraction={() => wavesurfer && wavesurfer.play()}
+          onFinish={() => wavesurfer && wavesurfer.seekTo(0)}
         />
       </div>
     </div>
