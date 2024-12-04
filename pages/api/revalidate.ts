@@ -33,6 +33,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         switch (type) {
             case "home":
             case "questions":
+            case "workReference":
+            case "category":
+            case "referenceSection":
+            case "whoami":
             case "mixingSteps":
                 await res.revalidate(`/`)
                 return res.json({ message: `Revalidated "${type}"` })
